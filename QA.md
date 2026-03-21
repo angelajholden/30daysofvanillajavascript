@@ -8,3 +8,4 @@
 - should we include social sharing icons?
 - remember to update og meta tags per page
 - structured data
+- meta canonical tags

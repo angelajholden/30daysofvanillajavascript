@@ -1,4 +1,8 @@
 :root {
+	--white: #fff;
+	--black: #222;
+	--lt-gray: #f8f8f8;
+	--gray: #eaeaea;
 	--dk-teal: #02474d;
 	--teal: #046169;
 	--lt-teal: #217b7e; /* not a11y */
@@ -24,3 +28,64 @@
   font-style: normal;
 }
 */
+
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: "Oswald", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.65;
+	color: var(--white);
+	background-color: var(--teal);
+}
+
+figure {
+	margin: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+svg {
+	display: block;
+	width: 3rem;
+	height: 3rem;
+	fill: red;
+	stroke: blue;
+}
+
+button {
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+
+a {
+	text-decoration-color: var(--white);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+	color: var(--white);
+	transition: text-decoration-color 300ms ease-in-out;
+}
+
+a.active,
+a:focus,
+a:hover,
+a:active {
+	text-decoration-color: transparent;
+}
