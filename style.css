@@ -1,0 +1,26 @@
+:root {
+	--dk-teal: #02474d;
+	--teal: #046169;
+	--lt-teal: #217b7e; /* not a11y */
+	--dk-navy: #151361;
+	--navy: ##25257a;
+	--lt-navy: #3c3d94;
+	--dk-red: #891d1a;
+	--red: #a82933;
+	--lt-red: #c7354c;
+	--dk-pink: #64192d;
+	--pink: #833b4c;
+	--lt-pink: #a1566c;
+	--dk-purple: #810576;
+	--purple: #a53e86;
+	--lt-purple: #c5699a; /* not a11y */
+}
+
+/*
+.oswald-<uniquifier> {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+*/
