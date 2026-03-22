@@ -52,18 +52,7 @@
 		</nav>
 	</header>
 	<main class="main">
-		<div class="wrap">
-
-			<header class="page_header">
-				<h1 class="page_title">
-					<span>30 Days of Vanilla JavaScript</span>
-					Day 01: Component Playground
-				</h1>
-				<p class="page_intro">
-					A reusable starter layout for JavaScript mini projects. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure at, pariatur hic fuga velit rem quidem sint. Eum, est quis officiis facere repellat nihil numquam dolorem debitis saepe necessitatibus.
-				</p>
-			</header>
-
+		<div class="flex_container">
 			<nav class="navigation">
 				<ul class="main_nav">
 					<li><a class="active" href="/">Day 01: Button Counter</a></li>
@@ -99,197 +88,223 @@
 				</ul>
 			</nav>
 
-			<section class="demo_section" aria-labelledby="buttons-heading">
-				<h2 id="buttons-heading">Buttons</h2>
-				<div class="button_row">
-					<button type="button" class="button">Default Button</button>
-					<button type="button" class="button button_secondary">Secondary Button</button>
-					<button type="button" class="button button_outline">Outline Button</button>
-				</div>
-			</section>
-
-			<section class="demo_section" aria-labelledby="counter-heading">
-				<h2 id="counter-heading">Counter</h2>
-				<div class="counter_card">
-					<p class="counter_label">Current Count</p>
-					<p class="counter_value" id="counter-value">0</p>
-					<div class="button_row">
-						<button type="button" class="button" id="decrement-button">Decrease</button>
-						<button type="button" class="button" id="reset-button">Reset</button>
-						<button type="button" class="button" id="increment-button">Increase</button>
+			<div class="section_container">
+				<header class="page_header">
+					<div class="wrap">
+						<h1 class="page_title">
+							<span>30 Days of Vanilla JavaScript</span>
+							Day 01: Component Playground
+						</h1>
+						<p class="page_intro">
+							A reusable starter layout for JavaScript mini projects. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure at, pariatur hic fuga velit rem quidem sint. Eum, est quis officiis facere repellat nihil numquam dolorem debitis saepe necessitatibus.
+						</p>
 					</div>
-				</div>
-			</section>
-
-			<section class="demo_section" aria-labelledby="textarea-heading">
-				<h2 id="textarea-heading">Textarea</h2>
-				<div class="form_field">
-					<label for="message">Message</label>
-					<textarea id="message" name="message" rows="6" maxlength="250"></textarea>
-					<p class="field_meta">
-						<span id="character-count">0</span> / 250 characters
-					</p>
-				</div>
-			</section>
-
-			<section class="demo_section" aria-labelledby="accordion-heading">
-				<h2 id="accordion-heading">Accordion</h2>
-				<div class="accordion">
-					<div class="accordion_item">
-						<h3>
-							<button type="button" class="accordion_trigger" aria-expanded="false" aria-controls="panel-1" id="accordion-1">
-								What is vanilla JavaScript?
-							</button>
-						</h3>
-						<div class="accordion_panel" id="panel-1" role="region" aria-labelledby="accordion-1" hidden>
-							<p>Vanilla JavaScript means using JavaScript without frameworks.</p>
+				</header>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Buttons</h2>
+						<div class="button_row">
+							<button type="button" class="button">Default Button</button>
+							<button type="button" class="button button_secondary">Secondary Button</button>
+							<button type="button" class="button button_outline">Outline Button</button>
 						</div>
 					</div>
-
-					<div class="accordion_item">
-						<h3>
-							<button type="button" class="accordion_trigger" aria-expanded="false" aria-controls="panel-2" id="accordion-2">
-								Why build components by hand?
-							</button>
-						</h3>
-						<div class="accordion_panel" id="panel-2" role="region" aria-labelledby="accordion-2" hidden>
-							<p>It helps you understand the DOM, events, and accessibility.</p>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Counter</h2>
+						<div class="counter_card">
+							<p class="counter_label">Current Count</p>
+							<p class="counter_value" id="counter-value">0</p>
+							<div class="button_row">
+								<button type="button" class="button" id="decrement-button">Decrease</button>
+								<button type="button" class="button" id="reset-button">Reset</button>
+								<button type="button" class="button" id="increment-button">Increase</button>
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Textarea</h2>
+						<div class="form_field">
+							<label for="message">Message</label>
+							<textarea id="message" name="message" rows="6" maxlength="250"></textarea>
+							<p class="field_meta">
+								<span id="character-count">0</span> / 250 characters
+							</p>
+						</div>
+					</div>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Accordion</h2>
+						<div class="accordion">
+							<div class="accordion_item">
+								<h3>
+									<button type="button" class="accordion_trigger" aria-expanded="false" aria-controls="panel-1" id="accordion-1">
+										What is vanilla JavaScript?
+									</button>
+								</h3>
+								<div class="accordion_panel" id="panel-1" role="region">
+									<p>Vanilla JavaScript means using JavaScript without frameworks.</p>
+								</div>
+							</div>
 
-			<section class="demo_section" aria-labelledby="modal-heading">
-				<h2 id="modal-heading">Modal Trigger</h2>
-				<button type="button" class="button" data-open-modal="demo-modal">Open Modal</button>
+							<div class="accordion_item">
+								<h3>
+									<button type="button" class="accordion_trigger" aria-expanded="false" aria-controls="panel-2" id="accordion-2">
+										Why build components by hand?
+									</button>
+								</h3>
+								<div class="accordion_panel" id="panel-2" role="region">
+									<p>It helps you understand the DOM, events, and accessibility.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Modal Trigger</h2>
+						<button type="button" class="button" data-open-modal="demo-modal">Open Modal</button>
 
-				<div class="modal" id="demo-modal" hidden>
-					<div class="modal_overlay" data-close-modal></div>
-					<div class="modal_dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-						<h3 id="modal-title">Demo Modal</h3>
-						<p>This is placeholder content for a modal window.</p>
-						<button type="button" class="button button_secondary" data-close-modal>
-							Close
+						<div class="modal" id="demo-modal" hidden>
+							<div class="modal_overlay" data-close-modal></div>
+							<div class="modal_dialog" role="dialog" aria-modal="true">
+								<h3 id="modal-title">Demo Modal</h3>
+								<p>This is placeholder content for a modal window.</p>
+								<button type="button" class="button button_secondary" data-close-modal>
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Tabs</h2>
+						<div class="tabs">
+							<div class="tab_list" role="tablist" aria-label="Sample Tabs">
+								<button type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
+									Overview
+								</button>
+								<button type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
+									Notes
+								</button>
+								<button type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
+									Resources
+								</button>
+							</div>
+
+							<div id="tab-panel-1" role="tabpanel">
+								<p>Overview content goes here.</p>
+							</div>
+							<div id="tab-panel-2" role="tabpanel">
+								<p>Notes content goes here.</p>
+							</div>
+							<div id="tab-panel-3" role="tabpanel">
+								<p>Resources content goes here.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Alerts / Toast Area</h2>
+						<div class="button_row">
+							<button type="button" class="button" id="show-toast-button">Show Toast</button>
+						</div>
+						<div class="toast_region" aria-live="polite" aria-atomic="true"></div>
+					</div>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Filterable List</h2>
+						<div class="form_field">
+							<label for="filter-input">Search tutorials</label>
+							<input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
+						</div>
+
+						<ul class="card_list" id="tutorial-list">
+							<li class="card_item">Button Counter</li>
+							<li class="card_item">Modal Dialog</li>
+							<li class="card_item">Accordion FAQ</li>
+							<li class="card_item">Theme Toggle</li>
+							<li class="card_item">Task List</li>
+						</ul>
+
+						<p class="empty_state" id="no-results-message" hidden>No results found.</p>
+					</div>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Theme Toggle</h2>
+						<button type="button" class="button" id="theme-toggle-button" aria-pressed="false">
+							Toggle Theme
 						</button>
 					</div>
-				</div>
-			</section>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Contact Form</h2>
+						<form id="contact-form" novalidate>
+							<div class="form_field">
+								<label for="name">Name</label>
+								<input type="text" id="name" name="name">
+								<p class="error_message" id="name-error" hidden>Please enter your name.</p>
+							</div>
 
-			<section class="demo_section" aria-labelledby="tabs-heading">
-				<h2 id="tabs-heading">Tabs</h2>
-				<div class="tabs">
-					<div class="tab_list" role="tablist" aria-label="Sample Tabs">
-						<button type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
-							Overview
-						</button>
-						<button type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
-							Notes
-						</button>
-						<button type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
-							Resources
-						</button>
+							<div class="form_field">
+								<label for="email">Email</label>
+								<input type="email" id="email" name="email">
+								<p class="error_message" id="email-error" hidden>Please enter a valid email.</p>
+							</div>
+
+							<div class="form_field">
+								<label for="message-field">Message</label>
+								<textarea id="message-field" name="message-field" rows="5"></textarea>
+								<p class="error_message" id="message-error" hidden>Please enter a message.</p>
+							</div>
+
+							<button type="submit" class="button">Send Message</button>
+							<p class="success_message" id="form-success" hidden>Your form was submitted.</p>
+						</form>
 					</div>
+				</section>
+				<section class="section">
+					<div class="wrap">
+						<h2 class="secondary_heading">Task List</h2>
+						<form id="task-form">
+							<div class="form_field">
+								<label for="task-input">Add a task</label>
+								<input type="text" id="task-input" name="task-input">
+							</div>
+							<button type="submit" class="button">Add Task</button>
+						</form>
 
-					<div id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1" class="tab_panel">
-						<p>Overview content goes here.</p>
+						<ul class="task_list" id="task-list">
+							<li class="task_item">
+								<span>Read MDN documentation</span>
+								<button type="button" class="button button_outline">Remove</button>
+							</li>
+						</ul>
+
+						<p class="empty_state" id="task-empty-state" hidden>No tasks yet.</p>
 					</div>
-					<div id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2" class="tab_panel" hidden>
-						<p>Notes content goes here.</p>
+				</section>
+				<aside class="about_me">
+					<div class="wrap">
+						<figure class="figure">
+							<img src="images/profile.jpg" title="Profile Image" alt="Headshot of Angela J. Holden">
+						</figure>
+						<div class="about_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum soluta veritatis ex, incidunt quidem quis blanditiis! Molestiae, vitae! Optio, laborum earum. Exercitationem ad eos eaque harum deserunt culpa iure magnam?</div>
 					</div>
-					<div id="tab-panel-3" role="tabpanel" aria-labelledby="tab-3" class="tab_panel" hidden>
-						<p>Resources content goes here.</p>
-					</div>
-				</div>
-			</section>
-
-			<section class="demo_section" aria-labelledby="alerts-heading">
-				<h2 id="alerts-heading">Alerts / Toast Area</h2>
-				<div class="button_row">
-					<button type="button" class="button" id="show-toast-button">Show Toast</button>
-				</div>
-				<div class="toast_region" aria-live="polite" aria-atomic="true"></div>
-			</section>
-
-			<section class="demo_section" aria-labelledby="filter-heading">
-				<h2 id="filter-heading">Filterable List</h2>
-				<div class="form_field">
-					<label for="filter-input">Search tutorials</label>
-					<input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
-				</div>
-
-				<ul class="card_list" id="tutorial-list">
-					<li class="card_item">Button Counter</li>
-					<li class="card_item">Modal Dialog</li>
-					<li class="card_item">Accordion FAQ</li>
-					<li class="card_item">Theme Toggle</li>
-					<li class="card_item">Task List</li>
-				</ul>
-
-				<p class="empty_state" id="no-results-message" hidden>No results found.</p>
-			</section>
-
-			<section class="demo_section" aria-labelledby="theme-heading">
-				<h2 id="theme-heading">Theme Toggle</h2>
-				<button type="button" class="button" id="theme-toggle-button" aria-pressed="false">
-					Toggle Theme
-				</button>
-			</section>
-
-			<section class="demo_section" aria-labelledby="form-heading">
-				<h2 id="form-heading">Contact Form</h2>
-				<form id="contact-form" novalidate>
-					<div class="form_field">
-						<label for="name">Name</label>
-						<input type="text" id="name" name="name">
-						<p class="error_message" id="name-error" hidden>Please enter your name.</p>
-					</div>
-
-					<div class="form_field">
-						<label for="email">Email</label>
-						<input type="email" id="email" name="email">
-						<p class="error_message" id="email-error" hidden>Please enter a valid email.</p>
-					</div>
-
-					<div class="form_field">
-						<label for="message-field">Message</label>
-						<textarea id="message-field" name="message-field" rows="5"></textarea>
-						<p class="error_message" id="message-error" hidden>Please enter a message.</p>
-					</div>
-
-					<button type="submit" class="button">Send Message</button>
-					<p class="success_message" id="form-success" hidden>Your form was submitted.</p>
-				</form>
-			</section>
-
-			<section class="demo_section" aria-labelledby="tasks-heading">
-				<h2 id="tasks-heading">Task List</h2>
-				<form id="task-form">
-					<div class="form_field">
-						<label for="task-input">Add a task</label>
-						<input type="text" id="task-input" name="task-input">
-					</div>
-					<button type="submit" class="button">Add Task</button>
-				</form>
-
-				<ul class="task_list" id="task-list">
-					<li class="task_item">
-						<span>Read MDN documentation</span>
-						<button type="button" class="button button_outline">Remove</button>
-					</li>
-				</ul>
-
-				<p class="empty_state" id="task-empty-state" hidden>No tasks yet.</p>
-			</section>
-
+				</aside>
+			</div>
 		</div>
 	</main>
 	<footer class="footer">
-		<aside class="about_me">
-			<figure class="figure">
-				<img src="images/profile.jpg" title="Profile Image" alt="Headshot of Angela J. Holden">
-			</figure>
-			<div class="about_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum soluta veritatis ex, incidunt quidem quis blanditiis! Molestiae, vitae! Optio, laborum earum. Exercitationem ad eos eaque harum deserunt culpa iure magnam?</div>
-		</aside>
 		<p class="copyright">Copyright &copy; <span id="year"></span> • <a href="https://angelajholden.com">Angela J. Holden</a></p>
 	</footer>
 </body>
