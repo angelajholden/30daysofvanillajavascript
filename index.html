@@ -89,11 +89,11 @@
 			</nav>
 
 			<div class="section_container">
-				<header class="page_header">
+				<header class="page_header section">
 					<div class="wrap">
 						<h1 class="page_title">
 							<span>30 Days of Vanilla JavaScript</span>
-							Day 01: Component Playground
+							Day 0: Component Playground
 						</h1>
 						<p class="page_intro">
 							A reusable starter layout for JavaScript mini projects. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure at, pariatur hic fuga velit rem quidem sint. Eum, est quis officiis facere repellat nihil numquam dolorem debitis saepe necessitatibus.
@@ -105,7 +105,6 @@
 						<h2 class="secondary_heading">Buttons</h2>
 						<div class="button_row">
 							<button type="button" class="button">Default Button</button>
-							<button type="button" class="button button_secondary">Secondary Button</button>
 							<button type="button" class="button button_outline">Outline Button</button>
 						</div>
 					</div>
@@ -114,11 +113,10 @@
 					<div class="wrap">
 						<h2 class="secondary_heading">Counter</h2>
 						<div class="counter_card">
-							<p class="counter_label">Current Count</p>
-							<p class="counter_value" id="counter-value">0</p>
+							<p class="counter_label">Current Count: <span id="counter-value">0</span></p>
 							<div class="button_row">
 								<button type="button" class="button" id="decrement-button">Decrease</button>
-								<button type="button" class="button" id="reset-button">Reset</button>
+								<button type="button" class="button button_outline" id="reset-button">Reset</button>
 								<button type="button" class="button" id="increment-button">Increase</button>
 							</div>
 						</div>
@@ -142,18 +140,19 @@
 						<div class="accordion">
 							<div class="accordion_item">
 								<h3>
-									<button type="button" class="accordion_trigger" aria-expanded="false" aria-controls="panel-1" id="accordion-1">
+									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-1" id="accordion-1">
 										What is vanilla JavaScript?
 									</button>
 								</h3>
 								<div class="accordion_panel" id="panel-1" role="region">
 									<p>Vanilla JavaScript means using JavaScript without frameworks.</p>
+									<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam nostrum aliquam, exercitationem tempore nam cum quos id, voluptas sunt explicabo non fugiat optio debitis suscipit eum? Accusantium autem deserunt impedit!</p>
 								</div>
 							</div>
 
 							<div class="accordion_item">
 								<h3>
-									<button type="button" class="accordion_trigger" aria-expanded="false" aria-controls="panel-2" id="accordion-2">
+									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-2" id="accordion-2">
 										Why build components by hand?
 									</button>
 								</h3>
