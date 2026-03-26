@@ -59,6 +59,10 @@ body.pink {
 	background-color: var(--pink);
 }
 
+body:has(dialog[open]) {
+	overflow: hidden;
+}
+
 figure {
 	margin: 0;
 }
@@ -103,6 +107,7 @@ button {
 	color: var(--dk-pink);
 }
 
+.button.active,
 .button:focus,
 .button:hover,
 .button:active {
@@ -137,6 +142,33 @@ button {
 .pink .button_outline:hover,
 .pink .button_outline:active {
 	color: var(--dk-pink);
+}
+
+.counter_card .button {
+	width: auto;
+	height: 3rem;
+	vertical-align: bottom;
+}
+
+.counter_card .button svg {
+	width: 1.333rem;
+	height: 1.333rem;
+	stroke: var(--dk-teal);
+	transition: stroke 300ms ease-in-out;
+}
+
+.navy .counter_card .button svg {
+	stroke: var(--dk-navy);
+}
+
+.pink .counter_card .button svg {
+	stroke: var(--dk-pink);
+}
+
+.counter_card .button:focus svg,
+.counter_card .button:hover svg,
+.counter_card .button:active svg {
+	stroke: var(--white);
 }
 
 p {
@@ -192,8 +224,7 @@ h3 {
 }
 
 .wrap {
-	max-width: 75rem;
-	/* margin: 0 auto; */
+	max-width: 62.5rem;
 }
 
 /* Header */
@@ -368,12 +399,31 @@ textarea {
 }
 
 .accordion_trigger {
-	display: block;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
 	padding: 1rem;
 	width: 100%;
 	text-transform: none;
 	text-align: left;
 	letter-spacing: 0;
+}
+
+.accordion_trigger svg {
+	width: 1.5rem;
+	height: 1.5rem;
+	transform: rotate(0deg);
+	stroke: var(--dk-teal);
+	transition:
+		stroke 300ms ease-in-out,
+		transform 300ms ease-in-out;
+}
+
+.accordion_trigger:focus svg,
+.accordion_trigger:hover svg,
+.accordion_trigger:active svg {
+	stroke: var(--white);
 }
 
 .accordion_panel {
@@ -389,6 +439,77 @@ textarea {
 	max-height: 1000px; /* adjust to the maximum amount of content in your panel */
 }
 
+.active .accordion_trigger svg {
+	transform: rotate(-45deg);
+}
+
+/* Modal Dialog */
+.modal {
+	color: var(--white);
+	border: 2px solid var(--white);
+	background-color: var(--teal);
+}
+
+.navy .modal {
+	background-color: var(--navy);
+}
+
+.pink .modal {
+	background-color: var(--pink);
+}
+
+dialog[open] {
+	position: fixed;
+	inset: 0;
+	z-index: 2;
+}
+
+dialog[open]::backdrop {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 50%);
+}
+
+/* this is for backdrop styling only */
+/* .section:has(dialog)::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 85%);
+	z-index: 1;
+} */
+
+/* Tab Panel */
+.tab_panels {
+	position: relative;
+	inset: 0;
+	width: 100%;
+	height: auto;
+	padding: 1rem 1rem 0.25rem;
+	margin: 1rem 0 0;
+	border: 2px solid var(--white);
+	z-index: 0;
+}
+
+.tab_item {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 0;
+}
+
+.tab_item.active {
+	visibility: visible;
+	opacity: 1;
+	position: relative;
+	height: auto;
+}
+
+/* Footer */
 .footer {
 	padding: 2rem 1rem;
 	text-align: center;

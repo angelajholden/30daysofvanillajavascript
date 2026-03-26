@@ -115,9 +115,15 @@
 						<div class="counter_card">
 							<p class="counter_label">Current Count: <span id="counter-value">0</span></p>
 							<div class="button_row">
-								<button type="button" class="button" id="decrement-button">Decrease</button>
+								<button type="button" class="button" id="decrement-button">
+									<span class="sr-only">Decrease</span>
+									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M400 256H112"/></svg>
+								</button>
 								<button type="button" class="button button_outline" id="reset-button">Reset</button>
-								<button type="button" class="button" id="increment-button">Increase</button>
+								<button type="button" class="button" id="increment-button">
+									<span class="sr-only">Increase</span>
+									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -141,11 +147,12 @@
 							<div class="accordion_item">
 								<h3>
 									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-1" id="accordion-1">
-										What is vanilla JavaScript?
+										<span>What is vanilla JavaScript?</span>
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 									</button>
 								</h3>
 								<div class="accordion_panel" id="panel-1" role="region">
-									<p>Vanilla JavaScript means using JavaScript without frameworks.</p>
+									<p>Vanilla JavaScript means using <a href="#">JavaScript without frameworks</a>.</p>
 									<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam nostrum aliquam, exercitationem tempore nam cum quos id, voluptas sunt explicabo non fugiat optio debitis suscipit eum? Accusantium autem deserunt impedit!</p>
 								</div>
 							</div>
@@ -153,7 +160,8 @@
 							<div class="accordion_item">
 								<h3>
 									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-2" id="accordion-2">
-										Why build components by hand?
+										<span>Why build components by hand?</span>
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 									</button>
 								</h3>
 								<div class="accordion_panel" id="panel-2" role="region">
@@ -167,17 +175,21 @@
 					<div class="wrap">
 						<h2 class="secondary_heading">Modal Trigger</h2>
 						<button type="button" class="button" data-open-modal="demo-modal">Open Modal</button>
-
-						<div class="modal" id="demo-modal" hidden>
-							<div class="modal_overlay" data-close-modal></div>
-							<div class="modal_dialog" role="dialog" aria-modal="true">
-								<h3 id="modal-title">Demo Modal</h3>
-								<p>This is placeholder content for a modal window.</p>
-								<button type="button" class="button button_secondary" data-close-modal>
-									Close
-								</button>
+						<dialog class="modal">
+							<div class="modal_inner">
+								<header class="modal_header">
+									<h2 class="modal_title">Modal Title</h2>
+								</header>
+								<div class="modal_body">
+									<p>This is placeholder content for your modal.</p>
+									<p>You can drop forms, text, or anything else here.</p>
+								</div>
+								<footer class="modal_footer">
+									<button type="button" class="button">Cancel</button>
+									<button type="button" class="button">Confirm</button>
+								</footer>
 							</div>
-						</div>
+						</dialog>
 					</div>
 				</section>
 				<section class="section">
@@ -185,25 +197,29 @@
 						<h2 class="secondary_heading">Tabs</h2>
 						<div class="tabs">
 							<div class="tab_list" role="tablist" aria-label="Sample Tabs">
-								<button type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
+								<button class="button active" type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
 									Overview
 								</button>
-								<button type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
 									Notes
 								</button>
-								<button type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
 									Resources
 								</button>
 							</div>
-
-							<div id="tab-panel-1" role="tabpanel">
-								<p>Overview content goes here.</p>
-							</div>
-							<div id="tab-panel-2" role="tabpanel">
-								<p>Notes content goes here.</p>
-							</div>
-							<div id="tab-panel-3" role="tabpanel">
-								<p>Resources content goes here.</p>
+							<div class="tab_panels">
+								<div class="tab_item active" id="tab-panel-1" role="tabpanel">
+									<p>Overview content goes here.</p>
+									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptate fugiat aut natus deleniti reiciendis, labore recusandae! Neque debitis est amet? Minima veniam deleniti amet minus repudiandae aliquid omnis delectus.</p>
+								</div>
+								<div class="tab_item" id="tab-panel-2" role="tabpanel">
+									<p>Notes content goes here.</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, fugiat.</p>
+								</div>
+								<div class="tab_item" id="tab-panel-3" role="tabpanel">
+									<p>Resources content goes here.</p>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.</p>
+								</div>
 							</div>
 						</div>
 					</div>
