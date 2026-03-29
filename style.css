@@ -246,12 +246,7 @@ h3 {
 	align-items: center;
 	gap: 0.5rem;
 	margin: 0;
-	font-size: 1.25rem;
-}
-
-.primary-logo svg {
-	max-width: 100%;
-	height: auto;
+	font-size: clamp(1.1rem, 2vw, 1.25rem);
 }
 
 /* Social Icons */
@@ -451,7 +446,7 @@ h3 {
 
 /* Main Header */
 .page_title {
-	font-size: clamp(1.1rem, 3vw, 2rem);
+	font-size: clamp(1.75rem, 4vw, 3rem);
 }
 
 .page_title span {
@@ -625,6 +620,14 @@ dialog[open]::backdrop {
 	border-radius: 50%;
 	border: 3px dotted var(--lt-teal);
 	z-index: 1;
+}
+
+.navy .about_me .figure::after {
+	border: 3px dotted var(--lt-navy);
+}
+
+.pink .about_me .figure::after {
+	border: 3px dotted var(--lt-pink);
 }
 
 .about_me img {
