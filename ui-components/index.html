@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>30 Days of Vanilla JavaScript</title>
+	<title>UI Components | 30 Days of Vanilla JavaScript</title>
 	<meta name="description" content="Scenic is a blog that celebrates the scenic views in nature.">
 	<meta property="og:title" content="Scenic | Home" />
 	<meta property="og:type" content="website" />
@@ -13,24 +13,24 @@
 	<meta property="og:description" content="Scenic is a blog that celebrates the scenic views in nature." />
 	<meta property="og:site_name" content="Scenic" />
 	<meta property="og:locale" content="en_US" />
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/ui-components/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="normalize.css">
-	<link rel="stylesheet" href="style.css">
-	<script defer src="script.js"></script>
+	<link rel="stylesheet" href="../normalize.css">
+	<link rel="stylesheet" href="../style.css">
+	<script defer src="../script.js"></script>
 </head>
 
 <body class>
 	<header class="header">
-		<h1 class="primary-logo">
+		<div class="primary-logo">
 			<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 630 630">
 				<rect width="630" height="630" fill="#f7df1e"/>
 				<path fill="#000" d="m423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z"/>
 			</svg>
 			<span>30 Days of Vanilla JavaScript</span>
-		</h1>
+		</div>
 		<div class="icon_wrap">
 			<nav class="social_navigation social_desktop">
 				<ul class="social_nav">
@@ -64,7 +64,7 @@
 					<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/></svg>
 				</button>
 				<ul class="main_nav">
-					<li><a class="active" href="/">Day 01: Button Counter</a></li>
+					<li><a href="/">Day 01: Button Counter</a></li>
 					<li><a href="/day-02/">Day 02: Character Count / Textarea Limit</a></li>
 					<li><a href="/day-03/">Day 03: FAQ Accordion</a></li>
 					<li><a href="/day-04/">Day 04: Modal Dialog</a></li>
@@ -94,7 +94,7 @@
 					<li><a href="/day-28/">Day 28</a></li>
 					<li><a href="/day-29/">Day 29</a></li>
 					<li><a href="/day-30/">Day 30</a></li>
-					<li><a href="/ui-components/">UI Components</a></li>
+					<li><a class="active" href="/ui-components/">UI Components</a></li>
 				</ul>
 				<ul class="social_nav social_mobile">
 					<li><a href="#">
@@ -118,7 +118,7 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h2 class="page_title">Day 01: Button Counter</h2>
+						<h1 class="page_title">UI Components</h1>
 						<p class="page_intro">
 							A reusable starter layout for JavaScript mini projects. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure at, pariatur hic fuga velit rem quidem sint. Eum, est quis officiis facere repellat nihil numquam dolorem debitis saepe necessitatibus.
 						</p>
@@ -147,9 +147,161 @@
 							</div>
 						</div>
 					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Textarea</h2>
+						<div class="form_field">
+							<label for="message">Message</label>
+							<textarea id="message" name="message" rows="6" maxlength="250"></textarea>
+							<p class="field_meta">
+								<span id="character-count">0</span> / 250 characters
+							</p>
+						</div>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Accordion</h2>
+						<div class="accordion">
+							<div class="accordion_item">
+								<h3>
+									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-1" id="accordion-1">
+										<span>What is vanilla JavaScript?</span>
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
+									</button>
+								</h3>
+								<div class="accordion_panel" id="panel-1" role="region">
+									<p>Vanilla JavaScript means using <a href="#">JavaScript without frameworks</a>.</p>
+									<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam nostrum aliquam, exercitationem tempore nam cum quos id, voluptas sunt explicabo non fugiat optio debitis suscipit eum? Accusantium autem deserunt impedit!</p>
+								</div>
+							</div>
+							<div class="accordion_item">
+								<h3>
+									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-2" id="accordion-2">
+										<span>Why build components by hand?</span>
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
+									</button>
+								</h3>
+								<div class="accordion_panel" id="panel-2" role="region">
+									<p>It helps you understand the DOM, events, and accessibility.</p>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Modal Trigger</h2>
+						<button type="button" class="button" data-open-modal="demo-modal">Open Modal</button>
+						<dialog class="modal">
+							<div class="modal_inner">
+								<header class="modal_header">
+									<h2 class="modal_title">Modal Title</h2>
+								</header>
+								<div class="modal_body">
+									<p>This is placeholder content for your modal.</p>
+									<p>You can drop forms, text, or anything else here.</p>
+								</div>
+								<footer class="modal_footer">
+									<button type="button" class="button">Cancel</button>
+									<button type="button" class="button">Confirm</button>
+								</footer>
+							</div>
+						</dialog>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Tabs</h2>
+						<div class="tabs">
+							<div class="tab_list" role="tablist" aria-label="Sample Tabs">
+								<button class="button active" type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
+									Overview
+								</button>
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
+									Notes
+								</button>
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
+									Resources
+								</button>
+							</div>
+							<div class="tab_panels">
+								<div class="tab_item active" id="tab-panel-1" role="tabpanel">
+									<p>Overview content goes here.</p>
+									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptate fugiat aut natus deleniti reiciendis, labore recusandae! Neque debitis est amet? Minima veniam deleniti amet minus repudiandae aliquid omnis delectus.</p>
+								</div>
+								<div class="tab_item" id="tab-panel-2" role="tabpanel">
+									<p>Notes content goes here.</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, fugiat.</p>
+								</div>
+								<div class="tab_item" id="tab-panel-3" role="tabpanel">
+									<p>Resources content goes here.</p>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.</p>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Alerts / Toast Area</h2>
+						<button type="button" class="button" id="show-toast-button">Show Toast</button>
+						<div class="toast_region" aria-live="polite" aria-atomic="true"></div>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Filterable List</h2>
+						<div class="form_field">
+							<label for="filter-input">Search tutorials</label>
+							<input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
+						</div>
+						<ul class="card_list" id="tutorial-list">
+							<li class="card_item">Button Counter</li>
+							<li class="card_item">Modal Dialog</li>
+							<li class="card_item">Accordion FAQ</li>
+							<li class="card_item">Theme Toggle</li>
+							<li class="card_item">Task List</li>
+						</ul>
+						<p class="empty_state" id="no-results-message" hidden>No results found.</p>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Theme Toggle</h2>
+						<button type="button" class="button" id="theme-toggle-button" aria-pressed="false">
+							Toggle Theme
+						</button>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Contact Form</h2>
+						<form id="contact-form" novalidate>
+							<div class="form_field">
+								<label for="name">Name</label>
+								<input type="text" id="name" name="name">
+								<p class="error_message" id="name-error" hidden>Please enter your name.</p>
+							</div>
+							<div class="form_field">
+								<label for="email">Email</label>
+								<input type="email" id="email" name="email">
+								<p class="error_message" id="email-error" hidden>Please enter a valid email.</p>
+							</div>
+							<div class="form_field">
+								<label for="message-field">Message</label>
+								<textarea id="message-field" name="message-field" rows="5"></textarea>
+								<p class="error_message" id="message-error" hidden>Please enter a message.</p>
+							</div>
+							<button type="submit" class="button">Send Message</button>
+							<p class="success_message" id="form-success" hidden>Your form was submitted.</p>
+						</form>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Task List</h2>
+						<form id="task-form">
+							<div class="form_field">
+								<label for="task-input">Add a task</label>
+								<input type="text" id="task-input" name="task-input">
+							</div>
+							<button type="submit" class="button">Add Task</button>
+						</form>
+						<ul class="task_list" id="task-list">
+							<li class="task_item">
+								<span>Read MDN documentation</span>
+								<button type="button" class="button button_outline">Remove</button>
+							</li>
+						</ul>
+						<p class="empty_state" id="task-empty-state" hidden>No tasks yet.</p>
+					</section>
 					<aside class="about_me section">
 						<figure class="figure">
-							<img src="images/profile.jpg" title="Profile Image" alt="Headshot of Angela J. Holden">
+							<img src="../images/profile.jpg" title="Profile Image" alt="Headshot of Angela J. Holden">
 						</figure>
 						<div class="about_desc">
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum soluta veritatis ex, incidunt quidem quis blanditiis! Molestiae, vitae! Optio, laborum earum. Exercitationem ad eos eaque harum deserunt culpa iure magnam?</p>
