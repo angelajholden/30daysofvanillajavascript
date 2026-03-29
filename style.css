@@ -240,13 +240,25 @@ h3 {
 }
 
 .primary-logo {
+	margin: 0;
+	font-weight: 400;
+}
+
+.primary-logo a {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-start;
 	align-items: center;
 	gap: 0.5rem;
-	margin: 0;
+	text-decoration-color: transparent;
 	font-size: clamp(1.1rem, 2vw, 1.25rem);
+	transition: text-decoration-color 300ms ease-in-out;
+}
+
+.primary-logo a:focus,
+.primary-logo a:hover,
+.primary-logo a:active {
+	text-decoration-color: var(--white);
 }
 
 /* Social Icons */
