@@ -68,6 +68,7 @@ figure {
 }
 
 img {
+	display: block;
 	max-width: 100%;
 	height: auto;
 }
@@ -596,6 +597,53 @@ dialog[open]::backdrop {
 	opacity: 1;
 	position: relative;
 	height: auto;
+}
+
+/* About Me */
+.about_me .wrap {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	align-items: center;
+	gap: 2rem;
+}
+
+.about_me .figure {
+	position: relative;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+	z-index: 0;
+}
+
+.about_me .figure::after {
+	content: "";
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	width: calc(100% - 2rem);
+	height: calc(100% - 2rem);
+	border-radius: 50%;
+	border: 3px dotted var(--lt-teal);
+	z-index: 1;
+}
+
+.about_me img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+	.about_me .wrap {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.about_me .figure {
+		max-width: 350px;
+		margin-inline: auto;
+	}
 }
 
 /* Footer */
