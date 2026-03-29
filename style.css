@@ -600,7 +600,7 @@ dialog[open]::backdrop {
 }
 
 /* About Me */
-.about_me .wrap {
+.about_me {
 	display: grid;
 	grid-template-columns: 1fr 2fr;
 	align-items: center;
@@ -635,7 +635,7 @@ dialog[open]::backdrop {
 }
 
 @media (max-width: 1200px) {
-	.about_me .wrap {
+	.about_me {
 		grid-template-columns: 1fr;
 		gap: 1rem;
 	}
