@@ -455,12 +455,19 @@ button {
 		top: 0;
 		left: -400px;
 		max-width: 100%;
-		padding: 1rem 1rem 3rem;
+		padding: 1rem;
 		transform: translateX(0);
 		z-index: 3;
 		transition:
 			transform 300ms linear,
 			visibility 300ms linear;
+	}
+
+	.main_nav {
+		padding: 1rem 0;
+		margin: 1rem 0;
+		border-top: 3px dotted var(--teal);
+		border-bottom: 3px dotted var(--teal);
 	}
 
 	.social_desktop {
@@ -470,7 +477,6 @@ button {
 	.social_mobile {
 		display: flex;
 		justify-content: center;
-		margin: 1rem 0 0;
 	}
 
 	.menu_active .navigation {
