@@ -619,8 +619,7 @@ dialog[open]::backdrop {
 .tab_panels {
 	position: relative;
 	inset: 0;
-	width: 100%;
-	height: auto;
+	width: fit-content;
 	padding: 1rem 1rem 0.25rem;
 	margin: 1rem 0 0;
 	border: 2px solid var(--white);
@@ -668,6 +667,7 @@ dialog[open]::backdrop {
 	height: calc(100% - 2rem);
 	border-radius: 50%;
 	border: 3px dotted var(--lt-teal);
+	pointer-events: none;
 	z-index: 1;
 }
 
