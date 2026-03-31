@@ -490,7 +490,9 @@ button {
 }
 
 /* Main Header */
-.page_header {
+.page_header,
+.navy .page_header,
+.pink .page_header {
 	border-top: none;
 }
 
