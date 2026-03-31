@@ -23,7 +23,7 @@
 	<script defer src="./day-05.js"></script>
 </head>
 
-<body class>
+<body class="navy">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -34,6 +34,7 @@
 				<span>30 Days of Vanilla JavaScript</span>
 			</a>
 		</div>
+		<nav class="skip_nav"><a href="#content">Skip to Content</a></nav>
 		<div class="icon_wrap">
 			<nav class="social_navigation social_desktop">
 				<ul class="social_nav">
@@ -118,6 +119,7 @@
 						</a></li>
 				</ul>
 			</nav>
+			<div id="content"></div>
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
@@ -146,23 +148,34 @@
 						</ul>
 					</header>
 					<section class="section">
-						<h2 class="secondary_heading">Modal Trigger</h2>
-						<button type="button" class="button" data-open-modal="demo-modal">Open Modal</button>
-						<dialog class="modal">
-							<div class="modal_inner">
-								<header class="modal_header">
-									<h2 class="modal_title">Modal Title</h2>
-								</header>
-								<div class="modal_body">
-									<p>This is placeholder content for your modal.</p>
-									<p>You can drop forms, text, or anything else here.</p>
-								</div>
-								<footer class="modal_footer">
-									<button type="button" class="button">Cancel</button>
-									<button type="button" class="button">Confirm</button>
-								</footer>
+						<h2 class="secondary_heading">Tabs</h2>
+						<div class="tabs">
+							<div class="tab_list" role="tablist" aria-label="Sample Tabs">
+								<button class="button active" type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
+									Overview
+								</button>
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
+									Notes
+								</button>
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
+									Resources
+								</button>
 							</div>
-						</dialog>
+							<div class="tab_panels">
+								<div class="tab_item active" id="tab-panel-1" role="tabpanel">
+									<p>Overview content goes here.</p>
+									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptate fugiat aut natus deleniti reiciendis, labore recusandae! Neque debitis est amet? Minima veniam deleniti amet minus repudiandae aliquid omnis delectus.</p>
+								</div>
+								<div class="tab_item" id="tab-panel-2" role="tabpanel">
+									<p>Notes content goes here.</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, fugiat.</p>
+								</div>
+								<div class="tab_item" id="tab-panel-3" role="tabpanel">
+									<p>Resources content goes here.</p>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.</p>
+								</div>
+							</div>
+						</div>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">

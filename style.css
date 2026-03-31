@@ -213,6 +213,32 @@ button {
 	stroke: var(--white);
 }
 
+/* Skip to Content */
+.skip_nav {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	font-size: 0;
+	background-color: var(--lt-gray);
+	transform: translateX(-50%);
+	z-index: 1;
+}
+
+.skip_nav:focus-within {
+	font-size: 1.25rem;
+}
+
+.skip_nav:focus-within a {
+	display: block;
+	padding: 0.5rem;
+	color: var(--black);
+}
+
+#content {
+	position: relative;
+	top: -5rem;
+}
+
 /* Screen Reader Only */
 .sr-only {
 	clip: rect(0 0 0 0);
