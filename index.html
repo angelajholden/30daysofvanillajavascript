@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="style.css">
 	<script defer src="script.js"></script>
+	<script defer src="day-01.js"></script>
 </head>
 
 <body class="teal">
@@ -151,17 +152,105 @@
 						<div class="counter_card">
 							<p class="counter_label">Current Count: <span id="counter-value">0</span></p>
 							<div class="button_row">
-								<button type="button" class="button" id="decrement-button">
+								<button type="button" class="button" id="decrement">
 									<span class="sr-only">Decrease</span>
 									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M400 256H112"/></svg>
 								</button>
-								<button type="button" class="button button_outline" id="reset-button">Reset</button>
-								<button type="button" class="button" id="increment-button">
+								<button type="button" class="button button_outline" id="reset">Reset</button>
+								<button type="button" class="button" id="increment">
 									<span class="sr-only">Increase</span>
 									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 								</button>
 							</div>
 						</div>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The HTML</h2>
+						<pre class="language-html">
+							<code class="language-html">
+								&lt;div class="counter_card">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="counter_label">Current Count: &lt;span id="counter-value">0&lt;/span>&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="button_row">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="button" id="decrement">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="sr-only">Decrease&lt;/span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">&lt;path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M400 256H112"/>&lt;/svg>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="button button_outline" id="reset">Reset&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="button" id="increment">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="sr-only">Increase&lt;/span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">&lt;path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/>&lt;/svg>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&lt;/div>
+							</code>
+						</pre>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre class="language-javascript">
+							<code class="language-javascript">
+								document.addEventListener("DOMContentLoaded", () => {
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const increment = document.getElementById("increment");
+								&nbsp;&nbsp;&nbsp;&nbsp;const decrement = document.getElementById("decrement");
+								&nbsp;&nbsp;&nbsp;&nbsp;const reset = document.getElementById("reset");
+								&nbsp;&nbsp;&nbsp;&nbsp;const label = document.querySelector(".counter_label");
+								&nbsp;&nbsp;&nbsp;&nbsp;const counter = document.getElementById("counter-value");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;let count = 0;
+								&nbsp;&nbsp;&nbsp;&nbsp;decrement.setAttribute("disabled", "");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;function disabled() {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (count === 0) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decrement.setAttribute("disabled", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decrement.removeAttribute("disabled", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;function changeColor() {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (count === 0) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.remove("black");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (count === 5) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.add("black");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (count === 10) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.remove("black");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (count === 15) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.add("black");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.remove("black");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// when you call count++ it adds 1. 1*5 = 5, then 5+1=6, and 6*5 = 30
+								&nbsp;&nbsp;&nbsp;&nbsp;// credit to CaffineCowboy666 in the chat
+
+								&nbsp;&nbsp;&nbsp;&nbsp;increment.addEventListener("click", () => {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = count + 5;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter.textContent = count;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;decrement.addEventListener("click", () => {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (count > 0) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = count - 5;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter.textContent = count;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;reset.addEventListener("click", () => {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = 0;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter.textContent = count;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								});
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
