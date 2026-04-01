@@ -219,7 +219,7 @@ button {
 	top: 0;
 	left: 50%;
 	font-size: 0;
-	background-color: var(--lt-gray);
+	background-color: var(--white);
 	transform: translateX(-50%);
 	z-index: 1;
 }
@@ -231,7 +231,15 @@ button {
 .skip_nav:focus-within a {
 	display: block;
 	padding: 0.5rem;
-	color: var(--black);
+	color: var(--dk-teal);
+}
+
+.navy .skip_nav:focus-within a {
+	color: var(--dk-navy);
+}
+
+.pink .skip_nav:focus-within a {
+	color: var(--dk-pink);
 }
 
 #content {
@@ -303,6 +311,7 @@ button {
 	justify-content: flex-start;
 	align-items: center;
 	gap: 0.5rem;
+	letter-spacing: 0.25px;
 	text-decoration-color: transparent;
 	font-size: clamp(1.1rem, 2vw, 1.25rem);
 	transition: text-decoration-color 300ms ease-in-out;
