@@ -516,6 +516,16 @@ button {
 		border-bottom: 3px dotted var(--teal);
 	}
 
+	.navy .main_nav {
+		border-top: 3px dotted var(--navy);
+		border-bottom: 3px dotted var(--navy);
+	}
+
+	.pink .main_nav {
+		border-top: 3px dotted var(--pink);
+		border-bottom: 3px dotted var(--pink);
+	}
+
 	.social_desktop {
 		display: none;
 	}
@@ -544,11 +554,6 @@ button {
 
 .page_title {
 	font-size: clamp(1.75rem, 4vw, 3rem);
-}
-
-.page_title span {
-	display: block;
-	font-size: clamp(1.5rem, 4vw, 3rem);
 }
 
 /* Forms */
@@ -598,8 +603,8 @@ textarea {
 	transform: rotate(0deg);
 	stroke: var(--dk-teal);
 	transition:
-		stroke 300ms ease-in-out,
-		transform 300ms ease-in-out;
+		stroke 400ms ease-in-out,
+		transform 400ms ease-in-out;
 }
 
 .accordion_trigger:focus svg,
