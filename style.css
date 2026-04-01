@@ -455,6 +455,17 @@ button {
 	list-style-type: none;
 }
 
+.main_nav li:nth-of-type(n + 6):nth-of-type(-n + 30) a {
+	pointer-events: none;
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.main_nav li:nth-of-type(n + 6):nth-of-type(-n + 30) a:focus {
+	outline: 2px dashed currentColor;
+	opacity: 0.45;
+}
+
 .main_nav a {
 	font-size: 1.25rem;
 	line-height: 2;
