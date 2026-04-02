@@ -180,17 +180,11 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;const maxLength = document.getElementById("max-length");
 								&nbsp;&nbsp;&nbsp;&nbsp;const fieldMeta = document.querySelector(".field_meta");
 
-								&nbsp;&nbsp;&nbsp;&nbsp;let count = 0;
 								&nbsp;&nbsp;&nbsp;&nbsp;textarea.setAttribute("maxlength", "250");
 								&nbsp;&nbsp;&nbsp;&nbsp;textarea.addEventListener("input", updateValue);
 
 								&nbsp;&nbsp;&nbsp;&nbsp;function updateValue(e) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// first = count the characters
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// second = warning style near limit (within 10)
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// third = hard max limit 250 characters
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// fourth = remaining characters instead of total count
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = e.target.value;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(e.target.value);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const count = e.target.value;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;charCount.textContent = count.length;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxLength.textContent = 250 - count.length;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (count.length &gt;= 240) {

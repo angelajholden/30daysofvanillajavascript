@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	const maxLength = document.getElementById("max-length");
 	const fieldMeta = document.querySelector(".field_meta");
 
-	let count = 0;
 	textarea.setAttribute("maxlength", "250");
 	textarea.addEventListener("input", updateValue);
 
@@ -13,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		// second = warning style near limit (within 10)
 		// third = hard max limit 250 characters
 		// fourth = remaining characters instead of total count
-		count = e.target.value;
+		const count = e.target.value;
 		console.log(e.target.value);
 		charCount.textContent = count.length;
 		maxLength.textContent = 250 - count.length;
