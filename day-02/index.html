@@ -153,7 +153,8 @@
 							<label for="message">Message</label>
 							<textarea id="message" name="message" rows="6"></textarea>
 							<p class="field_meta">
-								<span id="character-count">0</span> / <span id="max-length">250</span> Characters
+								<span id="character-count">0</span> /
+								<span id="max-length">250</span> Characters
 							</p>
 						</div>
 					</section>
@@ -165,7 +166,8 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="message">Message&lt;/label>
 								&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea id="message" name="message" rows="6">&lt;/textarea>
 								&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="field_meta">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span id="character-count">0&lt;/span> / &lt;span id="max-length">250&lt;/span> Characters
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span id="character-count">0&lt;/span> /
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span id="max-length">250&lt;/span> Characters
 								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p>
 								&lt;/div>
 							</code>
@@ -175,24 +177,24 @@
 						<h2 class="secondary_heading">The JavaScript</h2>
 						<pre>
 							<code class="language-javascript">
-								&nbsp;&nbsp;&nbsp;&nbsp;const textarea = document.getElementById("message");
-								&nbsp;&nbsp;&nbsp;&nbsp;const charCount = document.getElementById("character-count");
-								&nbsp;&nbsp;&nbsp;&nbsp;const maxLength = document.getElementById("max-length");
-								&nbsp;&nbsp;&nbsp;&nbsp;const fieldMeta = document.querySelector(".field_meta");
+								const textarea = document.getElementById("message");
+								const charCount = document.getElementById("character-count");
+								const maxLength = document.getElementById("max-length");
+								const fieldMeta = document.querySelector(".field_meta");
 
-								&nbsp;&nbsp;&nbsp;&nbsp;textarea.setAttribute("maxlength", "250");
-								&nbsp;&nbsp;&nbsp;&nbsp;textarea.addEventListener("input", updateValue);
+								textarea.setAttribute("maxlength", "250");
+								textarea.addEventListener("input", updateValue);
 
-								&nbsp;&nbsp;&nbsp;&nbsp;function updateValue(e) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const count = e.target.value;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;charCount.textContent = count.length;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxLength.textContent = 250 - count.length;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (count.length &gt;= 240) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldMeta.classList.add("red");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldMeta.classList.remove("red");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								function updateValue(e) {
+								&nbsp;&nbsp;&nbsp;&nbsp;const count = e.target.value;
+								&nbsp;&nbsp;&nbsp;&nbsp;charCount.textContent = count.length;
+								&nbsp;&nbsp;&nbsp;&nbsp;maxLength.textContent = 250 - count.length;
+								&nbsp;&nbsp;&nbsp;&nbsp;if (count.length &gt;= 240) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldMeta.classList.add("red");
+								&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldMeta.classList.remove("red");
 								&nbsp;&nbsp;&nbsp;&nbsp;}
+								}
 							</code>
 						</pre>
 					</section>

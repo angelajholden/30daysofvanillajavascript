@@ -190,59 +190,59 @@
 						<h2 class="secondary_heading">The JavaScript</h2>
 						<pre>
 							<code class="language-javascript">
-								&nbsp;&nbsp;&nbsp;&nbsp;const increment = document.getElementById("increment");
-								&nbsp;&nbsp;&nbsp;&nbsp;const decrement = document.getElementById("decrement");
-								&nbsp;&nbsp;&nbsp;&nbsp;const reset = document.getElementById("reset");
-								&nbsp;&nbsp;&nbsp;&nbsp;const label = document.querySelector(".counter_label");
-								&nbsp;&nbsp;&nbsp;&nbsp;const counter = document.getElementById("counter-value");
+								const increment = document.getElementById("increment");
+								const decrement = document.getElementById("decrement");
+								const reset = document.getElementById("reset");
+								const label = document.querySelector(".counter_label");
+								const counter = document.getElementById("counter-value");
 
-								&nbsp;&nbsp;&nbsp;&nbsp;let count = 0;
-								&nbsp;&nbsp;&nbsp;&nbsp;decrement.setAttribute("disabled", "");
+								let count = 0;
+								decrement.setAttribute("disabled", "");
 
-								&nbsp;&nbsp;&nbsp;&nbsp;function disabled() {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (count === 0) {
+								function disabled() {
+								&nbsp;&nbsp;&nbsp;&nbsp;if (count === 0) {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decrement.setAttribute("disabled", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;} else {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decrement.removeAttribute("disabled", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
 								&nbsp;&nbsp;&nbsp;&nbsp;}
+								}
 
-								&nbsp;&nbsp;&nbsp;&nbsp;function changeColor() {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (count === 0) {
+								function changeColor() {
+								&nbsp;&nbsp;&nbsp;&nbsp;if (count === 0) {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.remove("black");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (count === 5) {
+								&nbsp;&nbsp;&nbsp;&nbsp;} else if (count === 5) {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.add("black");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (count === 10) {
+								&nbsp;&nbsp;&nbsp;&nbsp;} else if (count === 10) {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.remove("black");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (count === 15) {
+								&nbsp;&nbsp;&nbsp;&nbsp;} else if (count === 15) {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.add("black");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;} else {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label.classList.remove("black");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
 								&nbsp;&nbsp;&nbsp;&nbsp;}
+								}
 
-								&nbsp;&nbsp;&nbsp;&nbsp;increment.addEventListener("click", () => {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = count + 5;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter.textContent = count;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled();
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
-								&nbsp;&nbsp;&nbsp;&nbsp;});
+								increment.addEventListener("click", () => {
+								&nbsp;&nbsp;&nbsp;&nbsp;count = count + 5;
+								&nbsp;&nbsp;&nbsp;&nbsp;counter.textContent = count;
+								&nbsp;&nbsp;&nbsp;&nbsp;disabled();
+								&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
+								});
 
-								&nbsp;&nbsp;&nbsp;&nbsp;decrement.addEventListener("click", () => {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (count > 0) {
+								decrement.addEventListener("click", () => {
+								&nbsp;&nbsp;&nbsp;&nbsp;if (count > 0) {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = count - 5;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter.textContent = count;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled();
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
-								&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;disabled();
+								&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
+								});
 
-								&nbsp;&nbsp;&nbsp;&nbsp;reset.addEventListener("click", () => {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = 0;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter.textContent = count;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled();
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
-								&nbsp;&nbsp;&nbsp;&nbsp;});
+								reset.addEventListener("click", () => {
+								&nbsp;&nbsp;&nbsp;&nbsp;count = 0;
+								&nbsp;&nbsp;&nbsp;&nbsp;counter.textContent = count;
+								&nbsp;&nbsp;&nbsp;&nbsp;disabled();
+								&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
+								});
 							</code>
 						</pre>
 					</section>
