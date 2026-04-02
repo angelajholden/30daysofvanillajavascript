@@ -16,7 +16,6 @@ function init() {
 		// third = hard max limit 250 characters
 		// fourth = remaining characters instead of total count
 		const count = e.target.value;
-		console.log(e.target.value);
 		charCount.textContent = count.length;
 		maxLength.textContent = 250 - count.length;
 		if (count.length >= 240) {
