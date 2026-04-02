@@ -1,5 +1,48 @@
-/* PrismJS 1.30.0
-https://prismjs.com/download#themes=prism&languages=markup+css+clike+javascript */
+const body = document.body;
+const buttons = document.querySelectorAll(".menu_button");
+const open = document.querySelector(".menu_open");
+
+function menuToggle() {
+	if (!open) return;
+	buttons.forEach((button) => {
+		button.addEventListener("click", () => {
+			const isActive = body.classList.toggle("menu_active");
+			if (isActive) {
+				open.setAttribute("aria-expanded", "true");
+			} else {
+				open.setAttribute("aria-expanded", "false");
+			}
+		});
+	});
+}
+
+function escapeToggle() {
+	if (!open) return;
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && body.classList.contains("menu_active")) {
+			body.classList.remove("menu_active");
+			open.setAttribute("aria-expanded", "false");
+		}
+	});
+}
+
+function copyright() {
+	const year = document.getElementById("year");
+	const date = new Date().getFullYear();
+	if (!year) return;
+	year.textContent = date;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	menuToggle();
+	escapeToggle();
+	copyright();
+});
+
+/*
+ * PrismJS 1.30.0
+ * https://prismjs.com/download#themes=prism&languages=markup+css+clike+javascript
+ */
 var _self = "undefined" != typeof window ? window : "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? self : {},
 	Prism = (function (e) {
 		var n = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i,
@@ -418,44 +461,3 @@ Prism.languages.clike = {
 	Prism.languages.insertBefore("javascript", "operator", { "literal-property": { pattern: /((?:^|[,{])[ \t]*)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*:)/m, lookbehind: !0, alias: "property" } }),
 	Prism.languages.markup && (Prism.languages.markup.tag.addInlined("script", "javascript"), Prism.languages.markup.tag.addAttribute("on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)", "javascript")),
 	(Prism.languages.js = Prism.languages.javascript));
-
-const body = document.body;
-const buttons = document.querySelectorAll(".menu_button");
-const open = document.querySelector(".menu_open");
-
-function menuToggle() {
-	if (!open) return;
-	buttons.forEach((button) => {
-		button.addEventListener("click", () => {
-			const isActive = body.classList.toggle("menu_active");
-			if (isActive) {
-				open.setAttribute("aria-expanded", "true");
-			} else {
-				open.setAttribute("aria-expanded", "false");
-			}
-		});
-	});
-}
-
-function escapeToggle() {
-	if (!open) return;
-	document.addEventListener("keydown", (e) => {
-		if (e.key === "Escape" && body.classList.contains("menu_active")) {
-			body.classList.remove("menu_active");
-			open.setAttribute("aria-expanded", "false");
-		}
-	});
-}
-
-function copyright() {
-	const year = document.getElementById("year");
-	const date = new Date().getFullYear();
-	if (!year) return;
-	year.textContent = date;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-	menuToggle();
-	escapeToggle();
-	copyright();
-});

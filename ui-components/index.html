@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
+	<script type="module" src="./components.js"></script>
 </head>
 
 <body class="teal">
@@ -127,23 +128,16 @@
 						<p class="page_intro">A reusable starter layout for JavaScript mini projects.</p>
 					</header>
 					<section class="section">
-						<h2 class="secondary_heading">Buttons</h2>
-						<div class="button_row">
-							<button type="button" class="button">Default Button</button>
-							<button type="button" class="button button_outline">Outline Button</button>
-						</div>
-					</section>
-					<section class="section">
-						<h2 class="secondary_heading">Counter</h2>
+						<h2 class="secondary_heading">Day 01: Button Counter</h2>
 						<div class="counter_card">
 							<p class="counter_label">Current Count: <span id="counter-value">0</span></p>
 							<div class="button_row">
-								<button type="button" class="button" id="decrement-button">
+								<button type="button" class="button" id="decrement">
 									<span class="sr-only">Decrease</span>
 									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M400 256H112"/></svg>
 								</button>
-								<button type="button" class="button button_outline" id="reset-button">Reset</button>
-								<button type="button" class="button" id="increment-button">
+								<button type="button" class="button button_outline" id="reset">Reset</button>
+								<button type="button" class="button" id="increment">
 									<span class="sr-only">Increase</span>
 									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 								</button>
@@ -151,17 +145,17 @@
 						</div>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Textarea</h2>
+						<h2 class="secondary_heading">Day 02: Character Count / Textarea Limit</h2>
 						<div class="form_field">
 							<label for="message">Message</label>
-							<textarea id="message" name="message" rows="6" maxlength="250"></textarea>
+							<textarea id="message" name="message" rows="6"></textarea>
 							<p class="field_meta">
-								<span id="character-count">0</span> / 250 characters
+								<span id="character-count">0</span> / <span id="max-length">250</span> Characters
 							</p>
 						</div>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Accordion</h2>
+						<h2 class="secondary_heading">Day 03: FAQ Accordion</h2>
 						<div class="accordion">
 							<div class="accordion_item">
 								<h3>
@@ -189,7 +183,7 @@
 						</div>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Modal Trigger</h2>
+						<h2 class="secondary_heading">Day 04: Modal Dialog</h2>
 						<button type="button" class="button" data-open-modal="demo-modal">Open Modal</button>
 						<dialog class="modal">
 							<div class="modal_inner">
@@ -208,7 +202,7 @@
 						</dialog>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Tabs</h2>
+						<h2 class="secondary_heading">Day 05: Tabs Component</h2>
 						<div class="tabs">
 							<div class="tab_list" role="tablist" aria-label="Sample Tabs">
 								<button class="button active" type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
@@ -238,12 +232,12 @@
 						</div>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Alerts / Toast Area</h2>
+						<h2 class="secondary_heading">Day 06: Toast Notification System</h2>
 						<button type="button" class="button" id="show-toast-button">Show Toast</button>
 						<div class="toast_region" aria-live="polite" aria-atomic="true"></div>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Filterable List</h2>
+						<h2 class="secondary_heading">Day 07: Filterable List</h2>
 						<div class="form_field">
 							<label for="filter-input">Search tutorials</label>
 							<input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
@@ -258,13 +252,13 @@
 						<p class="empty_state" id="no-results-message" hidden>No results found.</p>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Theme Toggle</h2>
+						<h2 class="secondary_heading">Day 08: Theme Toggle + Caching Data</h2>
 						<button type="button" class="button" id="theme-toggle-button" aria-pressed="false">
 							Toggle Theme
 						</button>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Contact Form</h2>
+						<h2 class="secondary_heading">Day 09: Form Validation States</h2>
 						<form id="contact-form" novalidate>
 							<div class="form_field">
 								<label for="name">Name</label>
@@ -286,7 +280,7 @@
 						</form>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Task List</h2>
+						<h2 class="secondary_heading">Day 10: Simple Task List</h2>
 						<form id="task-form">
 							<div class="form_field">
 								<label for="task-input">Add a task</label>

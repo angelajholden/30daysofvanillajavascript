@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script defer src="./day-02.js"></script>
+	<script type="module" src="./character-count.js"></script>
 </head>
 
 <body class="navy">
@@ -175,7 +175,6 @@
 						<h2 class="secondary_heading">The JavaScript</h2>
 						<pre>
 							<code class="language-javascript">
-								document.addEventListener("DOMContentLoaded", () => {
 								&nbsp;&nbsp;&nbsp;&nbsp;const textarea = document.getElementById("message");
 								&nbsp;&nbsp;&nbsp;&nbsp;const charCount = document.getElementById("character-count");
 								&nbsp;&nbsp;&nbsp;&nbsp;const maxLength = document.getElementById("max-length");
@@ -194,7 +193,6 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldMeta.classList.remove("red");
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
 								&nbsp;&nbsp;&nbsp;&nbsp;}
-								});
 							</code>
 						</pre>
 					</section>
