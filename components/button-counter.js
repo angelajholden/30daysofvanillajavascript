@@ -1,4 +1,4 @@
-function init() {
+function initCounter() {
 	const increment = document.getElementById("increment");
 	const decrement = document.getElementById("decrement");
 	const reset = document.getElementById("reset");
@@ -59,4 +59,4 @@ function init() {
 		changeColor();
 	});
 }
-init();
+initCounter();

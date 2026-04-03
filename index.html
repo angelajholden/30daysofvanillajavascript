@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="style.css">
 	<script defer src="script.js"></script>
-	<script type="module" src="button-counter.js"></script>
+	<script type="module" src="/components/button-counter.js"></script>
 </head>
 
 <body class="teal">
@@ -190,7 +190,7 @@
 						<h2 class="secondary_heading">The JavaScript</h2>
 						<pre>
 							<code class="language-javascript">
-								function init() {
+								function initCounter() {
 								&nbsp;&nbsp;&nbsp;&nbsp;const increment = document.getElementById("increment");
 								&nbsp;&nbsp;&nbsp;&nbsp;const decrement = document.getElementById("decrement");
 								&nbsp;&nbsp;&nbsp;&nbsp;const reset = document.getElementById("reset");
@@ -247,7 +247,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;changeColor();
 								&nbsp;&nbsp;&nbsp;&nbsp;});
 								}
-								init();
+								initCounter();
 							</code>
 						</pre>
 					</section>

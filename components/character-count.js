@@ -1,4 +1,4 @@
-function init() {
+function initCharCount() {
 	const textarea = document.getElementById("message");
 	const charCount = document.getElementById("character-count");
 	const maxLength = document.getElementById("max-length");
@@ -25,4 +25,4 @@ function init() {
 		}
 	}
 }
-init();
+initCharCount();
