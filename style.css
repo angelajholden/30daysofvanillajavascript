@@ -616,8 +616,8 @@ textarea {
 	transform: rotate(0deg);
 	stroke: var(--dk-teal);
 	transition:
-		stroke 350ms ease-in-out,
-		transform 350ms ease-in-out;
+		stroke 300ms ease-in-out,
+		transform 300ms ease-in-out;
 }
 
 .navy .accordion_trigger svg {
@@ -641,8 +641,8 @@ textarea {
 	visibility: hidden;
 	max-height: 0;
 	transition:
-		max-height 500ms ease-in-out,
-		visibility 500ms ease-in-out;
+		max-height 300ms ease-in-out,
+		visibility 300ms ease-in-out;
 }
 
 .accordion_panel p {
@@ -652,7 +652,7 @@ textarea {
 
 .active .accordion_panel {
 	visibility: visible;
-	max-height: 1000px; /* adjust to the maximum amount of content in your panel */
+	max-height: 500px; /* adjust to the maximum amount of content in your panel */
 }
 
 .active .accordion_trigger svg {
