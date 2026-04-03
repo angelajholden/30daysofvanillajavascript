@@ -591,11 +591,11 @@ textarea {
 
 /* Accordions */
 .accordion_item {
-	margin: 0;
+	margin: 0 0 0.5rem;
 }
 
 .accordion_item h3 {
-	margin: 0 0 0.5rem;
+	margin: 0;
 }
 
 .accordion_trigger {
@@ -616,8 +616,16 @@ textarea {
 	transform: rotate(0deg);
 	stroke: var(--dk-teal);
 	transition:
-		stroke 400ms ease-in-out,
-		transform 400ms ease-in-out;
+		stroke 350ms ease-in-out,
+		transform 350ms ease-in-out;
+}
+
+.navy .accordion_trigger svg {
+	stroke: var(--dk-navy);
+}
+
+.pink .accordion_trigger svg {
+	stroke: var(--dk-pink);
 }
 
 .accordion_trigger:focus svg,
@@ -627,11 +635,19 @@ textarea {
 }
 
 .accordion_panel {
+	padding: 0 1rem;
+	border: 2px solid var(--white);
+	border-top: none;
 	visibility: hidden;
 	max-height: 0;
 	transition:
-		max-height 400ms ease-in-out,
-		visibility 400ms ease-in-out;
+		max-height 500ms ease-in-out,
+		visibility 500ms ease-in-out;
+}
+
+.accordion_panel p {
+	padding: 0.5rem 0;
+	margin: 0;
 }
 
 .active .accordion_panel {

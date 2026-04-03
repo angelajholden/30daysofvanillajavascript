@@ -125,7 +125,7 @@
 				<div class="wrap">
 					<header class="page_header section">
 						<h1 class="page_title">Day 03: FAQ Accordion</h1>
-						<p class="page_intro">Build an accordion where clicking a question opens its answer.</p>
+						<p class="page_intro">Build an accordion where clicking a heading opens its panel.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
 							<li>looping through buttons</li>
@@ -151,27 +151,65 @@
 					<section class="section">
 						<h2 class="secondary_heading">Accordion</h2>
 						<div class="accordion">
-							<div class="accordion_item">
+							<div class="accordion_item active">
 								<h3>
 									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-1" id="accordion-1">
-										<span>What is vanilla JavaScript?</span>
+										<span>Array.prototype.forEach()</span>
 										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 									</button>
 								</h3>
 								<div class="accordion_panel" id="panel-1" role="region">
-									<p>Vanilla JavaScript means using <a href="#">JavaScript without frameworks</a>.</p>
-									<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam nostrum aliquam, exercitationem tempore nam cum quos id, voluptas sunt explicabo non fugiat optio debitis suscipit eum? Accusantium autem deserunt impedit!</p>
+									<p>The forEach() method of Array instances executes a provided function once for each array element.</p>
+									<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">MDN: Array.prototype.forEach()</a></p>
 								</div>
 							</div>
 							<div class="accordion_item">
 								<h3>
 									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-2" id="accordion-2">
-										<span>Why build components by hand?</span>
+										<span>Element: classList property</span>
 										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 									</button>
 								</h3>
 								<div class="accordion_panel" id="panel-2" role="region">
-									<p>It helps you understand the DOM, events, and accessibility.</p>
+									<p>The read-only classList property of the Element interface contains a live DOMTokenList collection representing the class attribute of the element. This can then be used to manipulate the class list.</p>
+									<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" target="_blank">MDN: Element: classList property</a></p>
+								</div>
+							</div>
+							<div class="accordion_item">
+								<h3>
+									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-3" id="accordion-2">
+										<span>Element: getAttribute() method</span>
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
+									</button>
+								</h3>
+								<div class="accordion_panel" id="panel-3" role="region">
+									<p>The getAttribute() method of the Element interface returns the value of a specified attribute on the element.</p>
+									<p>If the given attribute does not exist, the value returned will be null.</p>
+									<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute" target="_blank">Element: getAttribute() method</a></p>
+								</div>
+							</div>
+							<div class="accordion_item">
+								<h3>
+									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-4" id="accordion-2">
+										<span>Element: setAttribute() method</span>
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
+									</button>
+								</h3>
+								<div class="accordion_panel" id="panel-4" role="region">
+									<p>The setAttribute() method of the Element interface sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value.</p>
+									<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute" target="_blank">Element: setAttribute() method</a></p>
+								</div>
+							</div>
+							<div class="accordion_item">
+								<h3>
+									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-5" id="accordion-2">
+										<span>HTMLElement: hidden property</span>
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
+									</button>
+								</h3>
+								<div class="accordion_panel" id="panel-5" role="region">
+									<p>The HTMLElement property hidden reflects the value of the element's hidden attribute.</p>
+									<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden" target="_blank">HTMLElement: hidden property</a></p>
 								</div>
 							</div>
 						</div>
