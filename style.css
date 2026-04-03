@@ -638,11 +638,13 @@ textarea {
 	padding: 0 1rem;
 	border: 2px solid var(--white);
 	border-top: none;
-	visibility: hidden;
-	max-height: 0;
+	max-height: 0; /* animate the height when open + close */
+	visibility: hidden; /* hide from screen readers when closed */
+	color: transparent; /* helps the animation */
 	transition:
 		max-height 300ms ease-in-out,
-		visibility 300ms ease-in-out;
+		visibility 300ms ease-in-out,
+		color 300ms ease-in-out;
 }
 
 .accordion_panel p {
@@ -651,8 +653,9 @@ textarea {
 }
 
 .active .accordion_panel {
-	visibility: visible;
 	max-height: 500px; /* adjust to the maximum amount of content in your panel */
+	visibility: visible;
+	color: var(--white);
 }
 
 .active .accordion_trigger svg {
