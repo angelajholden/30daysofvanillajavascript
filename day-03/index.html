@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script defer src="../components/accordion.js"></script>
+	<script type="module" src="../components/accordion.js"></script>
 </head>
 
 <body class="pink">
@@ -57,7 +57,7 @@
 						</a></li>
 				</ul>
 			</nav>
-			<button class="menu_open menu_button" type="button" aria-label="Open Menu" aria-controls="mainNav" aria-expanded="false">
+			<button class="menu_open menu_button" type="button" aria-label="Open Menu" aria-expanded="false">
 				<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 160h352M80 256h352M80 352h352"/></svg>
 			</button>
 		</div>
@@ -151,38 +151,38 @@
 					<section class="section">
 						<h2 class="secondary_heading">Accordion</h2>
 						<div class="accordion">
-							<div class="accordion_item active">
+							<div class="accordion_item">
 								<h3>
-									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-1" id="accordion-1">
+									<button type="button" class="accordion_trigger button" aria-expanded="false">
 										<span>Array.prototype.forEach()</span>
 										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 									</button>
 								</h3>
-								<div class="accordion_panel" id="panel-1" role="region">
+								<div class="accordion_panel" role="region">
 									<p>The forEach() method of Array instances executes a provided function once for each array element.</p>
 									<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">MDN: Array.prototype.forEach()</a></p>
 								</div>
 							</div>
 							<div class="accordion_item">
 								<h3>
-									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-2" id="accordion-2">
+									<button type="button" class="accordion_trigger button" aria-expanded="false">
 										<span>Element: classList property</span>
 										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 									</button>
 								</h3>
-								<div class="accordion_panel" id="panel-2" role="region">
+								<div class="accordion_panel" role="region">
 									<p>The read-only classList property of the Element interface contains a live DOMTokenList collection representing the class attribute of the element. This can then be used to manipulate the class list.</p>
 									<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" target="_blank">MDN: Element: classList property</a></p>
 								</div>
 							</div>
 							<div class="accordion_item">
 								<h3>
-									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-3" id="accordion-2">
+									<button type="button" class="accordion_trigger button" aria-expanded="false">
 										<span>Element: getAttribute() method</span>
 										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 									</button>
 								</h3>
-								<div class="accordion_panel" id="panel-3" role="region">
+								<div class="accordion_panel" role="region">
 									<p>The getAttribute() method of the Element interface returns the value of a specified attribute on the element.</p>
 									<p>If the given attribute does not exist, the value returned will be null.</p>
 									<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute" target="_blank">Element: getAttribute() method</a></p>
@@ -190,29 +190,135 @@
 							</div>
 							<div class="accordion_item">
 								<h3>
-									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-4" id="accordion-2">
+									<button type="button" class="accordion_trigger button" aria-expanded="false">
 										<span>Element: setAttribute() method</span>
 										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 									</button>
 								</h3>
-								<div class="accordion_panel" id="panel-4" role="region">
+								<div class="accordion_panel" role="region">
 									<p>The setAttribute() method of the Element interface sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value.</p>
 									<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute" target="_blank">Element: setAttribute() method</a></p>
 								</div>
 							</div>
 							<div class="accordion_item">
 								<h3>
-									<button type="button" class="accordion_trigger button" aria-expanded="false" aria-controls="panel-5" id="accordion-2">
+									<button type="button" class="accordion_trigger button" aria-expanded="false">
 										<span>HTMLElement: hidden property</span>
 										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
 									</button>
 								</h3>
-								<div class="accordion_panel" id="panel-5" role="region">
+								<div class="accordion_panel" role="region">
 									<p>The HTMLElement property hidden reflects the value of the element's hidden attribute.</p>
 									<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden" target="_blank">HTMLElement: hidden property</a></p>
 								</div>
 							</div>
 						</div>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;div class="accordion">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_item">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="accordion_trigger button" aria-expanded="false">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span>Array.prototype.forEach()&lt;/span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">&lt;path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/>&lt;/svg>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_panel" role="region">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>The forEach() method of Array instances executes a provided function once for each array element.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">MDN: Array.prototype.forEach()&lt;/a>&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_item">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="accordion_trigger button" aria-expanded="false">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span>Element: classList property&lt;/span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">&lt;path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/>&lt;/svg>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_panel" role="region">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>The read-only classList property of the Element interface contains a live DOMTokenList collection representing the class attribute of the element. This can then be used to manipulate the class list.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" target="_blank">MDN: Element: classList property&lt;/a>&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_item">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="accordion_trigger button" aria-expanded="false">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span>Element: getAttribute() method&lt;/span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">&lt;path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/>&lt;/svg>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_panel" role="region">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>The getAttribute() method of the Element interface returns the value of a specified attribute on the element.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>If the given attribute does not exist, the value returned will be null.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute" target="_blank">Element: getAttribute() method&lt;/a>&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_item">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="accordion_trigger button" aria-expanded="false">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span>Element: setAttribute() method&lt;/span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">&lt;path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/>&lt;/svg>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_panel" role="region">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>The setAttribute() method of the Element interface sets the value of an attribute on the specified element.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute" target="_blank">Element: setAttribute() method&lt;/a>&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_item">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="accordion_trigger button" aria-expanded="false">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span>HTMLElement: hidden property&lt;/span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">&lt;path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/>&lt;/svg>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion_panel" role="region">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>The HTMLElement property hidden reflects the value of the element's hidden attribute.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden" target="_blank">HTMLElement: hidden property&lt;/a>&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&lt;/div>
+							</code>
+						</pre>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initAccordion() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".accordion");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+								&nbsp;&nbsp;&nbsp;&nbsp;const items = root.querySelectorAll(".accordion_item");
+								&nbsp;&nbsp;&nbsp;&nbsp;const triggers = root.querySelectorAll(".accordion_trigger");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// first accordion is active and aria-expanded=true
+								&nbsp;&nbsp;&nbsp;&nbsp;items[0].classList.toggle("active");
+								&nbsp;&nbsp;&nbsp;&nbsp;triggers[0].setAttribute("aria-expanded", "true");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;items.forEach((item) => {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const trigger = item.querySelector(".accordion_trigger");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trigger.addEventListener("click", () => {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// check for an active class
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const isActive = item.classList.contains("active");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// on click, remove any active class
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items.forEach((itm) => {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;itm.classList.remove("active");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;itm.querySelector(".accordion_trigger").setAttribute("aria-expanded", "false");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// add the active class if not active
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!isActive) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.classList.add("active");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trigger.setAttribute("aria-expanded", "true");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initAccordion();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
