@@ -4,27 +4,27 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 05: Tabs Component | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a tab interface where clicking a tab shows its panel.">
-	<meta property="og:title" content="Day 05: Tabs Component" />
+	<title>Day 07: Filterable List | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Make a list of items that filters as the user types in a search field.">
+	<meta property="og:title" content="Day 07: Filterable List" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-05/" />
-	<meta property="og:description" content="Create a tab interface where clicking a tab shows its panel." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-07/" />
+	<meta property="og:description" content="Make a list of items that filters as the user types in a search field." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-05/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-07/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/tabs.js"></script>
+	<script type="module" src="../components/toast-notification.js"></script>
 </head>
 
-<body class="navy">
+<body class="teal">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -73,9 +73,9 @@
 					<li><a href="../day-02/">Day 02: Character Count / Textarea Limit</a></li>
 					<li><a href="../day-03/">Day 03: FAQ Accordion</a></li>
 					<li><a href="../day-04/">Day 04: Modal Dialog</a></li>
-					<li><a class="active" href="../day-05/">Day 05: Tabs Component</a></li>
+					<li><a href="../day-05/">Day 05: Tabs Component</a></li>
 					<li><a href="../day-06/">Day 06: Toast Notification System</a></li>
-					<li><a href="../day-07/">Day 07: Filterable List</a></li>
+					<li><a class="active" href="../day-07/">Day 07: Filterable List</a></li>
 					<li><a href="../day-08/">Day 08: Theme Toggle + Caching Data</a></li>
 					<li><a href="../day-09/">Day 09: Form Validation States</a></li>
 					<li><a href="../day-10/">Day 10: Simple Task List</a></li>
@@ -124,59 +124,44 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 05: Tabs Component</h1>
-						<p class="page_intro">Create a tab interface where clicking a tab shows its panel.</p>
+						<h1 class="page_title">Day 07: Filterable List</h1>
+						<p class="page_intro">Make a list of items that filters as the user types in a search field.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li>syncing buttons to panels</li>
-							<li>data-* attributes</li>
-							<li>active states</li>
-							<li>aria-selected</li>
+							<li>input driven filtering</li>
+							<li>looping arrays / node lists</li>
+							<li>comparing normalized strings</li>
+							<li>hiding/showing items</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li>arrow key navigation</li>
-							<li>default active tab</li>
-							<li>animated panel transition</li>
+							<li>“no results” message</li>
+							<li>category tags</li>
+							<li>clear search button</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank">dataset</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" target="_blank">querySelectorAll</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute" target="_blank">setAttribute</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches" target="_blank">matches</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent" target="_blank">keyboard events</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from" target="_blank">Array.from</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">filter</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank">includes</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase" target="_blank">toLowerCase</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim" target="_blank">trim</a></li>
 						</ul>
 					</header>
 					<section class="section">
-						<h2 class="secondary_heading">Tabs</h2>
-						<div class="tabs">
-							<div class="tab_list" role="tablist" aria-label="Sample Tabs">
-								<button class="button active" type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
-									Overview
-								</button>
-								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
-									Notes
-								</button>
-								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
-									Resources
-								</button>
-							</div>
-							<div class="tab_panels">
-								<div class="tab_item active" id="tab-panel-1" role="tabpanel">
-									<p>Overview content goes here.</p>
-									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptate fugiat aut natus deleniti reiciendis, labore recusandae! Neque debitis est amet? Minima veniam deleniti amet minus repudiandae aliquid omnis delectus.</p>
-								</div>
-								<div class="tab_item" id="tab-panel-2" role="tabpanel">
-									<p>Notes content goes here.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, fugiat.</p>
-								</div>
-								<div class="tab_item" id="tab-panel-3" role="tabpanel">
-									<p>Resources content goes here.</p>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.</p>
-								</div>
-							</div>
+						<h2 class="secondary_heading">Filterable List</h2>
+						<div class="form_field">
+							<label for="filter-input">Search tutorials</label>
+							<input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
 						</div>
+						<ul class="card_list" id="tutorial-list">
+							<li class="card_item">Button Counter</li>
+							<li class="card_item">Modal Dialog</li>
+							<li class="card_item">Accordion FAQ</li>
+							<li class="card_item">Theme Toggle</li>
+							<li class="card_item">Task List</li>
+						</ul>
+						<p class="empty_state" id="no-results-message" hidden>No results found.</p>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">

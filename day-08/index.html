@@ -4,24 +4,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 05: Tabs Component | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a tab interface where clicking a tab shows its panel.">
-	<meta property="og:title" content="Day 05: Tabs Component" />
+	<title>Day 08: Theme Toggle + Caching Data | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Add a light/dark mode toggle and save the choice.">
+	<meta property="og:title" content="Day 08: Theme Toggle + Caching Data" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-05/" />
-	<meta property="og:description" content="Create a tab interface where clicking a tab shows its panel." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-08/" />
+	<meta property="og:description" content="Add a light/dark mode toggle and save the choice." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-05/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-08/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/tabs.js"></script>
+	<script type="module" src="../components/theme-toggle.js"></script>
 </head>
 
 <body class="navy">
@@ -73,10 +73,10 @@
 					<li><a href="../day-02/">Day 02: Character Count / Textarea Limit</a></li>
 					<li><a href="../day-03/">Day 03: FAQ Accordion</a></li>
 					<li><a href="../day-04/">Day 04: Modal Dialog</a></li>
-					<li><a class="active" href="../day-05/">Day 05: Tabs Component</a></li>
+					<li><a href="../day-05/">Day 05: Tabs Component</a></li>
 					<li><a href="../day-06/">Day 06: Toast Notification System</a></li>
 					<li><a href="../day-07/">Day 07: Filterable List</a></li>
-					<li><a href="../day-08/">Day 08: Theme Toggle + Caching Data</a></li>
+					<li><a class="active" href="../day-08/">Day 08: Theme Toggle + Caching Data</a></li>
 					<li><a href="../day-09/">Day 09: Form Validation States</a></li>
 					<li><a href="../day-10/">Day 10: Simple Task List</a></li>
 					<li><a href="../day-11/">Day 11: Social Sharing Buttons</a></li>
@@ -124,59 +124,36 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 05: Tabs Component</h1>
-						<p class="page_intro">Create a tab interface where clicking a tab shows its panel.</p>
+						<h1 class="page_title">Day 08: Theme Toggle + Caching Data</h1>
+						<p class="page_intro">Add a light/dark mode toggle and save the choice.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li>syncing buttons to panels</li>
-							<li>data-* attributes</li>
-							<li>active states</li>
-							<li>aria-selected</li>
+							<li>toggling a class on body</li>
+							<li>checking saved preference</li>
+							<li>local storage</li>
+							<li>updating accessible labels</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li>arrow key navigation</li>
-							<li>default active tab</li>
-							<li>animated panel transition</li>
+							<li>use system preference on first visit</li>
+							<li>animated icon swap</li>
+							<li>persist toggle button text</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank">dataset</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" target="_blank">querySelectorAll</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute" target="_blank">setAttribute</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches" target="_blank">matches</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent" target="_blank">keyboard events</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia" target="_blank">matchMedia</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" target="_blank">classList.toggle</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" target="_blank">JSON.stringify</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" target="_blank">JSON.parse</a></li>
+							<li>JSON.stringify + JSON.parse not required unless storing more data</li>
 						</ul>
 					</header>
 					<section class="section">
-						<h2 class="secondary_heading">Tabs</h2>
-						<div class="tabs">
-							<div class="tab_list" role="tablist" aria-label="Sample Tabs">
-								<button class="button active" type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
-									Overview
-								</button>
-								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
-									Notes
-								</button>
-								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
-									Resources
-								</button>
-							</div>
-							<div class="tab_panels">
-								<div class="tab_item active" id="tab-panel-1" role="tabpanel">
-									<p>Overview content goes here.</p>
-									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptate fugiat aut natus deleniti reiciendis, labore recusandae! Neque debitis est amet? Minima veniam deleniti amet minus repudiandae aliquid omnis delectus.</p>
-								</div>
-								<div class="tab_item" id="tab-panel-2" role="tabpanel">
-									<p>Notes content goes here.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, fugiat.</p>
-								</div>
-								<div class="tab_item" id="tab-panel-3" role="tabpanel">
-									<p>Resources content goes here.</p>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.</p>
-								</div>
-							</div>
-						</div>
+						<h2 class="secondary_heading">Theme Toggle</h2>
+						<button type="button" class="button" id="theme-toggle-button" aria-pressed="false">
+							Toggle Theme
+						</button>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
