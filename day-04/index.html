@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script defer src="./day-04.js"></script>
+	<script type="module" src="../components/modal-dialog.js"></script>
 </head>
 
 <body class="teal">
@@ -132,7 +132,7 @@
 							<li>opening the dialog with the native method</li>
 							<li>closing the dialog with the native method</li>
 							<li>handling click events for open and close controls</li>
-							<li>handling cancel / close behavior cleanly</li>
+							<li>handling close behavior cleanly</li>
 							<li>optional body class toggle for page-level styling</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
@@ -151,14 +151,13 @@
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close" target="_blank">close()</a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/open" target="_blank">open property</a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close_event" target="_blank">close event</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/cancel_event" target="_blank">cancel event</a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue" target="_blank">returnValue</a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank">addEventListener()</a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" target="_blank">classList</a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus" target="_blank">HTMLElement.focus()</a></li>
 						</ul>
 					</header>
-					<section class="section">
+					<section class="section modal_dialog">
 						<h2 class="secondary_heading">Modal Trigger</h2>
 						<button type="button" class="button" data-open-modal="demo-modal">Open Modal</button>
 						<dialog class="modal">
@@ -171,11 +170,92 @@
 									<p>You can drop forms, text, or anything else here.</p>
 								</div>
 								<footer class="modal_footer">
-									<button type="button" class="button">Cancel</button>
-									<button type="button" class="button">Confirm</button>
+									<button type="button" class="button confirm_button" value="Confirm">Confirm</button>
 								</footer>
 							</div>
 						</dialog>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-html">
+								&lt;section class="section modal_dialog">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="secondary_heading">Modal Trigger&lt;/h2>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="button" data-open-modal="demo-modal">Open Modal&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;dialog class="modal">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="modal_inner">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;header class="modal_header">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="modal_title">Modal Title&lt;/h2>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/header>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="modal_body">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>This is placeholder content for your modal.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>You can drop forms, text, or anything else here.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;footer class="modal_footer">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="button confirm_button" value="Confirm">Confirm&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/footer>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dialog>
+								&lt;/section>
+							</code>
+						</pre>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initModalDialog() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const body = document.body;
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".modal_dialog");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+								&nbsp;&nbsp;&nbsp;&nbsp;const modal = root.querySelector(".modal");
+								&nbsp;&nbsp;&nbsp;&nbsp;const openModal = root.querySelector(".button[data-open-modal='demo-modal']");
+								&nbsp;&nbsp;&nbsp;&nbsp;const confirmModal = root.querySelector(".confirm_button");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// open the modal
+								&nbsp;&nbsp;&nbsp;&nbsp;if (openModal) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;openModal.addEventListener("click", () => {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modal.showModal();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.classList.add("modal_open");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// confirm and close the modal
+								&nbsp;&nbsp;&nbsp;&nbsp;if (confirmModal) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;confirmModal.addEventListener("click", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const confirm = e.target;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modal.close(confirm.value);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.classList.remove("modal_open");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;function updateReturnValue() {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do with this whatever you want
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(`Return value: "${modal.returnValue}"`);
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;modal.addEventListener("close", updateReturnValue);
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// click the backdrop to close the modal
+								&nbsp;&nbsp;&nbsp;&nbsp;modal.addEventListener("click", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (e.target === modal) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.classList.remove("modal_open");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modal.close();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// hit escape to close the modal
+								&nbsp;&nbsp;&nbsp;&nbsp;document.addEventListener("keydown", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!body.classList.contains("modal_open")) return;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (e.key === "Escape") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.classList.remove("modal_open");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modal.close();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initModalDialog();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
