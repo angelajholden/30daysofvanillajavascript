@@ -53,7 +53,7 @@ function initTabsComponent() {
 				}
 
 				if (e.key === "Home") newIndex = 0;
-				if (e.key === "End") newIndex = tabs.length - 1;
+				if (e.key === "End") newIndex = buttons.length - 1;
 
 				// activate tabs on click
 				if (eventType === "click") {
