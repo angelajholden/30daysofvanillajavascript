@@ -689,7 +689,6 @@ dialog[open]::backdrop {
 	position: relative;
 	inset: 0;
 	width: fit-content;
-	padding: 1rem 1rem 0.25rem;
 	margin: 1rem 0 0;
 	border: 2px solid var(--white);
 	z-index: 0;
@@ -700,8 +699,13 @@ dialog[open]::backdrop {
 	opacity: 0;
 	position: absolute;
 	inset: 0;
+	padding: 1rem 1rem 0.25rem;
 	width: 100%;
 	height: 0;
+	color: transparent;
+	transition:
+		visibility 300ms ease-in-out,
+		opacity 300ms ease-in-out;
 }
 
 .tab_item.active {
@@ -709,6 +713,7 @@ dialog[open]::backdrop {
 	opacity: 1;
 	position: relative;
 	height: auto;
+	color: var(--white);
 }
 
 /* About Me */

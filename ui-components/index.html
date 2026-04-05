@@ -239,32 +239,33 @@
 							</div>
 						</dialog>
 					</section>
-					<section class="section">
+					<section class="section tabs_component">
 						<h2 class="secondary_heading">Day 05: Tabs Component</h2>
 						<div class="tabs">
 							<div class="tab_list" role="tablist" aria-label="Sample Tabs">
-								<button class="button active" type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1" tabindex="-1">
 									Overview
 								</button>
-								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2" tabindex="-1">
 									Notes
 								</button>
-								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3" tabindex="-1">
 									Resources
 								</button>
 							</div>
 							<div class="tab_panels">
-								<div class="tab_item active" id="tab-panel-1" role="tabpanel">
+								<div class="tab_item" id="tab-panel-1" role="tabpanel">
 									<p>Overview content goes here.</p>
+									<p><a href="#">Lorem ipsum dolor sit amet.</a></p>
 									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptate fugiat aut natus deleniti reiciendis, labore recusandae! Neque debitis est amet? Minima veniam deleniti amet minus repudiandae aliquid omnis delectus.</p>
 								</div>
 								<div class="tab_item" id="tab-panel-2" role="tabpanel">
 									<p>Notes content goes here.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, fugiat.</p>
+									<p>Lorem ipsum dolor sit amet, <a href="#">Lorem ipsum dolor sit amet.</a> consectetur adipisicing elit. Facilis, fugiat.</p>
 								</div>
 								<div class="tab_item" id="tab-panel-3" role="tabpanel">
 									<p>Resources content goes here.</p>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.</p>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis <a href="#">Lorem ipsum dolor sit amet.</a> in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.</p>
 								</div>
 							</div>
 						</div>

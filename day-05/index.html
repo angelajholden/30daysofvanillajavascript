@@ -148,35 +148,148 @@
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent" target="_blank">keyboard events</a></li>
 						</ul>
 					</header>
-					<section class="section">
+					<section class="section tabs_component">
 						<h2 class="secondary_heading">Tabs</h2>
 						<div class="tabs">
 							<div class="tab_list" role="tablist" aria-label="Sample Tabs">
-								<button class="button active" type="button" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1">
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1" tabindex="-1">
 									Overview
 								</button>
-								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2">
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2" tabindex="-1">
 									Notes
 								</button>
-								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3">
+								<button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3" tabindex="-1">
 									Resources
 								</button>
 							</div>
 							<div class="tab_panels">
-								<div class="tab_item active" id="tab-panel-1" role="tabpanel">
+								<div class="tab_item" id="tab-panel-1" role="tabpanel">
 									<p>Overview content goes here.</p>
+									<p><a href="#">Lorem ipsum dolor sit amet.</a></p>
 									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptate fugiat aut natus deleniti reiciendis, labore recusandae! Neque debitis est amet? Minima veniam deleniti amet minus repudiandae aliquid omnis delectus.</p>
 								</div>
 								<div class="tab_item" id="tab-panel-2" role="tabpanel">
 									<p>Notes content goes here.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, fugiat.</p>
+									<p>Lorem ipsum dolor sit amet, <a href="#">Lorem ipsum dolor sit amet.</a> consectetur adipisicing elit. Facilis, fugiat.</p>
 								</div>
 								<div class="tab_item" id="tab-panel-3" role="tabpanel">
 									<p>Resources content goes here.</p>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.</p>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis <a href="#">Lorem ipsum dolor sit amet.</a> in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.</p>
 								</div>
 							</div>
 						</div>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;section class="section tabs_component">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="secondary_heading">Tabs&lt;/h2>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="tabs">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="tab_list" role="tablist" aria-label="Sample Tabs">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-1" id="tab-1" class="tab_button" data-tab-target="tab-panel-1" tabindex="-1">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Overview
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab_button" data-tab-target="tab-panel-2" tabindex="-1">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Notes
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="button" type="button" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab_button" data-tab-target="tab-panel-3" tabindex="-1">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resources
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="tab_panels">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="tab_item" id="tab-panel-1" role="tabpanel">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Overview content goes here.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;a href="#">Lorem ipsum dolor sit amet.&lt;/a>&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet voluptate fugiat aut natus deleniti reiciendis, labore recusandae! Neque debitis est amet? Minima veniam deleniti amet minus repudiandae aliquid omnis delectus.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="tab_item" id="tab-panel-2" role="tabpanel">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Notes content goes here.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Lorem ipsum dolor sit amet, &lt;a href="#">Lorem ipsum dolor sit amet.&lt;/a> consectetur adipisicing elit. Facilis, fugiat.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="tab_item" id="tab-panel-3" role="tabpanel">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Resources content goes here.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, fugiat! Molestiae debitis quisquam nobis &lt;a href="#">Lorem ipsum dolor sit amet.&lt;/a> in repellendus iste deleniti officia cupiditate nam velit. Dignissimos corporis, unde rem odit tempore, ex modi officia dolore quia natus consequuntur.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&lt;/section>
+							</code>
+						</pre>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initTabsComponent() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".tabs_component");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+								&nbsp;&nbsp;&nbsp;&nbsp;const buttons = root.querySelectorAll(".button");
+								&nbsp;&nbsp;&nbsp;&nbsp;const panels = root.querySelectorAll(".tab_item");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// make first items active on page load
+								&nbsp;&nbsp;&nbsp;&nbsp;buttons[0].classList.add("active");
+								&nbsp;&nbsp;&nbsp;&nbsp;buttons[0].setAttribute("aria-selected", "true");
+								&nbsp;&nbsp;&nbsp;&nbsp;buttons[0].setAttribute("tabindex", "0");
+								&nbsp;&nbsp;&nbsp;&nbsp;panels[0].classList.add("active");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;function activateTab(button) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// remove all active classes first
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buttons.forEach((btn) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btn.classList.remove("active");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btn.setAttribute("aria-selected", "false");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btn.setAttribute("tabindex", "-1");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panels.forEach((itm) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;itm.classList.remove("active");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// add active class to button clicked
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.classList.add("active");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.setAttribute("aria-selected", "true");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.setAttribute("tabindex", "0");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panels.forEach((item) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// if the target clicked is a button
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// and the button data=* equals the item id
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// add an active class to the item
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (button.dataset.tabTarget === item.id) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.classList.add("active");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;buttons.forEach((button, index) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["click", "keydown"].forEach((eventType) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.addEventListener(eventType, (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// activate and focus the keyboard arrows
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let newIndex = index;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (e.key === "ArrowRight") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newIndex = (index + 1) % buttons.length;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (e.key === "ArrowLeft") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newIndex = (index - 1 + buttons.length) % buttons.length;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (newIndex !== index) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buttons[newIndex].focus();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activateTab(buttons[newIndex]);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (e.key === "Home") newIndex = 0;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (e.key === "End") newIndex = tabs.length - 1;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (eventType === "click") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activateTab(button);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initTabsComponent();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
