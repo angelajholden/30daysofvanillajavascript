@@ -4,30 +4,28 @@ function initTabsComponent() {
 	const buttons = root.querySelectorAll(".button");
 	const panels = root.querySelectorAll(".tab_item");
 
-	// make first items active on page load
+	// activate first panel
 	buttons[0].classList.add("active");
 	buttons[0].setAttribute("aria-selected", "true");
 	buttons[0].setAttribute("tabindex", "0");
 	panels[0].classList.add("active");
 
 	function activateTab(button) {
-		// remove all active classes first
+		// deactivate all buttons
 		buttons.forEach((btn) => {
 			btn.classList.remove("active");
 			btn.setAttribute("aria-selected", "false");
 			btn.setAttribute("tabindex", "-1");
 		});
-		panels.forEach((itm) => {
-			itm.classList.remove("active");
-		});
-		// add active class to button clicked
+
+		// activate button clicked
 		button.classList.add("active");
 		button.setAttribute("aria-selected", "true");
 		button.setAttribute("tabindex", "0");
+
+		// deactivate, then activate matching panel
 		panels.forEach((item) => {
-			// if the target clicked is a button
-			// and the button data=* equals the item id
-			// add an active class to the item
+			item.classList.remove("active");
 			if (button.dataset.tabTarget === item.id) {
 				item.classList.add("active");
 			}
@@ -37,7 +35,7 @@ function initTabsComponent() {
 	buttons.forEach((button, index) => {
 		["click", "keydown"].forEach((eventType) => {
 			button.addEventListener(eventType, (e) => {
-				// activate and focus the keyboard arrows
+				// activate and focus via keyboard arrows
 				let newIndex = index;
 				if (e.key === "ArrowRight") {
 					newIndex = (index + 1) % buttons.length;
@@ -57,6 +55,7 @@ function initTabsComponent() {
 				if (e.key === "Home") newIndex = 0;
 				if (e.key === "End") newIndex = tabs.length - 1;
 
+				// activate tabs on click
 				if (eventType === "click") {
 					activateTab(button);
 				}
