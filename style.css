@@ -716,6 +716,64 @@ dialog[open]::backdrop {
 	color: var(--white);
 }
 
+/* Toast Notifications */
+.toast_region {
+	visibility: visible;
+	opacity: 1;
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	width: 300px;
+	height: auto;
+	padding: 1rem;
+	color: var(--white);
+	border: 2px solid var(--white);
+	background-color: var(--black);
+	z-index: 3;
+}
+
+.toast_region.success {
+	background-color: green;
+}
+
+.toast_region.error {
+	background-color: red;
+}
+
+.toast_notification p {
+	margin: 0;
+}
+
+.toast_region .icon_button {
+	position: absolute;
+	top: -2rem;
+	left: -2rem;
+	border: 2px solid var(--white);
+	border-radius: 50%;
+	background-color: var(--black);
+	transition:
+		border-color 300ms ease-in-out,
+		background-color 300ms ease-in-out;
+}
+
+.toast_region .icon_button:focus,
+.toast_region .icon_button:hover,
+.toast_region .icon_button:active {
+	border-color: var(--black);
+	background-color: var(--white);
+}
+
+.toast_region .icon_button svg {
+	stroke: var(--white);
+	transition: stroke 300ms ease-in-out;
+}
+
+.toast_region .icon_button:focus svg,
+.toast_region .icon_button:hover svg,
+.toast_region .icon_button:active svg {
+	stroke: var(--black);
+}
+
 /* About Me */
 .about_me {
 	display: grid;
