@@ -276,11 +276,12 @@
 						<button type="button" class="button" id="show-toast-button" aria-controls="success-toast">Show Success Toast</button>
 						<button type="button" class="button" id="show-toast-button" aria-controls="error-toast">Show Error Toast</button>
 					</section>
-					<section class="section">
+					<section class="section filterable_list">
 						<h2 class="secondary_heading">Day 07: Filterable List</h2>
 						<div class="form_field">
 							<label for="filter-input">Search tutorials</label>
 							<input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
+							<button type="reset" id="reset-button" class="button">Reset</button>
 						</div>
 						<ul class="card_list" id="tutorial-list">
 							<li class="card_item">Button Counter</li>
@@ -289,7 +290,7 @@
 							<li class="card_item">Theme Toggle</li>
 							<li class="card_item">Task List</li>
 						</ul>
-						<p class="empty_state" id="no-results-message" hidden>No results found.</p>
+						<p class="empty_state" id="no-results-message">No results found.</p>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">Day 08: Theme Toggle + Caching Data</h2>
