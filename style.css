@@ -555,6 +555,44 @@ button {
 	}
 }
 
+/* Search Nav */
+.search_nav {
+	position: relative;
+	margin: 0 0 0.5rem;
+}
+
+.search_nav input[type="text"] {
+	display: block;
+	margin: 0;
+	padding-right: 3rem;
+}
+
+.search_nav .button {
+	position: absolute;
+	top: 50%;
+	right: 2px;
+	transform: translateY(-50%);
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	transition: border-color 300ms ease-in-out;
+}
+
+.search_nav svg {
+	stroke: var(--dk-teal);
+	transition: stroke 300ms ease-in-out;
+}
+
+.navy .search_nav svg {
+	stroke: var(--dk-navy);
+	transition: stroke 300ms ease-in-out;
+}
+
+.pink .search_nav svg {
+	stroke: var(--dk-pink);
+	transition: stroke 300ms ease-in-out;
+}
+
 /* Main Header */
 .page_header,
 .navy .page_header,
