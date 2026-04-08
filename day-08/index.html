@@ -196,6 +196,15 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;const title = root.querySelector("#toggle_title");
 								&nbsp;&nbsp;&nbsp;&nbsp;const toggle = root.querySelector(".toggle_button");
 
+								&nbsp;&nbsp;&nbsp;&nbsp;// get saved theme on page load
+								&nbsp;&nbsp;&nbsp;&nbsp;const savedTheme = localStorage.getItem("theme");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (savedTheme === "light") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.classList.add("light_mode");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title.textContent = "Light";
+								&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title.textContent = "Dark";
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
 								&nbsp;&nbsp;&nbsp;&nbsp;toggle.addEventListener("click", () =&gt; {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const isActiveToggle = body.classList.toggle("light_mode");
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (isActiveToggle) {
@@ -206,13 +215,6 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localStorage.setItem("theme", "dark");
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
 								&nbsp;&nbsp;&nbsp;&nbsp;});
-
-								&nbsp;&nbsp;&nbsp;&nbsp;console.log(localStorage.getItem("theme"));
-
-								&nbsp;&nbsp;&nbsp;&nbsp;const savedTheme = localStorage.getItem("theme");
-								&nbsp;&nbsp;&nbsp;&nbsp;if (savedTheme === "light") {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.classList.add("light_mode");
-								&nbsp;&nbsp;&nbsp;&nbsp;}
 								}
 								initThemeToggle();
 							</code>
