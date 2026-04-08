@@ -56,6 +56,9 @@ body {
 	letter-spacing: 0.25px;
 	color: var(--white);
 	background-color: var(--teal);
+	transition:
+		color 300ms ease-in-out,
+		background-color 300ms ease-in-out;
 }
 
 body.navy {
@@ -64,6 +67,19 @@ body.navy {
 
 body.pink {
 	background-color: var(--pink);
+}
+
+body.light_mode {
+	color: var(--teal);
+	background-color: var(--lt-gray);
+}
+
+body.navy.light_mode {
+	color: var(--navy);
+}
+
+body.pink.light_mode {
+	color: var(--pink);
 }
 
 body.modal_open,
@@ -104,12 +120,35 @@ a {
 	text-decoration-thickness: 2px;
 	text-underline-offset: 3px;
 	color: var(--white);
-	transition: text-decoration-color 300ms ease-in-out;
+	transition:
+		text-decoration-color 300ms ease-in-out,
+		color 300ms ease-in-out;
 }
 
-a:focus,
-a:hover,
-a:active {
+.light_mode a:not(.navigation a) {
+	text-decoration-color: var(--teal);
+	color: var(--teal);
+}
+
+.navy.light_mode a:not(.navigation a) {
+	text-decoration-color: var(--navy);
+	color: var(--navy);
+}
+
+.pink.light_mode a:not(.navigation a) {
+	text-decoration-color: var(--pink);
+	color: var(--pink);
+}
+
+.navy.light_mode a:not(.navigation a):focus,
+.navy.light_mode a:not(.navigation a):hover,
+.navy.light_mode a:not(.navigation a):active,
+.pink.light_mode a:not(.navigation a):focus,
+.pink.light_mode a:not(.navigation a):hover,
+.pink.light_mode a:not(.navigation a):active,
+a:not(.navigation a):focus,
+a:not(.navigation a):hover,
+a:not(.navigation a):active {
 	text-decoration-color: transparent;
 }
 
@@ -321,6 +360,7 @@ button {
 	justify-content: flex-start;
 	align-items: center;
 	gap: 0.5rem;
+	color: var(--white) !important;
 	letter-spacing: 0.25px;
 	text-decoration-color: transparent;
 	font-size: clamp(1.1rem, 2vw, 1.25rem);
@@ -330,7 +370,7 @@ button {
 .primary-logo a:focus,
 .primary-logo a:hover,
 .primary-logo a:active {
-	text-decoration-color: var(--white);
+	text-decoration-color: var(--white) !important;
 }
 
 .icon_wrap {
@@ -814,6 +854,80 @@ dialog[open]::backdrop {
 	stroke: var(--black);
 }
 
+/* Light/Dark Toggle */
+.toggle_container {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.toggle_button {
+	padding: 2px;
+	width: 125px;
+	height: 50px;
+	border-radius: 50vh;
+	border-color: var(--white);
+	background-color: var(--white);
+	transition:
+		background-color 300ms ease-in-out,
+		border-color 300ms ease-in-out;
+}
+
+.toggle_button:focus,
+.toggle_button:hover,
+.toggle_button:active {
+	background-color: var(--white);
+}
+
+.light_mode .toggle_button {
+	border-color: var(--teal);
+	background-color: var(--teal);
+}
+
+.navy.light_mode .toggle_button {
+	border-color: var(--navy);
+	background-color: var(--navy);
+}
+
+.pink.light_mode .toggle_button {
+	border-color: var(--pink);
+	background-color: var(--pink);
+}
+
+.animated_toggle {
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	background-color: var(--teal);
+	transform: translateX(0);
+	transition:
+		transform 300ms ease-in-out,
+		background-color 300ms ease-in-out;
+}
+
+.navy .animated_toggle {
+	background-color: var(--navy);
+}
+
+.pink .animated_toggle {
+	background-color: var(--pink);
+}
+
+.light_mode .animated_toggle {
+	background-color: var(--white);
+	transform: translateX(75px);
+}
+
+.moon_icon {
+	fill: blueviolet;
+}
+
+.sun_icon {
+	fill: orange;
+}
+
 /* About Me */
 .about_me {
 	display: grid;
@@ -874,7 +988,27 @@ dialog[open]::backdrop {
 .footer {
 	padding: 2rem 1rem;
 	text-align: center;
+	color: var(--white);
 	background-color: var(--dk-teal);
+}
+
+.light_mode .footer a.footer_link,
+.navy.light_mode .footer a.footer_link,
+.pink.light_mode .footer a.footer_link {
+	color: var(--white);
+	text-decoration-color: var(--white);
+}
+
+.light_mode .footer a.footer_link:focus,
+.light_mode .footer a.footer_link:hover,
+.light_mode .footer a.footer_link:active,
+.navy.light_mode .footer a.footer_link:focus,
+.navy.light_mode .footer a.footer_link:hover,
+.navy.light_mode .footer a.footer_link:active,
+.pink.light_mode .footer a.footer_link:focus,
+.pink.light_mode .footer a.footer_link:hover,
+.pink.light_mode .footer a.footer_link:active {
+	text-decoration-color: transparent;
 }
 
 .navy .footer {
