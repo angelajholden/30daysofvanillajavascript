@@ -160,7 +160,13 @@
 					</header>
 					<section class="section">
 						<h2 class="secondary_heading">Form Validation</h2>
-						<form id="contact-form" novalidate>
+						<form class="form" id="contact-form" method="post" action="https://formspree.io/f/xreovvbo" target="_blank" novalidate>
+							<!-- capture the page url -->
+							<input type="hidden" name="page_path" value="">
+							<input type="hidden" name="page_url" value="">
+
+							<!-- actual fields -->
+							<!-- all are required -->
 							<div class="form_field">
 								<label for="name">Name</label>
 								<input type="text" id="name" name="name">
@@ -175,6 +181,12 @@
 								<label for="message-field">Message</label>
 								<textarea id="message-field" name="message-field" rows="5"></textarea>
 								<p class="error_message" id="message-error" hidden>Please enter a message.</p>
+							</div>
+
+							<!-- Bot/Honey trap (keep) -->
+							<!-- aria-hidden=true is valid on a div -->
+							<div aria-hidden="true" class="sr-only">
+								<input type="text" name="b_f792c8f7b713ce406dfcc49ad_e075a780fe" tabindex="-1" autocomplete="off" value="" />
 							</div>
 							<button type="submit" class="button">Send Message</button>
 							<p class="success_message" id="form-success" hidden>Your form was submitted.</p>
