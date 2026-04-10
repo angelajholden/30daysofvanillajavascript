@@ -49,12 +49,12 @@ function initFormValidation() {
 		}
 
 		formSuccess.removeAttribute("hidden", "");
+	});
 
-		reset.addEventListener("click", () => {
-			if (formSuccess.hasAttribute() === "hidden") {
-				formSuccess.setAttribute("hidden", "");
-			}
-		});
+	reset.addEventListener("click", () => {
+		if (!formSuccess.hasAttribute("hidden")) {
+			formSuccess.setAttribute("hidden", "");
+		}
 	});
 }
 initFormValidation();
