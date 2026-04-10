@@ -14,8 +14,8 @@ function initFormValidation() {
 	const email = root.querySelector("input[name=email]");
 	const textarea = root.querySelector("textarea[name=message-field]");
 
-	// submit button
-	const submit = root.querySelector("button[type=submit]");
+	// reset button
+	const reset = root.querySelector("button[type=reset]");
 
 	// inline errors/success
 	const nameError = root.querySelector("#name-error");
@@ -49,6 +49,12 @@ function initFormValidation() {
 		}
 
 		formSuccess.removeAttribute("hidden", "");
+
+		reset.addEventListener("click", () => {
+			if (formSuccess.hasAttribute() === "hidden") {
+				formSuccess.setAttribute("hidden", "");
+			}
+		});
 	});
 }
 initFormValidation();
