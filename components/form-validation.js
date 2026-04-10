@@ -1,6 +1,7 @@
 function initFormValidation() {
 	const root = document.querySelector(".form");
 	if (!root);
+
 	// get hidden field values
 	const path = root.querySelector("input[name=page_path]");
 	if (path) path.value = window.location.pathname;
@@ -47,9 +48,6 @@ function initFormValidation() {
 			messageError.setAttribute("hidden", "");
 		}
 
-		name.value = "";
-		email.value = "";
-		textarea.value = "";
 		formSuccess.removeAttribute("hidden", "");
 	});
 }
