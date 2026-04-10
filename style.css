@@ -866,6 +866,14 @@ dialog[open]::backdrop {
 	stroke: var(--black);
 }
 
+@media (max-width: 1024px) {
+	.toast_notification .button {
+		display: block;
+		width: 100%;
+		margin: 0.5rem 0;
+	}
+}
+
 /* Light/Dark Toggle */
 .toggle_container {
 	display: flex;
@@ -943,8 +951,12 @@ dialog[open]::backdrop {
 /* Task List */
 .task_list {
 	padding: 0;
-	margin: 1rem 0;
+	margin: 0;
 	list-style-type: none;
+}
+
+.task_list:has(.task_item) {
+	margin: 1rem 0;
 	border: 1px solid var(--dk-teal);
 }
 
