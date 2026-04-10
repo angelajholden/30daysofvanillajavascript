@@ -87,7 +87,7 @@
 					<li><a href="../day-07/">Day 07: Filterable List</a></li>
 					<li><a href="../day-08/">Day 08: Theme Toggle + Caching Data</a></li>
 					<li><a href="../day-09/">Day 09: Form Validation States</a></li>
-					<li><a href="../day-10/">Day 10: Simple Task List</a></li>
+					<li><a href="../day-10/">Day 10: Task List</a></li>
 					<li><a href="../day-11/">Day 11: Social Sharing Buttons</a></li>
 					<li><a href="../day-12/">Day 12: GDPR Cookie Banner</a></li>
 					<li><a href="../day-13/">Day 13: Copy to Clipboard</a></li>
@@ -312,8 +312,13 @@
 						</div>
 					</section>
 					<section class="section">
-						<h2 class="secondary_heading">Day 09: Form Validation States</h2>
-						<form id="contact-form" novalidate>
+						<h2 class="secondary_heading">Form Validation</h2>
+						<form class="form" id="contact-form" method="post" action="https://formspree.io/f/xreovvbo" target="_blank" novalidate>
+							<!-- capture the page url -->
+							<input type="hidden" name="page_path" value="">
+							<input type="hidden" name="page_url" value="">
+
+							<!-- actual fields -->
 							<div class="form_field">
 								<label for="name">Name</label>
 								<input type="text" id="name" name="name">
@@ -329,12 +334,25 @@
 								<textarea id="message-field" name="message-field" rows="5"></textarea>
 								<p class="error_message" id="message-error" hidden>Please enter a message.</p>
 							</div>
-							<button type="submit" class="button">Send Message</button>
+
+							<!-- Bot/Honey trap (keep) -->
+							<!-- aria-hidden=true is valid on a div -->
+							<div aria-hidden="true" class="sr-only">
+								<input type="text" name="b_f792c8f7b713ce406dfcc49ad_e075a780fe" tabindex="-1" autocomplete="off" value="" />
+							</div>
+
+							<div class="form_buttons">
+								<!-- submit the form -->
+								<button type="submit" class="button">Send Message</button>
+								<!-- reset the form -->
+								<button type="reset" class="text_button">Reset</button>
+							</div>
+
 							<p class="success_message" id="form-success" hidden>Your form was submitted.</p>
 						</form>
 					</section>
-					<section class="section">
-						<h2 class="secondary_heading">Day 10: Simple Task List</h2>
+					<section class="section persistent_task-list">
+						<h2 class="secondary_heading">Day 10: Task List</h2>
 						<form id="task-form">
 							<div class="form_field">
 								<label for="task-input">Add a task</label>
@@ -342,12 +360,7 @@
 							</div>
 							<button type="submit" class="button">Add Task</button>
 						</form>
-						<ul class="task_list" id="task-list">
-							<li class="task_item">
-								<span>Read MDN documentation</span>
-								<button type="button" class="button button_outline">Remove</button>
-							</li>
-						</ul>
+						<ul class="task_list" id="task-list"></ul>
 						<p class="empty_state" id="task-empty-state" hidden>No tasks yet.</p>
 					</section>
 					<aside class="about_me section">

@@ -115,7 +115,9 @@ li {
 	font-size: 1.25rem;
 }
 
-a {
+a,
+.text_button {
+	text-decoration: underline;
 	text-decoration-color: var(--white);
 	text-decoration-thickness: 2px;
 	text-underline-offset: 3px;
@@ -148,7 +150,10 @@ a {
 .pink.light_mode a:not(.navigation a):active,
 a:not(.navigation a):focus,
 a:not(.navigation a):hover,
-a:not(.navigation a):active {
+a:not(.navigation a):active,
+.text_button:focus,
+.text_button:hover,
+.text_button:active {
 	text-decoration-color: transparent;
 }
 
@@ -670,6 +675,13 @@ textarea {
 	color: red;
 }
 
+.form_buttons {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
 /* Accordions */
 .accordion_item {
 	margin: 0 0 0.5rem;
@@ -926,6 +938,49 @@ dialog[open]::backdrop {
 
 .sun_icon {
 	fill: orange;
+}
+
+/* Task List */
+.task_list {
+	padding: 0;
+	margin: 1rem 0;
+	list-style-type: none;
+	border: 1px solid var(--dk-teal);
+}
+
+.task_item {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem;
+}
+
+.task_item:nth-of-type(odd) {
+	background-color: var(--dk-teal);
+}
+
+.icon_button {
+	border-radius: 50%;
+	background-color: transparent;
+	transition: background-color 300ms ease-in-out;
+}
+
+.icon_button:focus,
+.icon_button:hover,
+.icon_button:active {
+	background-color: var(--white);
+}
+
+.icon_button svg {
+	stroke: var(--white);
+	transition: stroke 300ms ease-in-out;
+}
+
+.icon_button:focus svg,
+.icon_button:hover svg,
+.icon_button:active svg {
+	stroke: var(--teal);
 }
 
 /* About Me */

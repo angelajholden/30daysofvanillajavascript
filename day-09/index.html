@@ -87,7 +87,7 @@
 					<li><a href="../day-07/">Day 07: Filterable List</a></li>
 					<li><a href="../day-08/">Day 08: Theme Toggle + Caching Data</a></li>
 					<li><a class="active" href="../day-09/">Day 09: Form Validation States</a></li>
-					<li><a href="../day-10/">Day 10: Simple Task List</a></li>
+					<li><a href="../day-10/">Day 10: Task List</a></li>
 					<li><a href="../day-11/">Day 11: Social Sharing Buttons</a></li>
 					<li><a href="../day-12/">Day 12: GDPR Cookie Banner</a></li>
 					<li><a href="../day-13/">Day 13: Copy to Clipboard</a></li>
@@ -191,12 +191,129 @@
 								<input type="text" name="b_f792c8f7b713ce406dfcc49ad_e075a780fe" tabindex="-1" autocomplete="off" value="" />
 							</div>
 
-							<button type="reset" class="button">Reset</button>
+							<div class="form_buttons">
+								<!-- submit the form -->
+								<button type="submit" class="button">Send Message</button>
+								<!-- reset the form -->
+								<button type="reset" class="text_button">Reset</button>
+							</div>
 
-							<!-- submit the form -->
-							<button type="submit" class="button">Send Message</button>
 							<p class="success_message" id="form-success" hidden>Your form was submitted.</p>
 						</form>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;section class="section">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="secondary_heading">Form Validation&lt;/h2>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;form class="form" id="contact-form" method="post" action="https://formspree.io/f/xreovvbo" target="_blank" novalidate>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- capture the page url -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="hidden" name="page_path" value="">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="hidden" name="page_url" value="">
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- actual fields -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="form_field">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="name">Name&lt;/label>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" id="name" name="name">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="error_message" id="name-error" hidden>Please enter your name.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="form_field">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="email">Email&lt;/label>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="email" id="email" name="email">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="error_message" id="email-error" hidden>Please enter a valid email.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="form_field">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="message-field">Message&lt;/label>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea id="message-field" name="message-field" rows="5">&lt;/textarea>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="error_message" id="message-error" hidden>Please enter a message.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Bot/Honey trap (keep) -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- aria-hidden=true is valid on a div -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div aria-hidden="true" class="sr-only">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" name="b_f792c8f7b713ce406dfcc49ad_e075a780fe" tabindex="-1" autocomplete="off" value="" />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="form_buttons">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- submit the form -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="submit" class="button">Send Message&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- reset the form -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="reset" class="text_button">Reset&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="success_message" id="form-success" hidden>Your form was submitted.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form>
+								&lt;/section>
+							</code>
+						</pre>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initFormValidation() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".form");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root);
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// get hidden field values
+								&nbsp;&nbsp;&nbsp;&nbsp;const path = root.querySelector("input[name=page_path]");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (path) path.value = window.location.pathname;
+								&nbsp;&nbsp;&nbsp;&nbsp;const url = root.querySelector("input[name=page_url]");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (url) url.value = window.location.href;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// fields the user fills out
+								&nbsp;&nbsp;&nbsp;&nbsp;// could probably loop through the inputs, too
+								&nbsp;&nbsp;&nbsp;&nbsp;const name = root.querySelector("input[name=name]");
+								&nbsp;&nbsp;&nbsp;&nbsp;const email = root.querySelector("input[name=email]");
+								&nbsp;&nbsp;&nbsp;&nbsp;const textarea = root.querySelector("textarea[name=message-field]");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// reset button
+								&nbsp;&nbsp;&nbsp;&nbsp;const reset = root.querySelector("button[type=reset]");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// inline errors/success
+								&nbsp;&nbsp;&nbsp;&nbsp;const nameError = root.querySelector("#name-error");
+								&nbsp;&nbsp;&nbsp;&nbsp;const emailError = root.querySelector("#email-error");
+								&nbsp;&nbsp;&nbsp;&nbsp;const messageError = root.querySelector("#message-error");
+								&nbsp;&nbsp;&nbsp;&nbsp;const formSuccess = root.querySelector("#form-success");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;root.addEventListener("submit", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (name.value === null || name.value === "") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nameError.removeAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nameError.setAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (email.value === null || email.value === "") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emailError.removeAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emailError.setAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (textarea.value === null || textarea.value === "") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageError.removeAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageError.setAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;formSuccess.removeAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;reset.addEventListener("click", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!formSuccess.hasAttribute("hidden")) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;formSuccess.setAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initFormValidation();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
