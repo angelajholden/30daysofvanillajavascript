@@ -8,3 +8,6 @@ import "./filterable-list.js";
 import "./theme-toggle.js";
 import "./form-validation.js";
 import "./task-list.js";
+import "./copy-to-clipboad.js";
+import "./scroll-interactions.js";
+import "./scroll-progress-indicator.js";

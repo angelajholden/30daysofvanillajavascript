@@ -4,27 +4,26 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 07: Filterable List | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Make a list of items that filters as the user types in a search field.">
-	<meta property="og:title" content="Day 07: Filterable List" />
+	<title>Day 12: GDPR Cookie Consent Banner | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Build a GDPR cookie consent banner that appears on page load when no consent cookie exists.">
+	<meta property="og:title" content="Day 12: GDPR Cookie Consent Banner" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-07/" />
-	<meta property="og:description" content="Make a list of items that filters as the user types in a search field." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-12/" />
+	<meta property="og:description" content="Build a GDPR cookie consent banner that appears on page load when no consent cookie exists." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-07/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-12/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/filterable-list.js"></script>
 </head>
 
-<body class="teal">
+<body class="pink">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -84,12 +83,12 @@
 					<li><a href="../day-04/">Day 04: Modal Dialog</a></li>
 					<li><a href="../day-05/">Day 05: Tabs Component</a></li>
 					<li><a href="../day-06/">Day 06: Toast Notification System</a></li>
-					<li><a class="active" href="../day-07/">Day 07: Filterable List</a></li>
+					<li><a href="../day-07/">Day 07: Filterable List</a></li>
 					<li><a href="../day-08/">Day 08: Theme Toggle + Caching Data</a></li>
 					<li><a href="../day-09/">Day 09: Form Validation States</a></li>
 					<li><a href="../day-10/">Day 10: Task List</a></li>
 					<li><a href="../day-11/">Day 11: Social Sharing Buttons</a></li>
-					<li><a href="../day-12/">Day 12: GDPR Cookie Consent Banner</a></li>
+					<li><a class="active" href="../day-12/">Day 12: GDPR Cookie Consent Banner</a></li>
 					<li><a href="../day-13/">Day 13: Copy to Clipboard</a></li>
 					<li><a href="../day-14/">Day 14: Scroll Interactions</a></li>
 					<li><a href="../day-15/">Day 15: Scroll Progress Indicator</a></li>
@@ -133,117 +132,42 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 07: Filterable List</h1>
-						<p class="page_intro">Make a list of items that filters as the user types in a search field.</p>
+						<h1 class="page_title">Day 12: GDPR Cookie Consent Banner</h1>
+						<p class="page_intro">Build a GDPR cookie consent banner that appears on page load when no consent cookie exists, lets the user choose Allow or Reject, stores that choice for 7 days, and hides the banner on future visits while the cookie is still present.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li>input driven filtering</li>
-							<li>looping arrays / node lists</li>
-							<li>comparing normalized strings</li>
-							<li>hiding/showing items</li>
+							<li>checking for a cookie on page load</li>
+							<li>conditionally showing or hiding the banner</li>
+							<li>handling click events for Allow and Reject</li>
+							<li>creating a cookie with an expiration</li>
+							<li>storing two clear consent states</li>
+							<li>reading the stored cookie value later</li>
+							<li>removing or hiding the banner after a choice is made</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li>“no results” message</li>
-							<li>category tags</li>
-							<li>clear search button</li>
+							<li>create the banner with JavaScript instead of hardcoding it in every page</li>
+							<li>include a short privacy message and privacy policy link</li>
+							<li>use a consistent cookie name and clear values</li>
+							<li>add a body class while the banner is visible for styling/layout</li>
+							<li>make the banner reusable across the whole site</li>
+							<li>add a small transition when the banner hides</li>
+							<li>include a future hook for analytics tools to read the consent value later</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from" target="_blank">Array.from</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">filter</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank">includes</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase" target="_blank">toLowerCase</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim" target="_blank">trim</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie" target="_blank">document.cookie</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString" target="_blank">toUTCString()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append" target="_blank">append()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/remove" target="_blank">remove()</a></li>
 						</ul>
 					</header>
-					<section class="section filterable_list">
-						<h2 class="secondary_heading">Filterable List</h2>
-						<div class="form_field">
-							<label for="filter-input">Search tutorials</label>
-							<input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
-							<button type="button" id="reset-button" class="button">Reset</button>
-						</div>
-						<ul class="card_list" id="tutorial-list">
-							<li class="card_item">Button Counter</li>
-							<li class="card_item">Modal Dialog</li>
-							<li class="card_item">Accordion FAQ</li>
-							<li class="card_item">Theme Toggle</li>
-							<li class="card_item">Task List</li>
-						</ul>
-						<p class="empty_state" id="no-results-message">No results found.</p>
-					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
-						<pre>
-							<code class="language-markup">
-								&lt;section class="section filterable_list">
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="secondary_heading">Filterable List&lt;/h2>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="form_field">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="filter-input">Search tutorials&lt;/label>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="reset" id="reset-button" class="button">Reset&lt;/button>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="card_list" id="tutorial-list">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Button Counter&lt;/li>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Modal Dialog&lt;/li>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Accordion FAQ&lt;/li>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Theme Toggle&lt;/li>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Task List&lt;/li>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="empty_state" id="no-results-message">No results found.&lt;/p>
-								&lt;/section>
-							</code>
-						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
-						<pre>
-							<code class="language-javascript">
-								function initFilterableList() {
-								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".filterable_list");
-								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
-								&nbsp;&nbsp;&nbsp;&nbsp;let input = root.querySelector("#filter-input");
-								&nbsp;&nbsp;&nbsp;&nbsp;const reset = root.querySelector("#reset-button");
-								&nbsp;&nbsp;&nbsp;&nbsp;const items = root.querySelectorAll(".card_item");
-
-								&nbsp;&nbsp;&nbsp;&nbsp;// hide the empty message on page load
-								&nbsp;&nbsp;&nbsp;&nbsp;const empty = root.querySelector(".empty_state");
-								&nbsp;&nbsp;&nbsp;&nbsp;empty.setAttribute("hidden", "");
-
-								&nbsp;&nbsp;&nbsp;&nbsp;input.addEventListener("input", (e) =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// get text from input
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let text = e.target.value;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text = text.toLowerCase().trim();
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const matchedItems = Array.from(items).filter((item) =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const match = item.textContent.toLowerCase().includes(text);
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// hide list items if not matched
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!match) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.removeAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// reset the input and show the list items
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset.addEventListener("click", () =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input.value = "";
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.removeAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return match;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// show empty message if no matches
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (matchedItems.length === 0) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.removeAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-								&nbsp;&nbsp;&nbsp;&nbsp;});
-								}
-								initFilterableList();
-							</code>
-						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
