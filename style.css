@@ -995,6 +995,82 @@ dialog[open]::backdrop {
 	stroke: var(--teal);
 }
 
+/* Social Sharing Buttons */
+.sharing_list {
+	padding: 0;
+	margin: 2rem 0;
+	list-style-type: none;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.social_icon {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration-color: transparent;
+	padding: calc(0.5rem - 2px) 1rem;
+	border-radius: 5px;
+	border: 2px solid var(--dk-teal);
+	background-color: var(--dk-teal);
+	transition: background-color 300ms ease-in-out;
+}
+
+.social_icon:focus,
+.social_icon:hover,
+.social_icon:active {
+	background-color: var(--lt-teal);
+}
+
+.navy .social_icon {
+	border: 2px solid var(--dk-navy);
+	background-color: var(--dk-navy);
+}
+
+.navy .social_icon:focus,
+.navy .social_icon:hover,
+.navy .social_icon:active {
+	background-color: var(--lt-navy);
+}
+
+.pink .social_icon {
+	border: 2px solid var(--dk-pink);
+	background-color: var(--dk-pink);
+}
+
+.pink .social_icon:focus,
+.pink .social_icon:hover,
+.pink .social_icon:active {
+	background-color: var(--lt-pink);
+}
+
+.social_icon svg {
+	width: 2rem;
+	height: 2rem;
+	fill: var(--white);
+	stroke: var(--white);
+}
+
+@media (max-width: 1024px) {
+	.sharing_list {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.sharing_list li {
+		width: 100%;
+	}
+
+	.social_icon {
+		width: 100%;
+	}
+}
+
 /* About Me */
 .about_me {
 	display: grid;
