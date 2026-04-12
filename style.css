@@ -996,6 +996,11 @@ dialog[open]::backdrop {
 }
 
 /* Social Sharing Links */
+#social-links {
+	position: relative;
+	top: -80px;
+}
+
 .sharing_list {
 	padding: 0;
 	margin: 2rem 0;
