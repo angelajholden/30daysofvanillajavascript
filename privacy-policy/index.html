@@ -4,17 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 12: GDPR Cookie Consent Banner | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Build a GDPR cookie consent banner that appears on page load when no consent cookie exists.">
-	<meta property="og:title" content="Day 12: GDPR Cookie Consent Banner" />
+	<title>Privacy Policy | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="">
+	<meta property="og:title" content="Privacy Policy" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-12/" />
-	<meta property="og:description" content="Build a GDPR cookie consent banner that appears on page load when no consent cookie exists." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/privacy-policy/" />
+	<meta property="og:description" content="" />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-12/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/privacy-policy/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -88,7 +88,7 @@
 					<li><a href="../day-09/">Day 09: Form Validation States</a></li>
 					<li><a href="../day-10/">Day 10: Task List</a></li>
 					<li><a href="../day-11/">Day 11: Social Sharing Links</a></li>
-					<li><a class="active" href="../day-12/">Day 12: GDPR Cookie Consent Banner</a></li>
+					<li><a href="../day-12/">Day 12: GDPR Cookie Consent Banner</a></li>
 					<li><a href="../day-13/">Day 13: Copy to Clipboard</a></li>
 					<li><a href="../day-14/">Day 14: Scroll Interactions</a></li>
 					<li><a href="../day-15/">Day 15: Scroll Progress Indicator</a></li>
@@ -132,127 +132,27 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 12: GDPR Cookie Consent Banner</h1>
-						<p class="page_intro">Build a GDPR cookie consent banner that appears on page load when no consent cookie exists, lets the user choose Allow or Reject, stores that choice for 7 days, and hides the banner on future visits while the cookie is still present.</p>
-						<h2 class="secondary_heading">JavaScript focus</h2>
-						<ul>
-							<li>checking for a cookie on page load</li>
-							<li>conditionally showing or hiding the banner</li>
-							<li>handling click events for Allow and Reject</li>
-							<li>creating a cookie with an expiration</li>
-							<li>storing two clear consent states</li>
-							<li>reading the stored cookie value later</li>
-							<li>removing or hiding the banner after a choice is made</li>
-						</ul>
-						<h2 class="secondary_heading">Nice extras</h2>
-						<ul>
-							<li>create the banner with JavaScript instead of hardcoding it in every page</li>
-							<li>include a short privacy message and privacy policy link</li>
-							<li>use a consistent cookie name and clear values</li>
-							<li>add a body class while the banner is visible for styling/layout</li>
-							<li>make the banner reusable across the whole site</li>
-							<li>add a small transition when the banner hides</li>
-							<li>include a future hook for analytics tools to read the consent value later</li>
-						</ul>
-						<h2 class="secondary_heading">MDN prep</h2>
-						<ul>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie" target="_blank">document.cookie</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString" target="_blank">toUTCString()</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append" target="_blank">append()</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/remove" target="_blank">remove()</a></li>
-						</ul>
+						<h1 class="page_title">Privacy Policy</h1>
+						<p>We respect your privacy and keep things simple.</p>
 					</header>
 					<section class="section">
-						<h2 class="secondary_heading">The HTML</h2>
-						<pre>
-							<code class="language-markup">
-								&lt;div class="consent_banner">
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="wrap">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>We use cookies to improve your experience, analyze site usage, and support essential functionality. You can choose to accept or reject non-essential cookies. For more details, please review our &lt;a href="/privacy-policy">Privacy Policy&lt;/a>.&lt;/p>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="button accept_button" type="button">Accept All&lt;/button>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="button reject_button" type="button">Reject All&lt;/button>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
-								&lt;/div>
-							</code>
-						</pre>
-					</section>
-					<section class="section">
-						<h2 class="secondary_heading">The JavaScript</h2>
-						<pre>
-							<code class="language-javascript">
-								function initCreateCookie(name, value, hours) {
-								&nbsp;&nbsp;&nbsp;&nbsp;let expires = "";
-								&nbsp;&nbsp;&nbsp;&nbsp;if (hours) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const date = new Date();
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date.setTime(date.getTime() + hours * 60 * 60 * 1000);
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expires = `; expires=${date.toUTCString()}`;
-								&nbsp;&nbsp;&nbsp;&nbsp;}
-								&nbsp;&nbsp;&nbsp;&nbsp;const isSecure = location.protocol === "https:";
-								&nbsp;&nbsp;&nbsp;&nbsp;const secureFlag = isSecure ? "; Secure" : "";
-								&nbsp;&nbsp;&nbsp;&nbsp;document.cookie = `${name}=${value}${expires}; path=/; SameSite=Lax${secureFlag}`;
-								}
+						<h2 class="secondary_heading">What we collect</h2>
+						<p>If you contact us through a form, we may collect your name, email address, and message. We also use basic analytics to understand how people use the site, such as which pages are visited and how long visitors stay.</p>
 
-								function readCookie(name) {
-								&nbsp;&nbsp;&nbsp;&nbsp;const cookies = document.cookie.split(";");
-								&nbsp;&nbsp;&nbsp;&nbsp;for (let cookie of cookies) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const [key, value] = cookie.trim().split("=");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (key === name) return value;
-								&nbsp;&nbsp;&nbsp;&nbsp;}
-								&nbsp;&nbsp;&nbsp;&nbsp;return false;
-								}
+						<h2 class="secondary_heading">How we use it</h2>
+						<p>We use this information to respond to messages, improve the site, and understand what content is helpful. We do not sell your personal information.</p>
 
-								function initConsentBanner() {
-								&nbsp;&nbsp;&nbsp;&nbsp;const header = document.querySelector(".header");
-								&nbsp;&nbsp;&nbsp;&nbsp;const banner = document.createElement("div");
-								&nbsp;&nbsp;&nbsp;&nbsp;if (!header || !banner) return;
+						<h2 class="secondary_heading">Cookies</h2>
+						<p>This site uses cookies to support basic functionality and, if you choose, to collect anonymous analytics data. You can accept or reject non-essential cookies at any time.</p>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;const wrap = document.createElement("div");
-								&nbsp;&nbsp;&nbsp;&nbsp;const p = document.createElement("p");
-								&nbsp;&nbsp;&nbsp;&nbsp;const link = document.createElement("a");
-								&nbsp;&nbsp;&nbsp;&nbsp;const accept = document.createElement("button");
-								&nbsp;&nbsp;&nbsp;&nbsp;const reject = document.createElement("button");
+						<h2 class="secondary_heading">Third-party services</h2>
+						<p>We may use trusted services (like analytics or form providers) to help run the site. These services may process data according to their own privacy policies.</p>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;banner.classList.add("consent_banner");
-								&nbsp;&nbsp;&nbsp;&nbsp;wrap.classList.add("wrap");
-								&nbsp;&nbsp;&nbsp;&nbsp;link.href = `${window.location.origin}/privacy-policy/`;
-								&nbsp;&nbsp;&nbsp;&nbsp;link.textContent = "Privacy Policy";
-								&nbsp;&nbsp;&nbsp;&nbsp;p.innerHTML = `We use cookies to improve your experience, analyze site usage, and support essential functionality. You can choose to accept or reject non-essential cookies. For more details, please review our &lt;a href="${link.href}">${link.textContent}&lt;/a>.`;
+						<h2 class="secondary_heading">Your choices</h2>
+						<p>You can choose not to submit forms or disable cookies through your browser settings.</p>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;accept.setAttribute("type", "button");
-								&nbsp;&nbsp;&nbsp;&nbsp;accept.classList.add("button");
-								&nbsp;&nbsp;&nbsp;&nbsp;accept.classList.add("accept_button");
-								&nbsp;&nbsp;&nbsp;&nbsp;accept.textContent = "Accept All";
-
-								&nbsp;&nbsp;&nbsp;&nbsp;reject.setAttribute("type", "button");
-								&nbsp;&nbsp;&nbsp;&nbsp;reject.classList.add("button");
-								&nbsp;&nbsp;&nbsp;&nbsp;reject.classList.add("reject_button");
-								&nbsp;&nbsp;&nbsp;&nbsp;reject.textContent = "Reject All";
-
-								&nbsp;&nbsp;&nbsp;&nbsp;banner.append(wrap);
-								&nbsp;&nbsp;&nbsp;&nbsp;wrap.append(p, accept, reject);
-
-								&nbsp;&nbsp;&nbsp;&nbsp;header.insertAdjacentElement("beforebegin", banner);
-
-								&nbsp;&nbsp;&nbsp;&nbsp;accept.addEventListener("click", () =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initCreateCookie("analyticsTracking", "accept", 168);
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;banner.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// load your analytics tracking tool script here
-								&nbsp;&nbsp;&nbsp;&nbsp;});
-
-								&nbsp;&nbsp;&nbsp;&nbsp;reject.addEventListener("click", () =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initCreateCookie("analyticsTracking", "reject", 168);
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;banner.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do not load your anaytics tracking tool when rejected
-								&nbsp;&nbsp;&nbsp;&nbsp;});
-
-								&nbsp;&nbsp;&nbsp;&nbsp;if (readCookie("analyticsTracking")) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;banner.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// check to see if there's a cookie set
-								&nbsp;&nbsp;&nbsp;&nbsp;}
-								}
-							</code>
-						</pre>
+						<h2 class="secondary_heading">Contact</h2>
+						<p>If you have any questions about this policy, feel free to reach out through the <a href="../day-09/">contact form</a> on this site.</p>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
@@ -269,7 +169,7 @@
 		</div>
 	</main>
 	<footer class="footer">
-		<p class="copyright">Copyright &copy; <span id="year"></span> • <a class="footer_link" href="https://angelajholden.com" target="_blank">Angela J. Holden</a></p>
+		<p class="copyright">Copyright &copy; <span id="year"></span> • <a href="../privacy-policy/">Privacy Policy</a> • <a class="footer_link" href="https://angelajholden.com" target="_blank">Angela J. Holden</a></p>
 	</footer>
 </body>
 

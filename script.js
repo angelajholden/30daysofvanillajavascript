@@ -1,6 +1,77 @@
 const body = document.body;
 const open = document.querySelector(".menu_open");
 
+function initCreateCookie(name, value, hours) {
+	let expires = "";
+	if (hours) {
+		const date = new Date();
+		date.setTime(date.getTime() + hours * 60 * 60 * 1000);
+		expires = `; expires=${date.toUTCString()}`;
+	}
+	const isSecure = location.protocol === "https:";
+	const secureFlag = isSecure ? "; Secure" : "";
+	document.cookie = `${name}=${value}${expires}; path=/; SameSite=Lax${secureFlag}`;
+}
+
+function readCookie(name) {
+	const cookies = document.cookie.split(";");
+	for (let cookie of cookies) {
+		const [key, value] = cookie.trim().split("=");
+		if (key === name) return value;
+	}
+	return false;
+}
+
+function initConsentBanner() {
+	const header = document.querySelector(".header");
+	const banner = document.createElement("div");
+	if (!header || !banner) return;
+
+	const wrap = document.createElement("div");
+	const p = document.createElement("p");
+	const link = document.createElement("a");
+	const accept = document.createElement("button");
+	const reject = document.createElement("button");
+
+	banner.classList.add("consent_banner");
+	wrap.classList.add("wrap");
+	link.href = `${window.location.origin}/privacy-policy/`;
+	link.textContent = "Privacy Policy";
+	p.innerHTML = `We use cookies to improve your experience, analyze site usage, and support essential functionality. You can choose to accept or reject non-essential cookies. For more details, please review our <a href="${link.href}">${link.textContent}</a>.`;
+
+	accept.setAttribute("type", "button");
+	accept.classList.add("button");
+	accept.classList.add("accept_button");
+	accept.textContent = "Accept All";
+
+	reject.setAttribute("type", "button");
+	reject.classList.add("button");
+	reject.classList.add("reject_button");
+	reject.textContent = "Reject All";
+
+	banner.append(wrap);
+	wrap.append(p, accept, reject);
+
+	header.insertAdjacentElement("beforebegin", banner);
+
+	accept.addEventListener("click", () => {
+		initCreateCookie("analyticsTracking", "accept", 168);
+		banner.setAttribute("hidden", "");
+		// load your analytics tracking tool script here
+	});
+
+	reject.addEventListener("click", () => {
+		initCreateCookie("analyticsTracking", "reject", 168);
+		banner.setAttribute("hidden", "");
+		// do not load your anaytics tracking tool when rejected
+	});
+
+	if (readCookie("analyticsTracking")) {
+		banner.setAttribute("hidden", "");
+		// check to see if there's a cookie set
+	}
+}
+
 function initNavSeaech() {
 	const root = document.querySelector(".navigation");
 	let input = root.querySelector("#filter-navigation");
@@ -143,6 +214,7 @@ function copyright() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+	initConsentBanner();
 	initNavSeaech();
 	menuToggle();
 	escapeToggle();

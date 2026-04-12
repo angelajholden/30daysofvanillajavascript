@@ -5,6 +5,7 @@
 - optimize images for og:image
 - add open graph image alt meta property
 - finish styles for dark/light toggle
+- update footer links for privacy policy
 
 ### Done
 

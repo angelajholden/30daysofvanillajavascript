@@ -1076,6 +1076,26 @@ dialog[open]::backdrop {
 	}
 }
 
+/* Cookie Consent Banner */
+.consent_banner {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: clamp(1rem, 3vw, 2rem);
+	width: 100%;
+	z-index: 3;
+	background-color: rgba(0, 0, 0, 85%);
+}
+
+.consent_banner .wrap {
+	max-width: fit-content;
+	margin: 0 auto;
+}
+
+.consent_banner .accept_button {
+	margin-right: 5px;
+}
+
 /* About Me */
 .about_me {
 	display: grid;
