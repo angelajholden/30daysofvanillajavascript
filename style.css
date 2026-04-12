@@ -995,7 +995,7 @@ dialog[open]::backdrop {
 	stroke: var(--teal);
 }
 
-/* Social Sharing Buttons */
+/* Social Sharing Links */
 .sharing_list {
 	padding: 0;
 	margin: 2rem 0;
