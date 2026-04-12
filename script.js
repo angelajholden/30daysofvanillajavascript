@@ -27,6 +27,11 @@ function initConsentBanner() {
 	const banner = document.createElement("div");
 	if (!header || !banner) return;
 
+	// check to see if there's a cookie set
+	if (readCookie("analyticsTracking")) {
+		banner.setAttribute("hidden", "");
+	}
+
 	const wrap = document.createElement("div");
 	const p = document.createElement("p");
 	const link = document.createElement("a");
@@ -65,11 +70,6 @@ function initConsentBanner() {
 		banner.setAttribute("hidden", "");
 		// do not load your anaytics tracking tool when rejected
 	});
-
-	if (readCookie("analyticsTracking")) {
-		banner.setAttribute("hidden", "");
-		// check to see if there's a cookie set
-	}
 }
 
 function initNavSeaech() {
