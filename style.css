@@ -366,6 +366,7 @@ button {
 	align-items: center;
 	gap: 0.5rem;
 	color: var(--white) !important;
+	line-height: 1.1;
 	letter-spacing: 0.25px;
 	text-decoration-color: transparent;
 	font-size: clamp(1.1rem, 2vw, 1.25rem);
@@ -459,10 +460,25 @@ button {
 /* Navigation */
 .menu_button {
 	display: none;
-	padding: 0.5rem;
+	padding: 0.25rem;
+	line-height: 1;
 	border-radius: 5px;
 	background-color: transparent;
 	transition: background-color 300ms ease-in-out;
+}
+
+.menu_close {
+	margin-left: auto;
+	margin-bottom: 1rem;
+	background-color: var(--lt-teal);
+}
+
+.navy .menu_close {
+	background-color: var(--lt-navy);
+}
+
+.pink .menu_close {
+	background-color: var(--lt-pink);
 }
 
 .menu_button:focus,
@@ -472,8 +488,8 @@ button {
 }
 
 .menu_button svg {
-	width: 2rem;
-	height: 2rem;
+	width: 2.5rem;
+	height: 2.5rem;
 	stroke: var(--white);
 	transition: stroke 300ms ease-in-out;
 }
@@ -506,8 +522,13 @@ button {
 
 .main_nav {
 	padding: 0;
-	margin: 0;
+	margin: 1rem 0;
 	list-style-type: none;
+}
+
+.main_nav li {
+	line-height: 1.333;
+	margin: 0 0 1rem;
 }
 
 .main_nav li:nth-of-type(n + 17):nth-of-type(-n + 30) a {
@@ -523,7 +544,6 @@ button {
 
 .main_nav a {
 	font-size: 1.25rem;
-	line-height: 2;
 	text-decoration-color: transparent;
 }
 
@@ -542,15 +562,10 @@ button {
 	.menu_button {
 		display: inline-block;
 		vertical-align: bottom;
-		line-height: 1;
 	}
 
 	.menu_close {
 		display: block;
-		margin-left: auto;
-		margin-bottom: 0.5rem;
-		border-radius: 50%;
-		border: 2px solid var(--teal);
 	}
 
 	.navigation {
@@ -569,17 +584,14 @@ button {
 
 	.main_nav {
 		padding: 0 0 1rem;
-		margin: 0 0 1rem;
 		border-bottom: 3px dotted var(--teal);
 	}
 
 	.navy .main_nav {
-		border-top: 3px dotted var(--navy);
 		border-bottom: 3px dotted var(--navy);
 	}
 
 	.pink .main_nav {
-		border-top: 3px dotted var(--pink);
 		border-bottom: 3px dotted var(--pink);
 	}
 
@@ -1018,40 +1030,41 @@ dialog[open]::backdrop {
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
+	color: var(--white);
 	text-decoration-color: transparent;
-	padding: calc(0.5rem - 2px) 1rem;
+	padding: 0.5rem 1rem;
 	border-radius: 5px;
-	border: 2px solid var(--dk-teal);
 	background-color: var(--dk-teal);
-	transition: background-color 300ms ease-in-out;
+	transition:
+		color 300ms ease-in-out,
+		background-color 300ms ease-in-out;
+}
+
+.navy .social_icon {
+	background-color: var(--dk-navy);
+}
+
+.pink .social_icon {
+	background-color: var(--dk-pink);
 }
 
 .social_icon:focus,
 .social_icon:hover,
 .social_icon:active {
-	background-color: var(--lt-teal);
-}
-
-.navy .social_icon {
-	border: 2px solid var(--dk-navy);
-	background-color: var(--dk-navy);
+	color: var(--dk-teal);
+	background-color: var(--white);
 }
 
 .navy .social_icon:focus,
 .navy .social_icon:hover,
 .navy .social_icon:active {
-	background-color: var(--lt-navy);
-}
-
-.pink .social_icon {
-	border: 2px solid var(--dk-pink);
-	background-color: var(--dk-pink);
+	color: var(--dk-navy);
 }
 
 .pink .social_icon:focus,
 .pink .social_icon:hover,
 .pink .social_icon:active {
-	background-color: var(--lt-pink);
+	color: var(--dk-pink);
 }
 
 .social_icon svg {
@@ -1059,6 +1072,30 @@ dialog[open]::backdrop {
 	height: 2rem;
 	fill: var(--white);
 	stroke: var(--white);
+	transition:
+		fill 300ms ease-in-out,
+		stroke 300ms ease-in-out;
+}
+
+.social_icon:focus svg,
+.social_icon:hover svg,
+.social_icon:active svg {
+	fill: var(--dk-teal);
+	stroke: var(--dk-teal);
+}
+
+.navy .social_icon:focus svg,
+.navy .social_icon:hover svg,
+.navy .social_icon:active svg {
+	fill: var(--dk-navy);
+	stroke: var(--dk-navy);
+}
+
+.pink .social_icon:focus svg,
+.pink .social_icon:hover svg,
+.pink .social_icon:active svg {
+	fill: var(--dk-pink);
+	stroke: var(--dk-pink);
 }
 
 @media (max-width: 1024px) {
