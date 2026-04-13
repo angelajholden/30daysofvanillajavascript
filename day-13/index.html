@@ -133,7 +133,7 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 13: Copy to Clipboad</h1>
+						<h1 class="page_title">Day 13: Copy to Clipboard</h1>
 						<p class="page_intro">Build a copy-to-clipboard button that copies the current page URL (or other text), provides visual feedback when successful, and resets itself after a short delay.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
@@ -159,14 +159,62 @@
 							<li><a href="" target="_blank">setTimeout()</a></li>
 						</ul>
 					</header>
-					<section class="section persistent_task-list">
+					<section class="section copy_clipboard">
 						<h2 class="secondary_heading">Copy to Clipboard</h2>
+						<button type="button" class="button copy">Copy URL</button>
+						<div class="success-message" hidden>Copied to the clipboard!</div>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;section class="section copy_clipboard">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="secondary_heading">Copy to Clipboard&lt;/h2>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="button copy">Copy URL&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="success-message" hidden>Copied to the clipboard!&lt;/div>
+								&lt;/section>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								async function writeClipboardText(text) {
+								&nbsp;&nbsp;&nbsp;&nbsp;try {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;await navigator.clipboard.writeText(text);
+								&nbsp;&nbsp;&nbsp;&nbsp;} catch (error) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error(error.message);
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+								}
+
+								function initCopyToClipboard() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".copy_clipboard");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root);
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const URL = window.location.href;
+								&nbsp;&nbsp;&nbsp;&nbsp;const button = root.querySelector(".copy");
+								&nbsp;&nbsp;&nbsp;&nbsp;const success = root.querySelector(".success-message");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;button.addEventListener("click", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeClipboardText(URL);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.setAttribute("disabled", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("button disabled");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(() =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success.removeAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("show success");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, 500);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(() =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.removeAttribute("disabled", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success.setAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("enable button, remove success");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, 5000);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initCopyToClipboard();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
