@@ -13,7 +13,7 @@ function initCreateCookie(name, value, hours) {
 	document.cookie = `${name}=${value}${expires}; path=/; SameSite=Lax${secureFlag}`;
 }
 
-function readCookie(name) {
+function initReadCookie(name) {
 	const cookies = document.cookie.split(";");
 	for (let cookie of cookies) {
 		const [key, value] = cookie.trim().split("=");
@@ -24,25 +24,32 @@ function readCookie(name) {
 
 function initConsentBanner() {
 	const header = document.querySelector(".header");
-	const banner = document.createElement("div");
-	if (!header || !banner) return;
+	if (!header) return;
 
-	// check to see if there's a cookie set
-	if (readCookie("analyticsTracking")) {
+	// create the banner div
+	const banner = document.createElement("div");
+
+	// check to see if cookie is present + allows tracking
+	const consent = initReadCookie("cookieConsent");
+	if (consent === "accept") {
 		banner.setAttribute("hidden", "");
+		// load your tracking script here
 	}
 
+	// create all the things
 	const wrap = document.createElement("div");
 	const p = document.createElement("p");
 	const link = document.createElement("a");
 	const accept = document.createElement("button");
 	const reject = document.createElement("button");
 
+	banner.setAttribute("role", "region");
+	banner.setAttribute("aria-label", "Cookie consent");
 	banner.classList.add("consent_banner");
 	wrap.classList.add("wrap");
 	link.href = `${window.location.origin}/privacy-policy/`;
 	link.textContent = "Privacy Policy";
-	p.innerHTML = `We use cookies to improve your experience, analyze site usage, and support essential functionality. You can choose to accept or reject non-essential cookies. For more details, please review our <a href="${link.href}">${link.textContent}</a>.`;
+	p.append("We use cookies to improve your experience, analyze site usage, and support essential functionality. You can choose to accept or reject non-essential cookies. For more details, please review our ", link, ".");
 
 	accept.setAttribute("type", "button");
 	accept.classList.add("button");
@@ -55,20 +62,22 @@ function initConsentBanner() {
 	reject.textContent = "Reject All";
 
 	banner.append(wrap);
-	wrap.append(p, accept, reject);
+	wrap.append(p, accept, " ", reject);
 
 	header.insertAdjacentElement("beforebegin", banner);
 
 	accept.addEventListener("click", () => {
-		initCreateCookie("analyticsTracking", "accept", 168);
+		// set cookie for 7 days = 168 hours
+		initCreateCookie("cookieConsent", "accept", 168);
 		banner.setAttribute("hidden", "");
-		// load your analytics tracking tool script here
+		// load your tracking script here
 	});
 
 	reject.addEventListener("click", () => {
-		initCreateCookie("analyticsTracking", "reject", 168);
+		// set cookie for 7 days = 168 hours
+		initCreateCookie("cookieConsent", "reject", 168);
 		banner.setAttribute("hidden", "");
-		// do not load your anaytics tracking tool when rejected
+		// do not load your tracking script when rejected
 	});
 }
 

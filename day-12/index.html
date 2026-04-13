@@ -167,7 +167,7 @@
 						<h2 class="secondary_heading">The HTML</h2>
 						<pre>
 							<code class="language-markup">
-								&lt;div class="consent_banner">
+								&lt;div role="region" aria-label="Cookie Consent" class="consent_banner">
 								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="wrap">
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>We use cookies to improve your experience, analyze site usage, and support essential functionality. You can choose to accept or reject non-essential cookies. For more details, please review our &lt;a href="/privacy-policy">Privacy Policy&lt;/a>.&lt;/p>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="button accept_button" type="button">Accept All&lt;/button>
@@ -193,7 +193,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;document.cookie = `${name}=${value}${expires}; path=/; SameSite=Lax${secureFlag}`;
 								}
 
-								function readCookie(name) {
+								function initReadCookie(name) {
 								&nbsp;&nbsp;&nbsp;&nbsp;const cookies = document.cookie.split(";");
 								&nbsp;&nbsp;&nbsp;&nbsp;for (let cookie of cookies) {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const [key, value] = cookie.trim().split("=");
@@ -204,25 +204,32 @@
 
 								function initConsentBanner() {
 								&nbsp;&nbsp;&nbsp;&nbsp;const header = document.querySelector(".header");
-								&nbsp;&nbsp;&nbsp;&nbsp;const banner = document.createElement("div");
-								&nbsp;&nbsp;&nbsp;&nbsp;if (!header || !banner) return;
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!header) return;
 
-								&nbsp;&nbsp;&nbsp;&nbsp;// check to see if there's a cookie set
-								&nbsp;&nbsp;&nbsp;&nbsp;if (readCookie("analyticsTracking")) {
+								&nbsp;&nbsp;&nbsp;&nbsp;// create the banner div
+								&nbsp;&nbsp;&nbsp;&nbsp;const banner = document.createElement("div");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// check to see if cookie is present + allows tracking
+								&nbsp;&nbsp;&nbsp;&nbsp;const consent = initReadCookie("cookieConsent");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (consent === "accept") {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;banner.setAttribute("hidden", "");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// load your tracking script here
 								&nbsp;&nbsp;&nbsp;&nbsp;}
 
+								&nbsp;&nbsp;&nbsp;&nbsp;// create all the things
 								&nbsp;&nbsp;&nbsp;&nbsp;const wrap = document.createElement("div");
 								&nbsp;&nbsp;&nbsp;&nbsp;const p = document.createElement("p");
 								&nbsp;&nbsp;&nbsp;&nbsp;const link = document.createElement("a");
 								&nbsp;&nbsp;&nbsp;&nbsp;const accept = document.createElement("button");
 								&nbsp;&nbsp;&nbsp;&nbsp;const reject = document.createElement("button");
 
+								&nbsp;&nbsp;&nbsp;&nbsp;banner.setAttribute("role", "region");
+								&nbsp;&nbsp;&nbsp;&nbsp;banner.setAttribute("aria-label", "Cookie consent");
 								&nbsp;&nbsp;&nbsp;&nbsp;banner.classList.add("consent_banner");
 								&nbsp;&nbsp;&nbsp;&nbsp;wrap.classList.add("wrap");
 								&nbsp;&nbsp;&nbsp;&nbsp;link.href = `${window.location.origin}/privacy-policy/`;
 								&nbsp;&nbsp;&nbsp;&nbsp;link.textContent = "Privacy Policy";
-								&nbsp;&nbsp;&nbsp;&nbsp;p.innerHTML = `We use cookies to improve your experience, analyze site usage, and support essential functionality. You can choose to accept or reject non-essential cookies. For more details, please review our &lt;a href="${link.href}">${link.textContent}&lt;/a>.`;
+								&nbsp;&nbsp;&nbsp;&nbsp;p.append("We use cookies to improve your experience, analyze site usage, and support essential functionality. You can choose to accept or reject non-essential cookies. For more details, please review our ", link, ".");
 
 								&nbsp;&nbsp;&nbsp;&nbsp;accept.setAttribute("type", "button");
 								&nbsp;&nbsp;&nbsp;&nbsp;accept.classList.add("button");
@@ -235,20 +242,22 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;reject.textContent = "Reject All";
 
 								&nbsp;&nbsp;&nbsp;&nbsp;banner.append(wrap);
-								&nbsp;&nbsp;&nbsp;&nbsp;wrap.append(p, accept, reject);
+								&nbsp;&nbsp;&nbsp;&nbsp;wrap.append(p, accept, " ", reject);
 
 								&nbsp;&nbsp;&nbsp;&nbsp;header.insertAdjacentElement("beforebegin", banner);
 
 								&nbsp;&nbsp;&nbsp;&nbsp;accept.addEventListener("click", () =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initCreateCookie("analyticsTracking", "accept", 168);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// set cookie for 7 days = 168 hours
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initCreateCookie("cookieConsent", "accept", 168);
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;banner.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// load your analytics tracking tool script here
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// load your tracking script here
 								&nbsp;&nbsp;&nbsp;&nbsp;});
 
 								&nbsp;&nbsp;&nbsp;&nbsp;reject.addEventListener("click", () =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initCreateCookie("analyticsTracking", "reject", 168);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// set cookie for 7 days = 168 hours
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initCreateCookie("cookieConsent", "reject", 168);
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;banner.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do not load your anaytics tracking tool when rejected
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do not load your tracking script when rejected
 								&nbsp;&nbsp;&nbsp;&nbsp;});
 								}
 							</code>
