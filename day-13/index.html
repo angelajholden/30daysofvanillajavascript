@@ -190,7 +190,7 @@
 
 								function initCopyToClipboard() {
 								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".copy_clipboard");
-								&nbsp;&nbsp;&nbsp;&nbsp;if (!root);
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
 
 								&nbsp;&nbsp;&nbsp;&nbsp;const URL = window.location.href;
 								&nbsp;&nbsp;&nbsp;&nbsp;const button = root.querySelector(".copy");

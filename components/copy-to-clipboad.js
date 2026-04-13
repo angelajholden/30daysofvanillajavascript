@@ -8,7 +8,7 @@ async function writeClipboardText(text) {
 
 function initCopyToClipboard() {
 	const root = document.querySelector(".copy_clipboard");
-	if (!root);
+	if (!root) return;
 
 	const URL = window.location.href;
 	const button = root.querySelector(".copy");
