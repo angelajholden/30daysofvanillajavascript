@@ -4,26 +4,27 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Privacy Policy | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="">
-	<meta property="og:title" content="Privacy Policy" />
+	<title>Day 16: Sortable Table | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Build a table where clicking a column header sorts the rows by that column.">
+	<meta property="og:title" content="Day 16: Sortable Table" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/privacy-policy/" />
-	<meta property="og:description" content="" />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-16/" />
+	<meta property="og:description" content="Build a table where clicking a column header sorts the rows by that column." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/privacy-policy/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-16/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
+	<script type="module" src="../components/sortable-table.js"></script>
 </head>
 
-<body class="navy">
+<body class="teal">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -92,7 +93,7 @@
 					<li><a href="../day-13/">Day 13: Copy to Clipboard</a></li>
 					<li><a href="../day-14/">Day 14: Scroll Interactions</a></li>
 					<li><a href="../day-15/">Day 15: Scroll Progress Indicator</a></li>
-					<li><a href="../day-16/">Day 16: Sortable Table</a></li>
+					<li><a class="active" href="../day-16/">Day 16: Sortable Table</a></li>
 					<li><a href="../day-17/">Day 17: Image Lightbox / Gallery Viewer</a></li>
 					<li><a href="../day-18/">Day 18: Keyboard Accessible Dropdown Menu</a></li>
 					<li><a href="../day-19/">Day 19: Multi-Step Form</a></li>
@@ -132,22 +133,45 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Privacy Policy</h1>
-						<p>I respect your privacy and keep things simple.</p>
+						<h1 class="page_title">Day 16: Sortable Table</h1>
+						<p class="page_intro">Build a sortable table where clicking a column header reorders the rows by that column and toggles between ascending and descending sort order.</p>
+						<h2 class="secondary_heading">JavaScript focus</h2>
+						<ul>
+							<li>selecting table rows</li>
+							<li>converting rows into an array</li>
+							<li>reading cell values</li>
+							<li>comparing strings and numbers</li>
+							<li>sorting arrays</li>
+							<li>toggling state for ascending and descending order</li>
+							<li>appending reordered rows back into the table body</li>
+						</ul>
+						<h2 class="secondary_heading">Nice extras</h2>
+						<ul>
+							<li>add a visual indicator for active sort direction</li>
+							<li>support both text and numeric columns</li>
+							<li>keep one default sorted column on page load</li>
+							<li>use buttons inside th elements for better accessibility</li>
+							<li>update aria-sort on the active header</li>
+							<li>reset other headers when a new column is sorted</li>
+							<li>keep the sort logic reusable so you can apply it to other tables later</li>
+						</ul>
+						<h2 class="secondary_heading">MDN prep</h2>
+						<ul>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from" target="_blank">Array.from()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank">sort()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare" target="_blank">localeCompare()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" target="_blank">textContent</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append" target="_blank">append()</a></li>
+						</ul>
 					</header>
+					<section class="section persistent_task-list">
+						<h2 class="secondary_heading">Sortable Table</h2>
+					</section>
 					<section class="section">
-						<h2 class="secondary_heading">What I collect</h2>
-						<p>If you contact me through a form, I may collect your name, email address, and message. I also use basic analytics to understand how people use the site, such as which pages are visited and how long visitors stay.</p>
-						<h2 class="secondary_heading">How I use it</h2>
-						<p>I use this information to respond to messages, improve the site, and understand what content is helpful. I do not sell your personal information.</p>
-						<h2 class="secondary_heading">Cookies</h2>
-						<p>This site uses cookies to support basic functionality and, if you choose, to collect anonymous analytics data. You can accept or reject non-essential cookies at any time.</p>
-						<h2 class="secondary_heading">Third-party services</h2>
-						<p>I may use trusted services (like analytics or form providers) to help run the site. These services may process data according to their own privacy policies.</p>
-						<h2 class="secondary_heading">Your choices</h2>
-						<p>You can choose not to submit forms or disable cookies through your browser settings.</p>
-						<h2 class="secondary_heading">Contact</h2>
-						<p>If you have any questions about this policy, feel free to reach out through the <a href="../day-09/">contact form</a> on this site.</p>
+						<h2 class="secondary_heading">The HTML</h2>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">The JavaScript</h2>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">

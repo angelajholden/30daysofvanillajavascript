@@ -510,13 +510,13 @@ button {
 	list-style-type: none;
 }
 
-.main_nav li:nth-of-type(n + 13):nth-of-type(-n + 30) a {
+.main_nav li:nth-of-type(n + 17):nth-of-type(-n + 30) a {
 	pointer-events: none;
 	opacity: 0.5;
 	cursor: not-allowed;
 }
 
-.main_nav li:nth-of-type(n + 13):nth-of-type(-n + 30) a:focus {
+.main_nav li:nth-of-type(n + 17):nth-of-type(-n + 30) a:focus {
 	outline: 2px dashed currentColor;
 	opacity: 0.45;
 }
@@ -1003,7 +1003,7 @@ dialog[open]::backdrop {
 
 .sharing_list {
 	padding: 0;
-	margin: 2rem 0;
+	margin: 2rem 0 0;
 	list-style-type: none;
 	display: flex;
 	flex-flow: row nowrap;
@@ -1063,11 +1063,14 @@ dialog[open]::backdrop {
 
 @media (max-width: 1024px) {
 	.sharing_list {
-		flex-direction: column;
-		gap: 0.5rem;
+		flex-wrap: wrap;
 	}
 
 	.sharing_list li {
+		width: calc((100% - 0.5rem) / 2);
+	}
+
+	.sharing_list li:last-of-type {
 		width: 100%;
 	}
 
@@ -1084,7 +1087,7 @@ dialog[open]::backdrop {
 	padding: clamp(1rem, 3vw, 2rem);
 	width: 100%;
 	z-index: 3;
-	background-color: rgba(0, 0, 0, 85%);
+	background-color: rgba(0, 0, 0, 75%);
 }
 
 .consent_banner .wrap {

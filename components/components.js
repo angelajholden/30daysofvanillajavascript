@@ -11,3 +11,8 @@ import "./task-list.js";
 import "./copy-to-clipboad.js";
 import "./scroll-interactions.js";
 import "./scroll-progress-indicator.js";
+import "./sortable-table.js";
+import "./image-lightbox.js";
+import "./dropdown-menu.js";
+import "./multistep-form.js";
+import "./data-fetch-render.js";
