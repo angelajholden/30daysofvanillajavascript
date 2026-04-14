@@ -340,10 +340,16 @@ button {
 	position: sticky;
 	top: 0;
 	left: 0;
+	transform: translateY(0);
 	width: 100%;
 	padding: 1rem;
 	background-image: linear-gradient(to right, var(--teal), var(--dk-teal));
 	z-index: 2;
+	transition: transform 300ms linear;
+}
+
+.scroll_active .header {
+	transform: translateY(-80px);
 }
 
 .navy .header {
@@ -444,7 +450,7 @@ button {
 	position: relative;
 	display: flex;
 	flex-flow: row nowrap;
-	align-items: flex-start;
+	align-items: stretch;
 }
 
 .section_container {
@@ -510,6 +516,11 @@ button {
 	overflow-y: scroll;
 	background-color: var(--dk-teal);
 	z-index: 1;
+	transition: top 300ms linear;
+}
+
+.scroll_active .navigation {
+	top: 0;
 }
 
 .navy .navigation {
@@ -1130,6 +1141,13 @@ dialog[open]::backdrop {
 .consent_banner .wrap {
 	max-width: fit-content;
 	margin: 0 auto;
+}
+
+/* Scroll to Top */
+.scroll_top {
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
 }
 
 /* About Me */
