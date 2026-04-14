@@ -178,10 +178,14 @@
 						<h2 class="secondary_heading">The JavaScript</h2>
 						<pre>
 							<code class="language-javascript">
-								function initOnScrollHeader() {
+								function initScrollInteractions() {
 								&nbsp;&nbsp;&nbsp;&nbsp;const body = document.body;
 								&nbsp;&nbsp;&nbsp;&nbsp;const header = document.querySelector(".header");
-								&nbsp;&nbsp;&nbsp;&nbsp;if (!header) return;
+								&nbsp;&nbsp;&nbsp;&nbsp;const button = document.querySelector(".scroll_top");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!header || !button) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const logo = document.querySelector(".primary-logo a");
+								&nbsp;&nbsp;&nbsp;&nbsp;let shouldFocusLogo = false;
 
 								&nbsp;&nbsp;&nbsp;&nbsp;window.addEventListener("scroll", () =&gt; {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (window.scrollY &gt; 50) {
@@ -189,16 +193,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.classList.remove("scroll_active");
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-								&nbsp;&nbsp;&nbsp;&nbsp;});
-								}
-								initOnScrollHeader();
 
-								function initScrollToTop() {
-								&nbsp;&nbsp;&nbsp;&nbsp;const button = document.querySelector(".scroll_top");
-								&nbsp;&nbsp;&nbsp;&nbsp;if (!button) return;
-								&nbsp;&nbsp;&nbsp;&nbsp;const logo = document.querySelector(".primary-logo a");
-
-								&nbsp;&nbsp;&nbsp;&nbsp;window.addEventListener("scroll", () =&gt; {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (window.scrollY &gt; 100) {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.removeAttribute("hidden", "");
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
@@ -207,14 +202,21 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;});
 
 								&nbsp;&nbsp;&nbsp;&nbsp;button.addEventListener("click", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shouldFocusLogo = true;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.scrollTo({
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 0,
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;behavior: "smooth",
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// wait for the scroll to finish
+								&nbsp;&nbsp;&nbsp;&nbsp;window.addEventListener("scrollend", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!shouldFocusLogo) return;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo.focus();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shouldFocusLogo = false;
 								&nbsp;&nbsp;&nbsp;&nbsp;});
 								}
-								initScrollToTop();
+								initScrollInteractions();
 							</code>
 						</pre>
 					</section>
