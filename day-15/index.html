@@ -61,6 +61,9 @@
 				<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 160h352M80 256h352M80 352h352"/></svg>
 			</button>
 		</div>
+		<div aria-hidden="true" class="progress_indicator">
+			<div class="progress_scroll"></div>
+		</div>
 	</header>
 	<main class="main">
 		<div class="flex_container">
@@ -162,14 +165,46 @@
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max" target="_blank">Math.max()</a></li>
 						</ul>
 					</header>
-					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Scroll Progress Indicator</h2>
-					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;!-- put this last in the &lt;header> --&gt;
+								&lt;div aria-hidden="true" class="progress_indicator">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="progress_scroll">&lt;/div>
+								&lt;/div>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initScrollProgressBar() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const docElement = document.documentElement;
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".progress_indicator");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// scroll width
+								&nbsp;&nbsp;&nbsp;&nbsp;const scroll = root.querySelector(".progress_scroll");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// listen for the scroll
+								&nbsp;&nbsp;&nbsp;&nbsp;document.addEventListener("scroll", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// document height
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const docHeight = docElement.scrollHeight;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const viewHeight = window.innerHeight;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// calculations
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const scrollTop = window.scrollY;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const scrollableDistance = docHeight - viewHeight;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const progress = scrollTop / scrollableDistance;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const progressPercent = progress * 100;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scroll.style.width = `${progressPercent}%`;
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initScrollProgressBar();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
