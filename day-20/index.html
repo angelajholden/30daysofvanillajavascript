@@ -4,24 +4,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 10: Task List | 30 Days of Vanilla JavaScript</title>
+	<title>Day 20: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
 	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 10: Task List" />
+	<meta property="og:title" content="Day 20: Image Lightbox / Gallery Viewer" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-10/" />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-20/" />
 	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-10/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-20/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/task-list.js"></script>
+	<script type="module" src="../components/image-lightbox.js"></script>
 </head>
 
 <body class="teal">
@@ -87,19 +87,19 @@
 					<li><a href="../day-07/">Day 07: Filterable List</a></li>
 					<li><a href="../day-08/">Day 08: Theme Toggle + Caching Data</a></li>
 					<li><a href="../day-09/">Day 09: Form Validation States</a></li>
-					<li><a class="active" href="../day-10/">Day 10: Task List</a></li>
+					<li><a href="../day-10/">Day 10: Task List</a></li>
 					<li><a href="../day-11/">Day 11: Social Sharing Links</a></li>
 					<li><a href="../day-12/">Day 12: GDPR Cookie Consent Banner</a></li>
 					<li><a href="../day-13/">Day 13: Copy to Clipboard</a></li>
 					<li><a href="../day-14/">Day 14: Scroll Interactions</a></li>
 					<li><a href="../day-15/">Day 15: Scroll Progress Indicator</a></li>
 					<li><a href="../day-16/">Day 16: Sortable Table</a></li>
-					<li><a href="../day-17/">Day 17: Image Lightbox / Gallery Viewer</a></li>
-					<li><a href="../day-18/">Day 18: Keyboard Accessible Dropdown Menu</a></li>
-					<li><a href="../day-19/">Day 19: Multi-Step Form</a></li>
-					<li><a href="../day-20/">Day 20: Data Fetch + Render (API or local JSON)</a></li>
+					<li><a href="../day-17/">Day 17: Load YouTube Videos on Click</a></li>
+					<li><a href="../day-18/">Day 18: Data Fetch + Render (API or local JSON)</a></li>
+					<li><a href="../day-19/">Day 19: Transforming API Data</a></li>
+					<li><a class="active" href="../day-20/">Day 20: Image Lightbox / Gallery Viewer</a></li>
 					<li><a href="../day-21/">Day 21: Pagination + Load More Button</a></li>
-					<li><a href="../day-22/">Day 22: Transforming API Data</a></li>
+					<li><a href="../day-22/">Day 22: Multi-Step Form</a></li>
 					<li><a href="../day-23/">Day 23: Debounced Search Input</a></li>
 					<li><a href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
 					<li><a href="../day-25/">Day 25: Basic Routing (no framework)</a></li>
@@ -133,152 +133,38 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 10: Task List</h1>
+						<h1 class="page_title">Day 20: Image Lightbox / Gallery Viewer</h1>
 						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li>form submission</li>
-							<li>creating list items</li>
-							<li>buttons inside dynamic content</li>
-							<li>event delegation or per item listeners</li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li>mark complete</li>
-							<li>empty state message</li>
-							<li>save tasks in local storage</li>
+							<li></li>
+							<li></li>
+							<li></li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event" target="_blank">submit event</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement" target="_blank">createElement</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest" target="_blank">closest</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/remove" target="_blank">remove</a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a></li>
+							<li><a href="" target="_blank"></a></li>
+							<li><a href="" target="_blank"></a></li>
+							<li><a href="" target="_blank"></a></li>
+							<li><a href="" target="_blank"></a></li>
+							<li><a href="" target="_blank"></a></li>
 						</ul>
 					</header>
-					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Task List</h2>
-						<form id="task-form">
-							<div class="form_field">
-								<label for="task-input">Add a task</label>
-								<input type="text" id="task-input" name="task-input">
-							</div>
-							<button type="submit" class="button">Add Task</button>
-						</form>
-						<ul class="task_list" id="task-list"></ul>
-						<p class="empty_state" id="task-empty-state" hidden>No tasks yet.</p>
+					<section class="section">
+						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
-						<pre>
-							<code class="language-markup">
-								&lt;section class="section persistent_task-list">
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="secondary_heading">Task List&lt;/h2>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;form id="task-form">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="form_field">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="task-input">Add a task&lt;/label>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" id="task-input" name="task-input">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="submit" class="button">Add Task&lt;/button>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="task_list" id="task-list">&lt;/ul>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="empty_state" id="task-empty-state" hidden>No tasks yet.&lt;/p>
-								&lt;/section>
-							</code>
-						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
-						<pre>
-							<code class="language-javascript">
-								function initTaskList() {
-								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".persistent_task-list");
-								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
-
-								&nbsp;&nbsp;&nbsp;&nbsp;const form = root.querySelector("#task-form");
-								&nbsp;&nbsp;&nbsp;&nbsp;const taskInput = root.querySelector("#task-input");
-								&nbsp;&nbsp;&nbsp;&nbsp;const taskList = root.querySelector(".task_list");
-								&nbsp;&nbsp;&nbsp;&nbsp;const empty = root.querySelector(".empty_state");
-
-								&nbsp;&nbsp;&nbsp;&nbsp;// check localStorage for the task list
-								&nbsp;&nbsp;&nbsp;&nbsp;const savedList = localStorage.getItem("task_list");
-								&nbsp;&nbsp;&nbsp;&nbsp;let listArray = JSON.parse(savedList) || [];
-
-								&nbsp;&nbsp;&nbsp;&nbsp;// show the 'no tasks yet' message
-								&nbsp;&nbsp;&nbsp;&nbsp;// if no tasks on page load
-								&nbsp;&nbsp;&nbsp;&nbsp;if (listArray.length === 0) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.removeAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;} else {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;}
-
-								&nbsp;&nbsp;&nbsp;&nbsp;// create or remove a task function
-								&nbsp;&nbsp;&nbsp;&nbsp;function createListItems(text) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// create the elements
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const taskItem = document.createElement("li");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const span = document.createElement("span");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const button = document.createElement("button");
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// set the attributes
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;taskItem.classList.add("task_item");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;span.textContent = text;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.setAttribute("type", "button");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.setAttribute("aria-label", "Remove List Item");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.classList.add("icon_button");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.innerHTML = '&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">&lt;path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/>&lt;/svg>';
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// add li to the list
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;taskItem.append(span, button);
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;taskList.insertAdjacentElement("beforeend", taskItem);
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// remove a task
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button.addEventListener("click", (e) =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const item = e.target.closest(".task_item");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const span = item.querySelector("span");
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// update the localStorage task list
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listArray = listArray.filter((listItem) =&gt; listItem !== span.textContent);
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localStorage.setItem("task_list", JSON.stringify(listArray));
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// show the 'no tasks yet' message if no tasks
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (listArray.length === 0) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.removeAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// remove a task
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.remove();
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
-								&nbsp;&nbsp;&nbsp;&nbsp;}
-
-								&nbsp;&nbsp;&nbsp;&nbsp;// add or remove tasks
-								&nbsp;&nbsp;&nbsp;&nbsp;form.addEventListener("submit", (e) =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createListItems(taskInput.value);
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listArray.push(taskInput.value);
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localStorage.setItem("task_list", JSON.stringify(listArray));
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (listArray.length === 0) {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.removeAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.setAttribute("hidden", "");
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// clear the input after it's added to the list
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;taskInput.value = "";
-								&nbsp;&nbsp;&nbsp;&nbsp;});
-
-								&nbsp;&nbsp;&nbsp;&nbsp;// get and display tasks on page load
-								&nbsp;&nbsp;&nbsp;&nbsp;listArray.forEach((listItem) =&gt; {
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createListItems(listItem);
-								&nbsp;&nbsp;&nbsp;&nbsp;});
-								}
-								initTaskList();
-							</code>
-						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">

@@ -542,13 +542,13 @@ button {
 	margin: 0 0 1rem;
 }
 
-.main_nav li:nth-of-type(n + 17):nth-of-type(-n + 30) a {
+.main_nav li:nth-of-type(n + 18):nth-of-type(-n + 30) a {
 	pointer-events: none;
 	opacity: 0.5;
 	cursor: not-allowed;
 }
 
-.main_nav li:nth-of-type(n + 17):nth-of-type(-n + 30) a:focus {
+.main_nav li:nth-of-type(n + 18):nth-of-type(-n + 30) a:focus {
 	outline: 2px dashed currentColor;
 	opacity: 0.45;
 }
@@ -1165,6 +1165,43 @@ dialog[open]::backdrop {
 	height: 100%;
 	object-fit: contain;
 	background-color: var(--white);
+}
+
+/* Sortable Table */
+.table {
+	border-collapse: collapse;
+	border-top: 1px solid var(--white);
+	border-left: 1px solid var(--white);
+}
+.table tr {
+	border-bottom: 1px solid var(--white);
+}
+
+.table td,
+.table th {
+	padding: 0.5rem;
+	text-align: center;
+	border-right: 1px solid var(--white);
+}
+
+.table th[scope="col"] {
+	border-right: 1px solid var(--dk-teal);
+}
+
+.table th[scope="col"],
+.table th button {
+	color: var(--dk-teal);
+	background-color: var(--white);
+}
+
+.table th[scope="col"]:last-of-type {
+	border-right: 1px solid var(--white);
+}
+
+.table th[scope="col"]:first-of-type,
+.table th[scope="row"] {
+	text-align: left;
+	font-weight: 400;
 }
 
 /* About Me */

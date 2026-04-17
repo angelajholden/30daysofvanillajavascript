@@ -94,12 +94,12 @@
 					<li><a href="../day-14/">Day 14: Scroll Interactions</a></li>
 					<li><a href="../day-15/">Day 15: Scroll Progress Indicator</a></li>
 					<li><a class="active" href="../day-16/">Day 16: Sortable Table</a></li>
-					<li><a href="../day-17/">Day 17: Image Lightbox / Gallery Viewer</a></li>
-					<li><a href="../day-18/">Day 18: Keyboard Accessible Dropdown Menu</a></li>
-					<li><a href="../day-19/">Day 19: Multi-Step Form</a></li>
-					<li><a href="../day-20/">Day 20: Data Fetch + Render (API or local JSON)</a></li>
+					<li><a href="../day-17/">Day 17: Load YouTube Videos on Click</a></li>
+					<li><a href="../day-18/">Day 18: Data Fetch + Render (API or local JSON)</a></li>
+					<li><a href="../day-19/">Day 19: Transforming API Data</a></li>
+					<li><a href="../day-20/">Day 20: Image Lightbox / Gallery Viewer</a></li>
 					<li><a href="../day-21/">Day 21: Pagination + Load More Button</a></li>
-					<li><a href="../day-22/">Day 22: Transforming API Data</a></li>
+					<li><a href="../day-22/">Day 22: Multi-Step Form</a></li>
 					<li><a href="../day-23/">Day 23: Debounced Search Input</a></li>
 					<li><a href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
 					<li><a href="../day-25/">Day 25: Basic Routing (no framework)</a></li>
@@ -164,8 +164,113 @@
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append" target="_blank">append()</a></li>
 						</ul>
 					</header>
-					<section class="section persistent_task-list">
+					<section class="section sortable_table-section">
 						<h2 class="secondary_heading">Sortable Table</h2>
+						<table class="table" id="sortable_table">
+							<caption class="sr-only">
+								Product inventory with sortable columns for name, category, price, and stock
+							</caption>
+
+							<thead>
+								<tr>
+									<th scope="col">
+										<button type="button" class="sort_button" data-column="0" aria-sort="none">
+											Product Name
+										</button>
+									</th>
+
+									<th scope="col">
+										<button type="button" class="sort_button" data-column="1" aria-sort="none">
+											Category
+										</button>
+									</th>
+
+									<th scope="col">
+										<button type="button" class="sort_button" data-column="2" aria-sort="none">
+											Price
+										</button>
+									</th>
+
+									<th scope="col">
+										<button type="button" class="sort_button" data-column="3" aria-sort="none">
+											Stock
+										</button>
+									</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<th scope="row">Wireless Mouse</th>
+									<td>Accessories</td>
+									<td data-value="29.99">$29.99</td>
+									<td data-value="120">120</td>
+								</tr>
+
+								<tr>
+									<th scope="row">Mechanical Keyboard</th>
+									<td>Accessories</td>
+									<td data-value="89.99">$89.99</td>
+									<td data-value="45">45</td>
+								</tr>
+
+								<tr>
+									<th scope="row">USB-C Hub</th>
+									<td>Accessories</td>
+									<td data-value="49.5">$49.50</td>
+									<td data-value="78">78</td>
+								</tr>
+
+								<tr>
+									<th scope="row">4K Monitor</th>
+									<td>Displays</td>
+									<td data-value="399.99">$399.99</td>
+									<td data-value="12">12</td>
+								</tr>
+
+								<tr>
+									<th scope="row">Laptop Stand</th>
+									<td>Office</td>
+									<td data-value="34.25">$34.25</td>
+									<td data-value="64">64</td>
+								</tr>
+
+								<tr>
+									<th scope="row">Noise Cancelling Headphones</th>
+									<td>Audio</td>
+									<td data-value="199.99">$199.99</td>
+									<td data-value="23">23</td>
+								</tr>
+
+								<tr>
+									<th scope="row">Webcam</th>
+									<td>Video</td>
+									<td data-value="79">$79.00</td>
+									<td data-value="39">39</td>
+								</tr>
+
+								<tr>
+									<th scope="row">Portable SSD 1TB</th>
+									<td>Storage</td>
+									<td data-value="129.99">$129.99</td>
+									<td data-value="56">56</td>
+								</tr>
+
+								<tr>
+									<th scope="row">Ergonomic Chair</th>
+									<td>Office</td>
+									<td data-value="299">$299.00</td>
+									<td data-value="8">8</td>
+								</tr>
+
+								<tr>
+									<th scope="row">Desk Lamp</th>
+									<td>Office</td>
+									<td data-value="22.5">$22.50</td>
+									<td data-value="91">91</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
