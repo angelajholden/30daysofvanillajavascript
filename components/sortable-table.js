@@ -2,33 +2,45 @@ function initSortableTable() {
 	const root = document.querySelector(".sortable_table-section");
 	if (!root) return;
 
+	const tbody = root.querySelector("tbody");
+	if (!tbody) return;
+
 	const buttons = root.querySelectorAll(".sort_button");
-	// console.log(rows);
+
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
-			const rows = Array.from(root.querySelectorAll("tbody tr"));
-			// console.log(rows);
-			const columnIndex = button.dataset.column;
+			const rowsArray = Array.from(tbody.querySelectorAll("tr"));
+			const columnIndex = Number(button.dataset.column);
 
-			rows.forEach((row) => {
-				console.log(row.children[columnIndex]);
+			const currentSort = button.getAttribute("aria-sort");
+			const nextSort = currentSort === "ascending" ? "descending" : "ascending";
+
+			buttons.forEach((btn) => {
+				btn.setAttribute("aria-sort", "none");
 			});
 
-			// rows.forEach((row) => {
-			// 	console.log(row);
-			// 	const trRows = row.querySelectorAll();
-			// 	// const cells = Array.from(row.children);
-			// 	// cells.forEach((cell) => {
-			// 	// 	let value;
-			// 	// 	if (cell.dataset.value) {
-			// 	// 		value = cell.dataset.value;
-			// 	// 	} else {
-			// 	// 		value = cell.textContent.trim();
-			// 	// 	}
-			// 	// 	console.log(value);
-			// 	// });
-			// });
+			rowsArray.sort((a, b) => {
+				const cellA = a.children[columnIndex];
+				const cellB = b.children[columnIndex];
+
+				const valueA = cellA.dataset.value ? cellA.dataset.value : cellA.textContent.trim();
+
+				const valueB = cellB.dataset.value ? cellB.dataset.value : cellB.textContent.trim();
+
+				if (cellA.dataset.value) {
+					return nextSort === "ascending" ? Number(valueA) - Number(valueB) : Number(valueB) - Number(valueA);
+				}
+
+				return nextSort === "ascending" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+			});
+
+			rowsArray.forEach((row) => {
+				tbody.append(row);
+			});
+
+			button.setAttribute("aria-sort", nextSort);
 		});
 	});
 }
+
 initSortableTable();
