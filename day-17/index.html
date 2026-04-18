@@ -163,14 +163,99 @@
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank">addEventListener()</a></li>
 						</ul>
 					</header>
-					<section class="section persistent_task-list">
+					<section class="section">
 						<h2 class="secondary_heading">Load YouTube Videos on Click</h2>
+						<figure class="figure yt_video" data-video="qy_ctSLSuf4">
+							<div class="yt_video-container">
+								<button class="play_button" aria-label="Play Video">
+									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+								</button>
+								<img class="yt_thumb" src="../images/heidi-the-sheltie-looking-out-window.jpg" alt="Heidi the Sheltie looking out the window.">
+							</div>
+							<figcaption class="figcaption">Responsive Navbar Build (HTML CSS JavaScript) No Talking Time Lapse</figcaption>
+						</figure>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;figure class="figure yt_video" data-video="qy_ctSLSuf4">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="yt_video-container">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="play_button" aria-label="Play Video">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">&lt;path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/>&lt;/svg>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img class="yt_thumb" src="../images/heidi-the-sheltie-looking-out-window.jpg" alt="Heidi the Sheltie looking out the window.">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;figcaption class="figcaption">Responsive Navbar Build (HTML CSS JavaScript) No Talking Time Lapse&lt;/figcaption>
+								&lt;/figure>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initLoadVideo() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".yt_video");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// if multiple videos per page
+								&nbsp;&nbsp;&nbsp;&nbsp;// use querySelectorAll + forEach through the video containers
+								&nbsp;&nbsp;&nbsp;&nbsp;const videoContainer = root.querySelector(".yt_video-container");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// get the video id from the data-video attribute
+								&nbsp;&nbsp;&nbsp;&nbsp;const videoId = root.dataset.video;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// if no figcaption, just skip it
+								&nbsp;&nbsp;&nbsp;&nbsp;const figCap = root.querySelector("figcaption");
+								&nbsp;&nbsp;&nbsp;&nbsp;let figCapText;
+								&nbsp;&nbsp;&nbsp;&nbsp;if (figCap) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figCapText = figCap.textContent;
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// on page load, load the YouTube thumbnail
+								&nbsp;&nbsp;&nbsp;&nbsp;// and replace the fallback image + alt text
+								&nbsp;&nbsp;&nbsp;&nbsp;const thumb = root.querySelector(".yt_thumb");
+								&nbsp;&nbsp;&nbsp;&nbsp;thumb.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+								&nbsp;&nbsp;&nbsp;&nbsp;if (figCap) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thumb.alt = figCapText;
+								&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thumb.alt = "YouTube thumbnail image.";
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// get the play button
+								&nbsp;&nbsp;&nbsp;&nbsp;const playButton = root.querySelector(".play_button");
+								&nbsp;&nbsp;&nbsp;&nbsp;// when clicking the play button...
+								&nbsp;&nbsp;&nbsp;&nbsp;playButton.addEventListener("click", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// create the iframe + set attributes
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const iframe = document.createElement("iframe");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.classList.add("yt_iframe");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (figCap) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.title = figCapText;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.title = "YouTube video player";
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.referrerPolicy = "strict-origin-when-cross-origin";
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.allowFullscreen = true;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// append the iframe to the container
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;videoContainer.append(iframe);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// add class to thumbnail for transition
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thumb.classList.add("yt_fade");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// remove play button immediately to prevent extra clicks
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;playButton.remove();
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(() =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// remove the thumbnail after 500ms
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thumb.remove();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, 500);
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initLoadVideo();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">

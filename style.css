@@ -1204,6 +1204,62 @@ dialog[open]::backdrop {
 	font-weight: 400;
 }
 
+/* Load Video on Click */
+.yt_video-container {
+	position: relative;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+	z-index: 0;
+}
+
+.yt_thumb {
+	position: absolute;
+	inset: 0;
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 2;
+	transition: opacity 500ms ease-in-out;
+}
+
+.yt_thumb.yt_fade {
+	opacity: 0;
+}
+
+.play_button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 3;
+}
+
+.play_button svg {
+	width: 5rem;
+	height: 5rem;
+	fill: red;
+	transform: scale(1);
+	transition: transform 300ms ease-in-out;
+}
+
+.play_button:focus svg,
+.play_button:hover svg,
+.play_button:active svg {
+	transform: scale(1.1);
+}
+
+.yt_iframe {
+	position: absolute;
+	inset: 0;
+	border: none;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 1;
+}
+
 /* About Me */
 .about_me {
 	display: grid;
