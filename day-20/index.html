@@ -5,12 +5,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Day 20: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
+	<meta name="description" content="Build an image gallery where clicking a thumbnail opens a lightbox and displays the selected image in a larger view.">
 	<meta property="og:title" content="Day 20: Image Lightbox / Gallery Viewer" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
 	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-20/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:description" content="Build an image gallery where clicking a thumbnail opens a lightbox and displays the selected image in a larger view." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
@@ -134,27 +134,36 @@
 				<div class="wrap">
 					<header class="page_header section">
 						<h1 class="page_title">Day 20: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<p class="page_intro">Build an image gallery where clicking a thumbnail opens a lightbox, displays the selected image in a larger view, and allows the user to move between images with next and previous controls.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>selecting multiple gallery items</li>
+							<li>tracking active index</li>
+							<li>updating image src, alt, and optional caption</li>
+							<li>opening and closing viewer state</li>
+							<li>handling next/previous controls</li>
+							<li>handling keyboard events</li>
+							<li>keeping DOM updates in sync with state</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>show a caption for the active image</li>
+							<li>show current position like “2 of 6”</li>
+							<li>support keyboard navigation with left/right arrows</li>
+							<li>hide or disable prev/next buttons at the ends</li>
+							<li>preload the next image</li>
+							<li>use a consistent body class while the lightbox is open</li>
+							<li>animate image transitions lightly</li>
+							<li>support multiple galleries later if you want to expand it</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" target="_blank">querySelectorAll()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank">dataset</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank">addEventListener()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" target="_blank">classList</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key" target="_blank">KeyboardEvent.key</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute" target="_blank">setAttribute()</a></li>
 						</ul>
 					</header>
 					<section class="section">

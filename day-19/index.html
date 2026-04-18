@@ -4,24 +4,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 19: Transforming API Data | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Fetch a dataset where all items exist with numeric values and transform the data into alphabetically grouped sections.">
+	<meta property="og:title" content="Day 19: Transforming API Data" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-19/" />
+	<meta property="og:description" content="Fetch a dataset where all items exist with numeric values and transform the data into alphabetically grouped sections." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-19/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/image-lightbox.js"></script>
+	<script type="module" src="../components/transforming-api-data.js"></script>
 </head>
 
 <body class="teal">
@@ -133,32 +133,37 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 19: Transforming API Data</h1>
+						<p class="page_intro">Fetch a <a href="../data/dog-breeds.json" target="_blank">dataset</a> where all items exist with numeric values, transform the data into alphabetically grouped sections, and render all items while only enabling links for those with values greater than zero.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>transforming object → grouped array</li>
+							<li>conditional rendering based on values</li>
+							<li>deciding element type (anchor vs span)</li>
+							<li>maintaining data integrity (don't mutate original unnecessarily)</li>
+							<li>building UI from structured data</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>add a class like .is-disabled for items with 0</li>
+							<li>show counts next to items (optional)</li>
+							<li>generate encoded/slugs for links (only for clickable items)</li>
+							<li>avoid creating anchor tags at all for disabled items (cleaner than disabling them)</li>
+							<li>separate “data transformation” from “render logic”</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries" target="_blank">Object.entries()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank">map()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">filter() (but now not for removing items — for grouping logic)</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank">sort()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement" target="_blank">createElement()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append" target="_blank">append()</a></li>
 						</ul>
 					</header>
 					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+						<h2 class="secondary_heading">Transforming API Data</h2>
+						<p><a href="../data/dog-breeds.json" target="_blank">Local JSON File</a></p>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
