@@ -4,17 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 18: Data Fetch + Render | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Build a component that fetches data from an API then renders that data into the page.">
+	<meta property="og:title" content="Day 18: Data Fetch + Render" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-18/" />
+	<meta property="og:description" content="Build a component that fetches data from an API then renders that data into the page." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-18/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
 	<script type="module" src="../components/image-lightbox.js"></script>
 </head>
 
-<body class="teal">
+<body class="pink">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -94,10 +94,10 @@
 					<li><a href="../day-14/">Day 14: Scroll Interactions</a></li>
 					<li><a href="../day-15/">Day 15: Scroll Progress Indicator</a></li>
 					<li><a href="../day-16/">Day 16: Sortable Table</a></li>
-					<li><a class="active" href="../day-17/">Day 17: Image Lightbox / Gallery Viewer</a></li>
-					<li><a href="../day-18/">Day 18: Load YouTube Videos on Click</a></li>
-					<li><a href="../day-19/">Day 19: Data Fetch + Render (API or local JSON)</a></li>
-					<li><a href="../day-20/">Day 20: Transforming API Data</a></li>
+					<li><a href="../day-17/">Day 17: Load YouTube Videos on Click</a></li>
+					<li><a class="active" href="../day-18/">Day 18: Data Fetch + Render (API or local JSON)</a></li>
+					<li><a href="../day-19/">Day 19: Transforming API Data</a></li>
+					<li><a href="../day-20/">Day 20: Image Lightbox / Gallery Viewer</a></li>
 					<li><a href="../day-21/">Day 21: Pagination + Load More Button</a></li>
 					<li><a href="../day-22/">Day 22: Multi-Step Form</a></li>
 					<li><a href="../day-23/">Day 23: Debounced Search Input</a></li>
@@ -133,32 +133,42 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 18: Data Fetch + Render (API or local JSON)</h1>
+						<p class="page_intro">Build a component that fetches data from an API or <a href="../data/projects.json" target="_blank">local JSON file</a>, then renders that data into the page as a list of repeated UI items while handling loading and error states.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>fetching async data</li>
+							<li>waiting for a response</li>
+							<li>converting response data into usable JavaScript</li>
+							<li>looping through returned items</li>
+							<li>creating DOM elements from data</li>
+							<li>appending rendered items into a container</li>
+							<li>handling loading, success, and error states</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>use createElement() instead of innerHTML</li>
+							<li>limit the number of items rendered if the dataset is large</li>
+							<li>include a thumbnail/image if the data provides one</li>
+							<li>include an empty state if no items are returned</li>
+							<li>keep the render logic in its own function</li>
+							<li>keep the fetch logic in its own function</li>
+							<li>add a loading class or status message while waiting</li>
+							<li>use a reusable card pattern that fits your site</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch" target="_blank">fetch()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function" target="_blank">async function</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await" target="_blank">await</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/json" target="_blank">Response.json()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement" target="_blank">createElement()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append" target="_blank">append()</a></li>
 						</ul>
 					</header>
 					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+						<h2 class="secondary_heading">Data Fetch + Render</h2>
+						<p><a href="../data/projects.json" target="_blank">Local JSON File</a></p>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>

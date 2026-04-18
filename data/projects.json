@@ -1,0 +1,44 @@
+[
+	{
+		"id": 1,
+		"title": "Accessible Modal Dialog",
+		"description": "A reusable modal component built with semantic HTML and vanilla JavaScript.",
+		"image": "https://picsum.photos/400/250?random=1",
+		"url": "#"
+	},
+	{
+		"id": 2,
+		"title": "Filterable List",
+		"description": "Search and filter items in real time using JavaScript.",
+		"image": "https://picsum.photos/400/250?random=2",
+		"url": "#"
+	},
+	{
+		"id": 3,
+		"title": "Sortable Table",
+		"description": "Click column headers to sort rows by text or numeric values.",
+		"image": "https://picsum.photos/400/250?random=3",
+		"url": "#"
+	},
+	{
+		"id": 4,
+		"title": "Copy to Clipboard",
+		"description": "Copy text or URLs with user feedback and accessible messaging.",
+		"image": "https://picsum.photos/400/250?random=4",
+		"url": "#"
+	},
+	{
+		"id": 5,
+		"title": "Toast Notification System",
+		"description": "Display temporary messages that automatically dismiss after a delay.",
+		"image": "https://picsum.photos/400/250?random=5",
+		"url": "#"
+	},
+	{
+		"id": 6,
+		"title": "Multi-Step Form",
+		"description": "Guide users through a form in multiple steps with validation.",
+		"image": "https://picsum.photos/400/250?random=6",
+		"url": "#"
+	}
+]
