@@ -22,9 +22,7 @@ function initSortableTable() {
 			rowsArray.sort((a, b) => {
 				const cellA = a.children[columnIndex];
 				const cellB = b.children[columnIndex];
-
 				const valueA = cellA.dataset.value ? cellA.dataset.value : cellA.textContent.trim();
-
 				const valueB = cellB.dataset.value ? cellB.dataset.value : cellB.textContent.trim();
 
 				if (cellA.dataset.value) {
