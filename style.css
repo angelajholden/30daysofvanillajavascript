@@ -1221,7 +1221,7 @@ dialog[open]::backdrop {
 	height: 100%;
 	object-fit: cover;
 	z-index: 2;
-	transition: opacity 500ms ease-in-out;
+	transition: opacity 750ms ease-in-out;
 }
 
 .yt_thumb.yt_fade {
@@ -1258,6 +1258,48 @@ dialog[open]::backdrop {
 	height: 100%;
 	object-fit: cover;
 	z-index: 1;
+}
+
+/* Fetch and Render */
+.fetch_render .article {
+	padding: 0 0 1rem;
+	border-bottom: 3px dotted var(--lt-pink);
+}
+
+.fetch_render .article:nth-last-of-type(-n + 2) {
+	border-bottom: none;
+}
+
+.fetch_render .grid_articles {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+	padding: 1rem 0 0;
+	border-top: 1px solid var(--lt-pink);
+}
+
+.fetch_render .figure {
+	width: 100%;
+	height: auto;
+	margin: 0 0 1rem;
+	aspect-ratio: 16 / 9;
+}
+
+.fetch_render img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.fetch_render h3 {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+	.fetch_render .grid_articles {
+		grid-template-columns: 1fr;
+	}
 }
 
 /* About Me */

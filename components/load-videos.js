@@ -53,7 +53,7 @@ function initLoadVideo() {
 		setTimeout(() => {
 			// remove the thumbnail after 500ms
 			thumb.remove();
-		}, 500);
+		}, 750);
 	});
 }
 initLoadVideo();
