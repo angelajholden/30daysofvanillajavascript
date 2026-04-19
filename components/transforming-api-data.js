@@ -15,8 +15,6 @@ async function initTransformData() {
 	const data = await fetchDogBreeds();
 	if (!data) return;
 
-	let dogBreeds = [];
-
 	const breedKeysAndValues = Object.entries(data);
 	const breedKeys = Object.keys(data);
 	const firstLetter = breedKeys.map((letter) => letter[0]);
@@ -32,11 +30,12 @@ async function initTransformData() {
 
 		breedKeysAndValues.forEach((items) => {
 			const keyLetter = items[0].charAt(0);
-			const encode = encodeURIComponent(items[0]);
+			const encode = encodeURIComponent(items[0].toLowerCase());
+			const link = items[0].replaceAll(" ", "-").toLowerCase();
 
 			const newBreedObject = {
 				breed: items[0],
-				url: encode,
+				url: link,
 				count: items[1],
 			};
 
@@ -44,7 +43,6 @@ async function initTransformData() {
 				newListObject.list.push(newBreedObject);
 			}
 		});
-
 		newBreedsArray.push(newListObject);
 	});
 	console.log(newBreedsArray);

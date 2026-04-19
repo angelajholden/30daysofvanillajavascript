@@ -24,7 +24,6 @@ async function initFetchAndRender() {
 	root.append(grid);
 
 	data.forEach((item) => {
-		console.log(item);
 		const article = document.createElement("article");
 		const figure = document.createElement("figure");
 		const img = document.createElement("img");
