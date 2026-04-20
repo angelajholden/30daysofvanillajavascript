@@ -1331,6 +1331,19 @@ dialog[open]::backdrop {
 	}
 }
 
+/* Image Gallery / Lightbox */
+.gallery_wrap {
+	columns: 3 auto;
+}
+
+.gallery_wrap .figure {
+	margin: 0 0 1rem;
+}
+
+.gallery_wrap img {
+	width: 100%;
+}
+
 /* About Me */
 .about_me {
 	display: grid;

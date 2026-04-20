@@ -9,6 +9,9 @@
 - clear error messages on form w/reset button
 - add fallbacks for load video on click
 
+- we need to understand the DOM for the gallery a11y
+- we need to work out the functionality with active classes before the JavaScript
+
 ### Done
 
 - what am I styling for? DONE
