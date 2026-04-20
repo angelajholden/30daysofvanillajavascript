@@ -1303,6 +1303,34 @@ dialog[open]::backdrop {
 	}
 }
 
+/* Transformed Data Columns */
+.columns_wrap {
+	columns: 3 2rem;
+}
+
+.columns_wrap .article {
+	padding: 1rem 0;
+	break-inside: avoid;
+}
+
+.columns_wrap .list_items {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+@media (max-width: 1024px) {
+	.columns_wrap {
+		columns: 2 auto;
+	}
+}
+
+@media (max-width: 600px) {
+	.columns_wrap {
+		columns: 1 auto;
+	}
+}
+
 /* About Me */
 .about_me {
 	display: grid;

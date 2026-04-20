@@ -11,10 +11,7 @@ async function fetchDogBreeds() {
 	}
 }
 
-async function initTransformData() {
-	const data = await fetchDogBreeds();
-	if (!data) return;
-
+function initTransformData(data) {
 	const breedKeysAndValues = Object.entries(data);
 	const breedKeys = Object.keys(data);
 	const firstLetter = breedKeys.map((letter) => letter[0]);
@@ -30,7 +27,6 @@ async function initTransformData() {
 
 		breedKeysAndValues.forEach((items) => {
 			const keyLetter = items[0].charAt(0);
-			// const encode = encodeURIComponent(items[0].toLowerCase());
 			const link = items[0].replaceAll(" ", "-").toLowerCase();
 
 			const newBreedObject = {
@@ -46,5 +42,53 @@ async function initTransformData() {
 		newBreedsArray.push(newListObject);
 	});
 	console.log(newBreedsArray);
+	return newBreedsArray;
 }
-initTransformData();
+
+function initRenderUI(data) {
+	const root = document.querySelector(".transformed_data");
+	if (!root) return;
+
+	const columns = document.createElement("div");
+	columns.classList.add("columns_wrap");
+	root.append(columns);
+
+	data.forEach((items) => {
+		const article = document.createElement("article");
+		article.classList.add("article");
+
+		const h3 = document.createElement("h3");
+		h3.classList.add("tertiary_heading");
+		h3.textContent = items.heading;
+
+		const ul = document.createElement("ul");
+		ul.classList.add("list_items");
+
+		const origin = window.location.origin;
+
+		items.list.forEach((item) => {
+			const li = document.createElement("li");
+			const link = document.createElement("a");
+
+			if (item.count > 0) {
+				link.href = `${origin}/${item.url}`;
+				link.textContent = item.breed;
+				li.append(link);
+			} else if (item.count === 0) {
+				li.textContent = item.breed;
+			}
+			ul.append(li);
+		});
+		article.append(h3, ul);
+		columns.append(article);
+	});
+}
+
+async function init() {
+	const data = await fetchDogBreeds();
+	if (!data) return;
+
+	const transformed = initTransformData(data);
+	initRenderUI(transformed);
+}
+init();
