@@ -374,12 +374,125 @@
 					<section class="section">
 						<h2 class="secondary_heading">Day 12: GDPR Cookie Consent Banner</h2>
 						<p>A banner with fixed positioning that is shown every 7 days and stored as a cookie.</p>
-						<p>Dev Tools > Application > Cookies > "analyticsTracking"</p>
+						<p>Dev Tools > Application > Cookies > "cookieConsent"</p>
 					</section>
 					<section class="section copy_clipboard">
 						<h2 class="secondary_heading">Day 13: Copy to Clipboard</h2>
 						<button type="button" class="button copy">Copy URL</button>
 						<div class="success-message" hidden>Copied to the clipboard!</div>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Day 14: Scroll Interactions</h2>
+						<ul>
+							<li>Scroll to top button appears on scroll.</li>
+							<li>Hide header on scroll.</li>
+						</ul>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Day 15: Scroll Progress Indicator</h2>
+						<ul>
+							<li>Scroll progress indicator appears at top of page on scroll.</li>
+						</ul>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Day 16: Sortable Tables</h2>
+						<table class="table" id="sortable_table">
+							<caption class="sr-only">Product inventory with sortable columns for name, category, price, and stock</caption>
+							<thead>
+								<tr>
+									<th scope="col">
+										<button type="button" class="sort_button" data-column="0" aria-sort="none">Product Name</button>
+									</th>
+									<th scope="col">
+										<button type="button" class="sort_button" data-column="1" aria-sort="none">Category</button>
+									</th>
+									<th scope="col">
+										<button type="button" class="sort_button" data-column="2" aria-sort="none">Price</button>
+									</th>
+									<th scope="col">
+										<button type="button" class="sort_button" data-column="3" aria-sort="none">Stock</button>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">Wireless Mouse</th>
+									<td>Accessories</td>
+									<td data-value="29.99">$29.99</td>
+									<td data-value="120">120</td>
+								</tr>
+								<tr>
+									<th scope="row">Mechanical Keyboard</th>
+									<td>Accessories</td>
+									<td data-value="89.99">$89.99</td>
+									<td data-value="45">45</td>
+								</tr>
+								<tr>
+									<th scope="row">USB-C Hub</th>
+									<td>Accessories</td>
+									<td data-value="49.5">$49.50</td>
+									<td data-value="78">78</td>
+								</tr>
+								<tr>
+									<th scope="row">4K Monitor</th>
+									<td>Displays</td>
+									<td data-value="399.99">$399.99</td>
+									<td data-value="12">12</td>
+								</tr>
+								<tr>
+									<th scope="row">Laptop Stand</th>
+									<td>Office</td>
+									<td data-value="34.25">$34.25</td>
+									<td data-value="64">64</td>
+								</tr>
+								<tr>
+									<th scope="row">Noise Cancelling Headphones</th>
+									<td>Audio</td>
+									<td data-value="199.99">$199.99</td>
+									<td data-value="23">23</td>
+								</tr>
+								<tr>
+									<th scope="row">Webcam</th>
+									<td>Video</td>
+									<td data-value="79">$79.00</td>
+									<td data-value="39">39</td>
+								</tr>
+								<tr>
+									<th scope="row">Portable SSD 1TB</th>
+									<td>Storage</td>
+									<td data-value="129.99">$129.99</td>
+									<td data-value="56">56</td>
+								</tr>
+								<tr>
+									<th scope="row">Ergonomic Chair</th>
+									<td>Office</td>
+									<td data-value="299">$299.00</td>
+									<td data-value="8">8</td>
+								</tr>
+								<tr>
+									<th scope="row">Desk Lamp</th>
+									<td>Office</td>
+									<td data-value="22.5">$22.50</td>
+									<td data-value="91">91</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section class="section">
+						<h2 class="secondary_heading">Day 17: Load YouTube Videos on Click</h2>
+						<figure class="figure yt_video" data-video="qy_ctSLSuf4">
+							<div class="yt_video-container">
+								<button class="play_button" aria-label="Play Video">
+									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+								</button>
+								<img class="yt_thumb" src="../images/heidi-the-sheltie-looking-out-window.jpg" alt="Heidi the Sheltie looking out the window.">
+							</div>
+							<figcaption class="figcaption">Responsive Navbar Build (HTML CSS JavaScript) No Talking Time Lapse</figcaption>
+						</figure>
+					</section>
+					<section class="section fetch_render">
+						<h2 class="secondary_heading">Day 18: Data Fetch + Render</h2>
+						<p><a href="../data/projects.json" target="_blank">Local JSON File</a></p>
 					</section>
 					<div id="social-links"></div>
 					<aside class="about_me section">
@@ -398,6 +511,7 @@
 	</main>
 	<footer class="footer">
 		<p class="copyright">Copyright &copy; <span id="year"></span> • <a href="../privacy-policy/">Privacy Policy</a> • <a class="footer_link" href="https://angelajholden.com" target="_blank">Angela J. Holden</a></p>
+		<button type="button" class="button scroll_top" hidden>Scroll to Top</button>
 	</footer>
 </body>
 

@@ -1262,20 +1262,21 @@ dialog[open]::backdrop {
 
 /* Fetch and Render */
 .fetch_render .article {
-	padding: 0 0 1rem;
-	border-bottom: 3px dotted var(--lt-pink);
+	padding: 0 0 2rem;
+	border-bottom: 3px dotted var(--gray);
 }
 
 .fetch_render .article:nth-last-of-type(-n + 2) {
+	padding: 0;
 	border-bottom: none;
 }
 
 .fetch_render .grid_articles {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 1rem;
-	padding: 1rem 0 0;
-	border-top: 1px solid var(--lt-pink);
+	gap: 2rem;
+	padding: 2rem 0 0;
+	border-top: 3px dotted var(--gray);
 }
 
 .fetch_render .figure {

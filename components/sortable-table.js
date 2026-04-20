@@ -1,5 +1,5 @@
 function initSortableTable() {
-	const root = document.querySelector(".sortable_table-section");
+	const root = document.querySelector("#sortable_table");
 	if (!root) return;
 
 	const tbody = root.querySelector("tbody");

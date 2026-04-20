@@ -172,9 +172,78 @@
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;!-- createElements with JavaScript -->
+								&lt;div class="grid_articles">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- loop/forEach the items here -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;article class="article">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;figure class="figure">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="https://picsum.photos/400/250?random=1" alt="Accessible Modal Dialog">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/figure>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3>Accessible Modal Dialog&lt;/h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>A reusable modal component built with semantic HTML and vanilla JavaScript.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="#" target="_blank">Read more...&lt;/a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/article>
+								&lt;/div>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								async function fetchData() {
+								&nbsp;&nbsp;&nbsp;&nbsp;try {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const response = await fetch("../data/projects.json");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!response.ok) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new Error(`HTTP error! status: ${response.status}`);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const data = await response.json();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return data;
+								&nbsp;&nbsp;&nbsp;&nbsp;} catch (error) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error("There was a problem with the fetch: ", error);
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+								}
+
+								async function initFetchAndRender() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const data = await fetchData();
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!data) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".fetch_render");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const grid = document.createElement("div");
+								&nbsp;&nbsp;&nbsp;&nbsp;grid.classList.add("grid_articles");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;root.append(grid);
+
+								&nbsp;&nbsp;&nbsp;&nbsp;data.forEach((item) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const article = document.createElement("article");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const figure = document.createElement("figure");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const img = document.createElement("img");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const h3 = document.createElement("h3");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const p = document.createElement("p");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const link = document.createElement("a");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;article.classList.add("article");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure.classList.add("figure");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.src = item.image;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.alt = item.title;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h3.textContent = item.title;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.textContent = item.description;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.href = item.url;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.target = "_blank";
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.textContent = "Read more...";
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure.append(img);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;article.append(figure, h3, p, link);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid.append(article);
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initFetchAndRender();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
