@@ -166,43 +166,78 @@
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute" target="_blank">setAttribute()</a></li>
 						</ul>
 					</header>
-					<section class="section">
+					<section class="section lightbox_gallery-viewer">
 						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
 						<div class="gallery_wrap">
-							<figure class="figure">
-								<img src="../images/gallery/brooke-lark-qdyBKWSzpSI-unsplash.jpg" alt="Smoothies on a blue tile surface.">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/naveed-pervaiz-IlnF2g_3tpY-unsplash.jpg" alt="A fruit charcuterie board.">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/corina-rainer-sScNrKruEPs-unsplash.jpg" alt="Glass of white wine.">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/emre-NZMeJsrMC8U-unsplash.jpg" alt="A cup of espresso.">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/diliara-garifullina-I48gnI1Qs5o-unsplash.jpg" alt="A slice of raspberry cheesecake.">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/t-j-breshears-Hi86bgXS4iE-unsplash.jpg" alt="Watermelon slices.">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/heather-barnes-CNDiESvWfrk-unsplash.jpg" alt="A honey dipper in honey with a slice of lemon.">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/aliona-gumeniuk-jeAjT87nbjM-unsplash copy.jpg" alt="Parmesan and pomegranate.">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/shelley-pauls-I58f47LRQYM-unsplash.jpg" alt="A bundle of honeycrisp apples.">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/monika-grabkowska-EbRBhZ-I_p8-unsplash.jpg" alt="A platter of sliced blueberry cheesecake. ">
-							</figure>
-							<figure class="figure">
-								<img src="../images/gallery/steve-doig-FaMBWkmvPyY-unsplash.jpg" alt="Lemons on a lemon tree.">
-							</figure>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/brooke-lark-qdyBKWSzpSI-unsplash.jpg" alt="Smoothies on a blue tile surface.">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/naveed-pervaiz-IlnF2g_3tpY-unsplash.jpg" alt="A fruit charcuterie board.">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/corina-rainer-sScNrKruEPs-unsplash.jpg" alt="Glass of white wine.">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/emre-NZMeJsrMC8U-unsplash.jpg" alt="A cup of espresso.">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/diliara-garifullina-I48gnI1Qs5o-unsplash.jpg" alt="A slice of raspberry cheesecake.">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/t-j-breshears-Hi86bgXS4iE-unsplash.jpg" alt="Watermelon slices.">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/heather-barnes-CNDiESvWfrk-unsplash.jpg" alt="A honey dipper in honey with a slice of lemon.">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/aliona-gumeniuk-jeAjT87nbjM-unsplash copy.jpg" alt="Parmesan and pomegranate.">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/shelley-pauls-I58f47LRQYM-unsplash.jpg" alt="A bundle of honeycrisp apples.">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/monika-grabkowska-EbRBhZ-I_p8-unsplash.jpg" alt="A platter of sliced blueberry cheesecake. ">
+								</figure>
+							</button>
+							<button type="button" aria-selected="false" class="lightbox_trigger">
+								<figure class="figure">
+									<img class="gallery_img" src="../images/gallery/steve-doig-FaMBWkmvPyY-unsplash.jpg" alt="Lemons on a lemon tree.">
+								</figure>
+							</button>
 						</div>
+						<dialog class="lightbox_dialog">
+							<button type="button" class="close_lightbox lightbox_button" aria-label="Close Lightbox">
+								<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/></svg>
+							</button>
+							<div class="buttons_container">
+								<button class="lightbox_button prev_button" aria-label="Previous Image">
+									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M328 112L184 256l144 144"/></svg>
+								</button>
+								<button class="lightbox_button next_button" aria-label="Next Image">
+									<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"/></svg>
+								</button>
+							</div>
+						</dialog>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
@@ -211,9 +246,12 @@
 						<h2 class="secondary_heading">The JavaScript</h2>
 					</section>
 					<aside class="about_me section">
-						<figure class="figure">
-							<img src="../images/angelajholden-profile-photo.jpg" title="Profile Image" alt="Headshot of Angela J. Holden">
+
+						<img class="gallery_img" src="../images/angelajholden-profile-photo.jpg" title="Profile Image" alt="Headshot of Angela J. 
+							<figure class=" figure">Holden">
 						</figure>
+						</button>
+
 						<div class="about_desc">
 							<p>I'm Angela, a frontend developer and software engineer since 2013. I mostly focus on building user interfaces with an emphasis on accessibility. 30 Days of Vanilla JavaScript is a practice based project, designed to help me build my JavaScript skills with daily challenges.</p>
 							<p>Each day starts with HTML as the foundation. From there, I style the UI, then I use JavaScript to complete the interaction. Just try to finish one challenge per day to build skills over time.</p>

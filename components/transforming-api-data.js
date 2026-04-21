@@ -51,7 +51,6 @@ function initRenderUI(data) {
 
 	const columns = document.createElement("div");
 	columns.classList.add("columns_wrap");
-	root.append(columns);
 
 	data.forEach((items) => {
 		const article = document.createElement("article");
@@ -82,6 +81,7 @@ function initRenderUI(data) {
 		article.append(h3, ul);
 		columns.append(article);
 	});
+	root.append(columns);
 }
 
 async function init() {
