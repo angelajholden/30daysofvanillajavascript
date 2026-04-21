@@ -51,7 +51,7 @@ function initLoadVideo() {
 		playButton.remove();
 
 		setTimeout(() => {
-			// remove the thumbnail after 500ms
+			// remove the thumbnail after 750ms
 			thumb.remove();
 		}, 750);
 	});
