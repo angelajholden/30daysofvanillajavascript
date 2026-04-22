@@ -10,7 +10,6 @@ function initLightBox() {
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
 			body.classList.add("lightbox_open");
-
 			button.setAttribute("aria-selected", "true");
 			const img = button.querySelector(".gallery_img");
 

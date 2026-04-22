@@ -4,27 +4,27 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 21: Pagination + Load More Button | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Fetch a dataset from local JSON then either paginate or reveal additional items with Load More button.">
+	<meta property="og:title" content="Day 21: Pagination + Load More Button" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-21/" />
+	<meta property="og:description" content="Fetch a dataset from local JSON then either paginate or reveal additional items with Load More button." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-21/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/image-lightbox.js"></script>
+	<script type="module" src="../components/pagination-load-more.js"></script>
 </head>
 
-<body class="teal">
+<body class="pink">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -98,7 +98,7 @@
 					<li><a href="../day-18/">Day 18: Data Fetch + Render (API or local JSON)</a></li>
 					<li><a href="../day-19/">Day 19: Transforming API Data</a></li>
 					<li><a href="../day-20/">Day 20: Image Lightbox / Gallery Viewer</a></li>
-					<li><a href="../day-21/">Day 21: Pagination + Load More Button</a></li>
+					<li><a class="active" href="../day-21/">Day 21: Pagination + Load More Button</a></li>
 					<li><a href="../day-22/">Day 22: Multi-Step Form</a></li>
 					<li><a href="../day-23/">Day 23: Debounced Search Input</a></li>
 					<li><a href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
@@ -133,32 +133,41 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 21: Pagination + Load More Button</h1>
+						<p class="page_intro">Fetch a dataset from local JSON, render a limited set of items, and build both pagination and Load More controls to manage how users move through the data.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>fetching local JSON</li>
+							<li>storing dataset state</li>
+							<li>slicing arrays</li>
+							<li>tracking page or visible count</li>
+							<li>replacing vs appending DOM content</li>
+							<li>enabling and disabling controls</li>
+							<li>re-rendering UI based on state</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>include Prev / Next buttons for pagination</li>
+							<li>show the current page number</li>
+							<li>show how many items are visible out of the total</li>
+							<li>hide the Load More button once all items are visible</li>
+							<li>keep pagination and load more as separate demos on the same page</li>
+							<li>add a loading state while fetching</li>
+							<li>add an empty state if the dataset is empty</li>
+							<li>keep render logic separate from control logic</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">fetch()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/json" target="_blank">Response.json()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank">slice()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length" target="_blank">length</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement" target="_blank">createElement()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append" target="_blank">append()</a></li>
 						</ul>
 					</header>
 					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+						<h2 class="secondary_heading">Pagination + Load More Button</h2>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
