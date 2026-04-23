@@ -793,6 +793,10 @@ textarea {
 	background-color: var(--pink);
 }
 
+dialog::selection {
+	background: transparent;
+}
+
 dialog[open]::backdrop {
 	width: 100%;
 	height: 100%;
