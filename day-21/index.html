@@ -189,9 +189,160 @@
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;section class="section pagination_load-more">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="secondary_heading">Pagination + Load More Button&lt;/h2>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- For demo purposes only, hide the container not in use. -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="load_more" hidden>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 class="tertiary_heading">Load More&lt;/h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="load_more-items">&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="button_container">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="button load_more-button">Load More&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- For demo purposes only, hide the container not in use. -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="pagination">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 class="tertiary_heading">Pagination&lt;/h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="pagination_items">&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="button_container">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="button prev_button">Previous&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="button next_button">Next&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&lt;/section>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								async function fetchLoadPaginationData() {
+								&nbsp;&nbsp;&nbsp;&nbsp;try {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const response = await fetch("../data/load-more-pagination.json");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!response.ok) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new Error(`HTTP error! status: ${response.status}`);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const data = await response.json();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return data;
+								&nbsp;&nbsp;&nbsp;&nbsp;} catch (error) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error("There was a problem: ", error);
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+								}
+
+								let page = 0;
+								const itemsPerPage = 6;
+
+								function countAndSliceData(data, page) {
+								&nbsp;&nbsp;&nbsp;&nbsp;let start = page * itemsPerPage;
+								&nbsp;&nbsp;&nbsp;&nbsp;let end = start + itemsPerPage;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;let visible = data.slice(start, end);
+								&nbsp;&nbsp;&nbsp;&nbsp;return visible;
+								}
+
+								function renderUI(data) {
+								&nbsp;&nbsp;&nbsp;&nbsp;const loadMore = document.querySelector(".load_more");
+								&nbsp;&nbsp;&nbsp;&nbsp;const pagination = document.querySelector(".pagination");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!loadMore || !pagination) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const loadMoreItems = loadMore.querySelector(".load_more-items");
+								&nbsp;&nbsp;&nbsp;&nbsp;const paginationItems = pagination.querySelector(".pagination_items");
+								&nbsp;&nbsp;&nbsp;&nbsp;paginationItems.textContent = "";
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const visible = countAndSliceData(data, page);
+								&nbsp;&nbsp;&nbsp;&nbsp;visible.forEach((item) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const article = document.createElement("article");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;article.classList.add("article");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const figure = document.createElement("figure");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure.classList.add("figure");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const img = document.createElement("img");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const h4 = document.createElement("h4");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const desc = document.createElement("p");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const link = document.createElement("a");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h4.textContent = `${item.id}. ${item.title}`;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.src = item.image;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.alt = item.title;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;desc.textContent = item.description;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.href = item.url;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.textContent = "Read more... ";
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure.append(img);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;article.append(figure, h4, desc, link);
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * comment out either load more or pagination
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * they don't work at the same time
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// loadMoreItems.append(article);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paginationItems.append(article);
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+
+								async function init() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const data = await fetchLoadPaginationData();
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!data) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const prev = document.querySelector(".prev_button");
+								&nbsp;&nbsp;&nbsp;&nbsp;prev.disabled = true;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const next = document.querySelector(".next_button");
+								&nbsp;&nbsp;&nbsp;&nbsp;next.disabled = false;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const load = document.querySelector(".load_more-button");
+								&nbsp;&nbsp;&nbsp;&nbsp;load.disabled = false;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const totalPages = Math.ceil(data.length / itemsPerPage);
+
+								&nbsp;&nbsp;&nbsp;&nbsp;console.log({ totalPages });
+								&nbsp;&nbsp;&nbsp;&nbsp;console.log({ page });
+
+								&nbsp;&nbsp;&nbsp;&nbsp;prev.addEventListener("click", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (page &gt; 0) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page--;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log({ page });
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;renderUI(data);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next.disabled = false;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (page === 0) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev.disabled = true;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;next.addEventListener("click", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (page &lt; totalPages - 1) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page++;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log({ page });
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;renderUI(data);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev.disabled = false;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (page === totalPages - 1) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next.disabled = true;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;load.addEventListener("click", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (page &lt; totalPages - 1) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page++;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log({ page });
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;renderUI(data);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (page === totalPages - 1) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;load.disabled = true;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;renderUI(data);
+								}
+								init();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">

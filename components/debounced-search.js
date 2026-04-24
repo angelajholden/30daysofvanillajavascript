@@ -10,8 +10,10 @@ function initDebouncedSearch() {
 	let inputTimer;
 	// listen for typing
 	input.addEventListener("input", (e) => {
-		// if timer, clear it
+		// clear timer with each input
 		clearTimeout(inputTimer);
+		// when typing stops...
+		// timer continues
 		inputTimer = setTimeout(() => {
 			const text = e.target.value.toLowerCase().trim();
 			console.log(text);

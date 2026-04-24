@@ -186,9 +186,89 @@
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;section class="section debounced_search">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="secondary_heading">Debounced Search Input&lt;/h2>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="form_field">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="filter-input">Search tutorials&lt;/label>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" id="reset-button" class="button">Reset&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="card_list" id="tutorial-list">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Apple&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Banana&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Orange&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Grapes&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Strawberry&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Blueberry&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Mango&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Pineapple&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Watermelon&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="card_item">Peach&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="empty_state" id="no-results-message" hidden>No results found.&lt;/p>
+								&lt;/section>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initDebouncedSearch() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".debounced_search");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;let input = root.querySelector("#filter-input");
+								&nbsp;&nbsp;&nbsp;&nbsp;const reset = root.querySelector("#reset-button");
+								&nbsp;&nbsp;&nbsp;&nbsp;const items = root.querySelectorAll(".card_item");
+								&nbsp;&nbsp;&nbsp;&nbsp;const empty = root.querySelector(".empty_state");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;let inputTimer;
+								&nbsp;&nbsp;&nbsp;&nbsp;// listen for typing
+								&nbsp;&nbsp;&nbsp;&nbsp;input.addEventListener("input", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// clear timer with each input
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clearTimeout(inputTimer);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// when typing stops...
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// timer continues
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inputTimer = setTimeout(() =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const text = e.target.value.toLowerCase().trim();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(text);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const matchedItems = Array.from(items).filter((item) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const match = item.textContent.toLowerCase().includes(text);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!match) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.hidden = true;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.hidden = false;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return match;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// if no matches
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (matchedItems.length === 0) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.hidden = false;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.hidden = true;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, 500);
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// reset button
+								&nbsp;&nbsp;&nbsp;&nbsp;reset.addEventListener("click", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clearTimeout(inputTimer);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input.value = "";
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty.hidden = true;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items.forEach((item) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.hidden = false;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initDebouncedSearch();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">

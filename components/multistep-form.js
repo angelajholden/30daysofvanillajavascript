@@ -53,6 +53,7 @@ function initConditionalForm() {
 		}
 
 		// check the radio group for something checked
+		// there can only be one
 		const checked = root.querySelector('input[name="inquiry_type"]:checked');
 		if (!checked) {
 			console.log({ checked });
@@ -64,8 +65,8 @@ function initConditionalForm() {
 			interestError.hidden = true;
 		}
 
-		// not a working form
-		// remove this line if endpoint to submit
+		// this is not a working form
+		// remove if there's an endpoint
 		e.preventDefault();
 	});
 
