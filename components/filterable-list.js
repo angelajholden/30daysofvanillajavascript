@@ -13,6 +13,7 @@ function initFilterableList() {
 		// get text from input
 		let text = e.target.value;
 		text = text.toLowerCase().trim();
+
 		const matchedItems = Array.from(items).filter((item) => {
 			const match = item.textContent.toLowerCase().includes(text);
 			// hide list items if not matched
