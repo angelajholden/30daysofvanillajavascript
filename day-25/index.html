@@ -4,27 +4,27 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 25: Dynamic Breadcrumbs from URL | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Read the current URL path and generate a breadcrumb trail.">
+	<meta property="og:title" content="Day 25: Dynamic Breadcrumbs from URL" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-25/" />
+	<meta property="og:description" content="Read the current URL path and generate a breadcrumb trail." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-25/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/image-lightbox.js"></script>
+	<script type="module" src="../components/basic-routing.js"></script>
 </head>
 
-<body class="teal">
+<body class="navy">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -102,7 +102,7 @@
 					<li><a href="../day-22/">Day 22: Conditional Form Fields</a></li>
 					<li><a href="../day-23/">Day 23: Debounced Search Input</a></li>
 					<li><a href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
-					<li><a href="../day-25/">Day 25: Basic Routing (no framework)</a></li>
+					<li><a class="active" href="../day-25/">Day 25: Dynamic Breadcrumbs from URL</a></li>
 					<li><a href="../day-26/">Day 26: Drag + Drop (reorder list)</a></li>
 					<li><a href="../day-27/">Day 27: Resizable Panels or Split View</a></li>
 					<li><a href="../day-28/">Day 28: Keyboard Shortcuts</a></li>
@@ -133,32 +133,38 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 25: Dynamic Breadcrumbs from URL</h1>
+						<p class="page_intro">Read the current URL path and generate a breadcrumb trail.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>window.location.pathname</li>
+							<li>split("/")</li>
+							<li>filter()</li>
+							<li>string cleanup</li>
+							<li>map()</li>
+							<li>createElement</li>
+							<li>append</li>
+							<li>setting href</li>
+							<li>aria-current="page"</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>Convert day-25 to Day 25</li>
+							<li>Convert url-query-params to URL Query Params</li>
+							<li>Hide breadcrumbs on homepage</li>
+							<li>Add a fallback label map for prettier names</li>
+							<li>Use separators with CSS instead of hardcoding /</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split" target="_blank">String.prototype.split()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">Array.prototype.filter()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">Array.prototype.map()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join" target="_blank">Array.prototype.join()</a></li>
 						</ul>
 					</header>
 					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+						<h2 class="secondary_heading">Dynamic Breadcrumbs from URL</h2>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>

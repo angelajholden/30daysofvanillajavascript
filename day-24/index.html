@@ -4,24 +4,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 24: URL Query Params | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Build a small filter/search UI where the selected state is saved in the URL.">
+	<meta property="og:title" content="Day 24: URL Query Params" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-24/" />
+	<meta property="og:description" content="Build a small filter/search UI where the selected state is saved in the URL." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-24/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/image-lightbox.js"></script>
+	<script type="module" src="../components/url-query-params.js"></script>
 </head>
 
 <body class="teal">
@@ -101,7 +101,7 @@
 					<li><a href="../day-21/">Day 21: Pagination + Load More Button</a></li>
 					<li><a href="../day-22/">Day 22: Conditional Form Fields</a></li>
 					<li><a href="../day-23/">Day 23: Debounced Search Input</a></li>
-					<li><a href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
+					<li><a class="active" href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
 					<li><a href="../day-25/">Day 25: Basic Routing (no framework)</a></li>
 					<li><a href="../day-26/">Day 26: Drag + Drop (reorder list)</a></li>
 					<li><a href="../day-27/">Day 27: Resizable Panels or Split View</a></li>
@@ -133,32 +133,88 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 24: URL Query Params (state in URL)</h1>
+						<p class="page_intro">Build a small filter/search UI where the selected state is saved in the URL.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>URLSearchParams</li>
+							<li>window.location.search</li>
+							<li>Reading query params</li>
+							<li>Setting query params</li>
+							<li>Updating the browser URL with history.pushState() or history.replaceState()</li>
+							<li>Keeping UI state in sync with the URL</li>
+							<li>Restoring state on page load</li>
 						</ul>
-						<h2 class="secondary_heading">Nice extras</h2>
+						<h2 class="secondary_heading">Nice extras (pick 1-2 max)</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>Clear filters button</li>
+							<li>Result count</li>
+							<li>Empty state</li>
+							<li>Preserve query params when multiple filters change</li>
+							<li>Use popstate so browser back/forward restores previous states</li>
+							<li>Remove empty params from the URL</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" target="_blank">URLSearchParams</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams" target="_blank">URL.searchParams</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/location" target="_blank">window.location</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState" target="_blank">history.replaceState()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState" target="_blank">history.pushState()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event" target="_blank">popstate event</a></li>
 						</ul>
 					</header>
 					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+						<h2 class="secondary_heading">Day 24: URL Query Params</h2>
+						<form class="query_params_form" novalidate>
+							<fieldset>
+								<legend>Search Settings</legend>
+								<!-- Search -->
+								<div class="form_row">
+									<label for="search">Search</label>
+									<input type="text" id="search" name="search" placeholder="Search tutorials..." />
+								</div>
+								<!-- Category -->
+								<div class="form_row">
+									<label for="category">Category</label>
+									<select id="category" name="category">
+										<option value="">All</option>
+										<option value="javascript">JavaScript</option>
+										<option value="css">CSS</option>
+										<option value="html">HTML</option>
+									</select>
+								</div>
+								<!-- Difficulty (radio group) -->
+								<div class="form_row">
+									<span>Difficulty</span>
+									<label>
+										<input type="radio" name="difficulty" value="beginner" />
+										Beginner
+									</label>
+									<label>
+										<input type="radio" name="difficulty" value="intermediate" />
+										Intermediate
+									</label>
+									<label>
+										<input type="radio" name="difficulty" value="advanced" />
+										Advanced
+									</label>
+								</div>
+								<!-- In Stock / Featured (checkbox example) -->
+								<div class="form_row">
+									<label>
+										<input type="checkbox" name="featured" value="true" />
+										Featured Only
+									</label>
+								</div>
+								<!-- Actions -->
+								<div class="form_actions">
+									<button type="button" class="button clear_filters">
+										Clear
+									</button>
+								</div>
+							</fieldset>
+						</form>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>

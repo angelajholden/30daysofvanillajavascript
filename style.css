@@ -542,13 +542,13 @@ button {
 	margin: 0 0 1rem;
 }
 
-.main_nav li:nth-of-type(n + 24):nth-of-type(-n + 30) a {
+.main_nav li:nth-of-type(n + 26):nth-of-type(-n + 30) a {
 	pointer-events: none;
 	opacity: 0.5;
 	cursor: not-allowed;
 }
 
-.main_nav li:nth-of-type(n + 24):nth-of-type(-n + 30) a:focus {
+.main_nav li:nth-of-type(n + 26):nth-of-type(-n + 30) a:focus {
 	outline: 2px dashed currentColor;
 	opacity: 0.45;
 }
