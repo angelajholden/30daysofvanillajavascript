@@ -1407,7 +1407,15 @@ dialog[open]::backdrop {
 }
 
 /* Pagination */
-.pagination_load-more .items {
+.load_more,
+.pagination {
+	margin: 1rem 0 0;
+	padding: 1rem 0 0;
+	border-top: 1px solid var(--lt-pink);
+}
+
+.pagination_load-more .load_more-items,
+.pagination_load-more .pagination_items {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
@@ -1434,7 +1442,7 @@ dialog[open]::backdrop {
 	font-size: 1rem;
 }
 
-.pagination_buttons {
+.button_container {
 	margin: 2rem 0 0;
 	padding: 2rem 0 0;
 	text-align: center;

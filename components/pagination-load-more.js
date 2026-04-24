@@ -23,11 +23,13 @@ function countAndSliceData(data, page) {
 }
 
 function renderUI(data) {
-	const root = document.querySelector(".pagination");
-	if (!root) return;
+	const loadMore = document.querySelector(".load_more");
+	const pagination = document.querySelector(".pagination");
+	if (!loadMore || !pagination) return;
 
-	const items = root.querySelector(".items");
-	items.textContent = "";
+	const loadMoreItems = loadMore.querySelector(".load_more-items");
+	const paginationItems = pagination.querySelector(".pagination_items");
+	paginationItems.textContent = "";
 
 	const visible = countAndSliceData(data, page);
 	visible.forEach((item) => {
@@ -51,7 +53,13 @@ function renderUI(data) {
 
 		figure.append(img);
 		article.append(figure, h4, desc, link);
-		items.append(article);
+
+		/*
+		 * comment out either load more or pagination
+		 * they don't work at the same time
+		 */
+		// loadMoreItems.append(article);
+		paginationItems.append(article);
 	});
 }
 
@@ -59,18 +67,14 @@ async function init() {
 	const data = await fetchLoadPaginationData();
 	if (!data) return;
 
-	/**
-	 * @TODO
-	 * You’ll also want to prevent page from going:
-	 * below 0 and above the last page
-	 * Otherwise your slice can go weird or empty.
-	 */
-
 	const prev = document.querySelector(".prev_button");
 	prev.disabled = true;
 
 	const next = document.querySelector(".next_button");
 	next.disabled = false;
+
+	const load = document.querySelector(".load_more-button");
+	load.disabled = false;
 
 	const totalPages = Math.ceil(data.length / itemsPerPage);
 
@@ -98,6 +102,17 @@ async function init() {
 		}
 		if (page === totalPages - 1) {
 			next.disabled = true;
+		}
+	});
+
+	load.addEventListener("click", () => {
+		if (page < totalPages - 1) {
+			page++;
+			console.log({ page });
+			renderUI(data);
+		}
+		if (page === totalPages - 1) {
+			load.disabled = true;
 		}
 	});
 
