@@ -4,17 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 23: Debounced Search Input | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Build a form where specific fields appear or disappear based on the user's answers.">
+	<meta property="og:title" content="Day 23: Debounced Search Input" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-23/" />
+	<meta property="og:description" content="Build a form where specific fields appear or disappear based on the user's answers." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-23/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
 	<script type="module" src="../components/image-lightbox.js"></script>
 </head>
 
-<body class="teal">
+<body class="pink">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -99,8 +99,8 @@
 					<li><a href="../day-19/">Day 19: Transforming API Data</a></li>
 					<li><a href="../day-20/">Day 20: Image Lightbox / Gallery Viewer</a></li>
 					<li><a href="../day-21/">Day 21: Pagination + Load More Button</a></li>
-					<li><a href="../day-22/">Day 22: Multi-Step Form</a></li>
-					<li><a href="../day-23/">Day 23: Debounced Search Input</a></li>
+					<li><a href="../day-22/">Day 22: Conditional Form Fields</a></li>
+					<li><a class="active" href="../day-23/">Day 23: Debounced Search Input</a></li>
 					<li><a href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
 					<li><a href="../day-25/">Day 25: Basic Routing (no framework)</a></li>
 					<li><a href="../day-26/">Day 26: Drag + Drop (reorder list)</a></li>
@@ -133,32 +133,56 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 23: Debounced Search Input</h1>
+						<p class="page_intro">Build a form where specific fields appear or disappear based on the user's selected answers.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>setTimeout</li>
+							<li>clearTimeout</li>
+							<li>Storing and resetting a timer variable (basic state)</li>
+							<li>input event</li>
+							<li>Event listeners</li>
+							<li>toLowerCase()</li>
+							<li>includes()</li>
+							<li>Conditional logic for filtering</li>
+							<li>Showing/hiding DOM elements</li>
 						</ul>
-						<h2 class="secondary_heading">Nice extras</h2>
+						<h2 class="secondary_heading">Nice extras (pick 1-2 max)</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>“No results found” message</li>
+							<li>Minimum character threshold (e.g. only search after 2 characters)</li>
+							<li>Clear input button (reset search + list)</li>
+							<li>Result count display (e.g. “5 results”)</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout" target="_blank">setTimeout</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/clearTimeout" target="_blank">clearTimeout</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event" target="_blank">input event</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes" target="_blank">String.prototype.includes</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase" target="_blank">String.prototype.toLowerCase</a></li>
 						</ul>
 					</header>
 					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+						<h2 class="secondary_heading">Debounced Search Input</h2>
+						<div class="form_field">
+							<label for="filter-input">Search tutorials</label>
+							<input type="text" id="filter-input" name="filter-input" placeholder="Search by keyword">
+							<button type="button" id="reset-button" class="button">Reset</button>
+						</div>
+						<ul class="card_list" id="tutorial-list">
+							<li class="card_item">Apple</li>
+							<li class="card_item">Banana</li>
+							<li class="card_item">Orange</li>
+							<li class="card_item">Grapes</li>
+							<li class="card_item">Strawberry</li>
+							<li class="card_item">Blueberry</li>
+							<li class="card_item">Mango</li>
+							<li class="card_item">Pineapple</li>
+							<li class="card_item">Watermelon</li>
+							<li class="card_item">Peach</li>
+						</ul>
+						<p class="empty_state" id="no-results-message" hidden>No results found.</p>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>

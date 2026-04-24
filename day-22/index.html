@@ -4,17 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 22: Conditional Form Fields | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Build a form where specific fields appear or disappear based on the user's answers.">
+	<meta property="og:title" content="Day 22: Conditional Form Fields" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-22/" />
+	<meta property="og:description" content="Build a form where specific fields appear or disappear based on the user's answers." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-22/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
 	<script type="module" src="../components/image-lightbox.js"></script>
 </head>
 
-<body class="teal">
+<body class="navy">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -99,7 +99,7 @@
 					<li><a href="../day-19/">Day 19: Transforming API Data</a></li>
 					<li><a href="../day-20/">Day 20: Image Lightbox / Gallery Viewer</a></li>
 					<li><a href="../day-21/">Day 21: Pagination + Load More Button</a></li>
-					<li><a href="../day-22/">Day 22: Multi-Step Form</a></li>
+					<li><a class="active" href="../day-22/">Day 22: Conditional Form Fields</a></li>
 					<li><a href="../day-23/">Day 23: Debounced Search Input</a></li>
 					<li><a href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
 					<li><a href="../day-25/">Day 25: Basic Routing (no framework)</a></li>
@@ -133,32 +133,125 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 22: Conditional Form Fields</h1>
+						<p class="page_intro">Build a form where specific fields appear or disappear based on the user's selected answers.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>reading selected form values</li>
+							<li>using change events</li>
+							<li>showing and hiding conditional sections</li>
+							<li>toggling hidden</li>
+							<li>matching selected values to field groups</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>use radio buttons or a select menu</li>
+							<li>use data-* attributes to connect answers to field groups</li>
+							<li>add a visible active state to the selected option</li>
+							<li>use hidden for inactive groups</li>
+							<li>include one simple submit button</li>
+							<li>keep validation light</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event" target="_blank">change event</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checked" target="_blank">HTMLInputElement.checked</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/value" target="_blank">HTMLSelectElement.value</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank">dataset</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden" target="_blank">hidden</a></li>
 						</ul>
 					</header>
 					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+						<h2 class="secondary_heading">Conditional Form</h2>
+						<form class="conditional_form" novalidate>
+							<div class="form_field">
+								<label for="name">Name</label>
+								<input type="text" id="name" name="name">
+							</div>
+							<div class="form_field">
+								<label for="email">Email</label>
+								<input type="email" id="email" name="email">
+							</div>
+							<fieldset class="form_fieldset">
+								<legend>What are you interested in?</legend>
+								<label>
+									<input type="radio" name="inquiry_type" value="website" data-show="website-fields">
+									Website project
+								</label>
+								<label>
+									<input type="radio" name="inquiry_type" value="consulting" data-show="consulting-fields">
+									Consulting session
+								</label>
+								<label>
+									<input type="radio" name="inquiry_type" value="code-review" data-show="code-review-fields">
+									Code review
+								</label>
+							</fieldset>
+							<div class="conditional_group" id="website-fields" hidden>
+								<div class="form_field">
+									<label for="website-type">What kind of website do you need?</label>
+									<select id="website-type" name="website_type">
+										<option value="">Choose one</option>
+										<option value="landing-page">Landing page</option>
+										<option value="portfolio">Portfolio site</option>
+										<option value="business-site">Business site</option>
+										<option value="existing-site-updates">Updates to an existing site</option>
+									</select>
+								</div>
+								<div class="form_field">
+									<label for="website-timeline">What is your ideal timeline?</label>
+									<select id="website-timeline" name="website_timeline">
+										<option value="">Choose one</option>
+										<option value="asap">As soon as possible</option>
+										<option value="1-month">Within 1 month</option>
+										<option value="2-3-months">2-3 months</option>
+										<option value="flexible">Flexible</option>
+									</select>
+								</div>
+							</div>
+							<div class="conditional_group" id="consulting-fields" hidden>
+								<div class="form_field">
+									<label for="consulting-topic">What do you want help with?</label>
+									<select id="consulting-topic" name="consulting_topic">
+										<option value="">Choose one</option>
+										<option value="html-css">HTML/CSS</option>
+										<option value="javascript">JavaScript</option>
+										<option value="accessibility">Accessibility</option>
+										<option value="career">Frontend career direction</option>
+									</select>
+								</div>
+								<div class="form_field">
+									<label for="session-length">Preferred session length</label>
+									<select id="session-length" name="session_length">
+										<option value="">Choose one</option>
+										<option value="30">30 minutes</option>
+										<option value="60">60 minutes</option>
+										<option value="90">90 minutes</option>
+									</select>
+								</div>
+							</div>
+							<div class="conditional_group" id="code-review-fields" hidden>
+								<div class="form_field">
+									<label for="repo-url">GitHub repo or project URL</label>
+									<input type="url" id="repo-url" name="repo_url">
+								</div>
+								<div class="form_field">
+									<label for="review-focus">What should I focus on?</label>
+									<select id="review-focus" name="review_focus">
+										<option value="">Choose one</option>
+										<option value="html-structure">HTML structure</option>
+										<option value="css-layout">CSS/layout</option>
+										<option value="javascript">JavaScript</option>
+										<option value="accessibility">Accessibility</option>
+									</select>
+								</div>
+							</div>
+							<div class="form_field">
+								<label for="message">Anything else I should know?</label>
+								<textarea id="message" name="message" rows="5"></textarea>
+							</div>
+							<button type="submit" class="button">Submit Inquiry</button>
+						</form>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
