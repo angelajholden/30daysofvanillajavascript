@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/image-lightbox.js"></script>
+	<script type="module" src="../components/multistep-form.js"></script>
 </head>
 
 <body class="navy">
@@ -161,21 +161,24 @@
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden" target="_blank">hidden</a></li>
 						</ul>
 					</header>
-					<section class="section persistent_task-list">
+					<section class="section">
 						<h2 class="secondary_heading">Conditional Form</h2>
 						<form class="conditional_form" novalidate>
 							<div class="form_field">
 								<label for="name">Name</label>
-								<input type="text" id="name" name="name">
+								<input type="text" id="name" name="name" required>
+								<p class="error_message" id="name-error" hidden>Please enter your name.</p>
 							</div>
 							<div class="form_field">
 								<label for="email">Email</label>
-								<input type="email" id="email" name="email">
+								<input type="email" id="email" name="email" required>
+								<p class="error_message" id="email-error" hidden>Please enter a valid email.</p>
 							</div>
+
 							<fieldset class="form_fieldset">
 								<legend>What are you interested in?</legend>
 								<label>
-									<input type="radio" name="inquiry_type" value="website" data-show="website-fields">
+									<input type="radio" name="inquiry_type" value="website" data-show="website-fields" required>
 									Website project
 								</label>
 								<label>
@@ -187,6 +190,8 @@
 									Code review
 								</label>
 							</fieldset>
+							<p class="error_message" id="interest-error" hidden>Please select your interest.</p>
+
 							<div class="conditional_group" id="website-fields" hidden>
 								<div class="form_field">
 									<label for="website-type">What kind of website do you need?</label>
@@ -246,11 +251,22 @@
 									</select>
 								</div>
 							</div>
+
+							<!-- textarea -->
 							<div class="form_field">
 								<label for="message">Anything else I should know?</label>
 								<textarea id="message" name="message" rows="5"></textarea>
 							</div>
-							<button type="submit" class="button">Submit Inquiry</button>
+
+							<!-- buttons -->
+							<div class="form_buttons">
+								<!-- submit the form -->
+								<button type="submit" class="button">Send Inquiry</button>
+								<!-- reset the form -->
+								<button type="reset" class="text_button">Reset</button>
+							</div>
+
+							<p class="success_message" id="form-success" hidden>Your form was submitted.</p>
 						</form>
 					</section>
 					<section class="section">

@@ -705,6 +705,10 @@ textarea {
 	align-items: center;
 }
 
+.error_message {
+	color: red;
+}
+
 /* Accordions */
 .accordion_item {
 	margin: 0 0 0.5rem;
