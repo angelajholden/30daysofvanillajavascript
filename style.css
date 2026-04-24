@@ -1309,7 +1309,7 @@ dialog[open]::backdrop {
 
 /* Transformed Data Columns */
 .columns_wrap {
-	columns: 3 2rem;
+	columns: 3 auto;
 }
 
 .columns_wrap .article {
@@ -1329,19 +1329,15 @@ dialog[open]::backdrop {
 	}
 }
 
-@media (max-width: 600px) {
-	.columns_wrap {
-		columns: 1 auto;
-	}
-}
-
 /* Image Gallery / Lightbox */
 .gallery_wrap {
 	columns: 3 auto;
 }
 
-.gallery_wrap .figure {
-	margin: 0 0 1rem;
+.lightbox_trigger {
+	display: block;
+	padding: 0 0 1rem;
+	break-inside: avoid;
 }
 
 .gallery_wrap img {
