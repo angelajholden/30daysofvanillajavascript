@@ -1410,6 +1410,53 @@ dialog[open]::backdrop {
 	stroke: var(--white);
 }
 
+/* Pagination */
+.pagination_load-more .items {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+}
+
+.pagination_load-more .figure {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+}
+
+.pagination_load-more img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.pagination_load-more h4 {
+	margin: 0.5rem 0;
+}
+
+.pagination_load-more p {
+	margin: 0 0 0.5rem;
+	font-size: 1rem;
+}
+
+.pagination_buttons {
+	margin: 2rem 0 0;
+	padding: 2rem 0 0;
+	text-align: center;
+	border-top: 1px solid var(--lt-pink);
+}
+
+@media (max-width: 1200px) {
+	.pagination_load-more .items {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.pagination_load-more .items {
+		grid-template-columns: 1fr;
+	}
+}
+
 /* About Me */
 .about_me {
 	display: grid;

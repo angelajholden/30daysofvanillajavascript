@@ -12,11 +12,9 @@ async function fetchLoadPaginationData() {
 }
 
 let page = 0;
-function countAndSliceData(data, page) {
-	const itemsPerPage = 3;
-	const total = data.length / itemsPerPage;
-	const totalRounded = Math.ceil(total);
+const itemsPerPage = 6;
 
+function countAndSliceData(data, page) {
 	let start = page * itemsPerPage;
 	let end = start + itemsPerPage;
 
@@ -33,14 +31,18 @@ function renderUI(data) {
 
 	const visible = countAndSliceData(data, page);
 	visible.forEach((item) => {
-		const div = document.createElement("div");
-		const h4 = document.createElement("h4");
+		const article = document.createElement("article");
+		article.classList.add("article");
+
 		const figure = document.createElement("figure");
+		figure.classList.add("figure");
+
 		const img = document.createElement("img");
+		const h4 = document.createElement("h4");
 		const desc = document.createElement("p");
 		const link = document.createElement("a");
 
-		h4.textContent = `${item.id}: ${item.title}`;
+		h4.textContent = `${item.id}. ${item.title}`;
 		img.src = item.image;
 		img.alt = item.title;
 		desc.textContent = item.description;
@@ -48,8 +50,8 @@ function renderUI(data) {
 		link.textContent = "Read more... ";
 
 		figure.append(img);
-		div.append(h4, figure, desc, link);
-		items.append(div);
+		article.append(figure, h4, desc, link);
+		items.append(article);
 	});
 }
 
@@ -65,16 +67,38 @@ async function init() {
 	 */
 
 	const prev = document.querySelector(".prev_button");
+	prev.disabled = true;
+
 	const next = document.querySelector(".next_button");
+	next.disabled = false;
+
+	const totalPages = Math.ceil(data.length / itemsPerPage);
+
+	console.log({ totalPages });
+	console.log({ page });
 
 	prev.addEventListener("click", () => {
-		page--;
-		renderUI(data);
+		if (page > 0) {
+			page--;
+			console.log({ page });
+			renderUI(data);
+			next.disabled = false;
+		}
+		if (page === 0) {
+			prev.disabled = true;
+		}
 	});
 
 	next.addEventListener("click", () => {
-		page++;
-		renderUI(data);
+		if (page < totalPages - 1) {
+			page++;
+			console.log({ page });
+			renderUI(data);
+			prev.disabled = false;
+		}
+		if (page === totalPages - 1) {
+			next.disabled = true;
+		}
 	});
 
 	renderUI(data);

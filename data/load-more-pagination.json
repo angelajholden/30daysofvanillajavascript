@@ -3,210 +3,210 @@
 		"id": 1,
 		"title": "Accordion Component",
 		"description": "Toggle sections of content open and closed.",
-		"image": "https://picsum.photos/400/250?random=31",
+		"image": "/images/gallery/aliona-gumeniuk-jeAjT87nbjM-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 2,
 		"title": "Modal Dialog",
 		"description": "Open and close a dialog with focus management.",
-		"image": "https://picsum.photos/400/250?random=32",
+		"image": "/images/gallery/brooke-lark-qdyBKWSzpSI-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 3,
 		"title": "Tabs Component",
 		"description": "Switch between panels using tab buttons.",
-		"image": "https://picsum.photos/400/250?random=33",
+		"image": "/images/gallery/corina-rainer-sScNrKruEPs-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 4,
 		"title": "Toast Notifications",
 		"description": "Show temporary alert messages.",
-		"image": "https://picsum.photos/400/250?random=34",
+		"image": "/images/gallery/diliara-garifullina-I48gnI1Qs5o-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 5,
 		"title": "Filterable List",
 		"description": "Search and filter items in real time.",
-		"image": "https://picsum.photos/400/250?random=35",
+		"image": "/images/gallery/emre-NZMeJsrMC8U-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 6,
 		"title": "Theme Toggle",
 		"description": "Switch themes and store preference.",
-		"image": "https://picsum.photos/400/250?random=36",
+		"image": "/images/gallery/alexander-schimmeck-2zJhA9RSkys-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 7,
 		"title": "Form Validation",
 		"description": "Validate inputs and show error states.",
-		"image": "https://picsum.photos/400/250?random=37",
+		"image": "/images/gallery/heather-barnes-CNDiESvWfrk-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 8,
 		"title": "Task List",
 		"description": "Add and remove tasks with local state.",
-		"image": "https://picsum.photos/400/250?random=38",
+		"image": "/images/gallery/monika-grabkowska-EbRBhZ-I_p8-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 9,
 		"title": "Social Sharing",
 		"description": "Generate share links dynamically.",
-		"image": "https://picsum.photos/400/250?random=39",
+		"image": "/images/gallery/aliona-gumeniuk-jeAjT87nbjM-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 10,
 		"title": "Cookie Consent Banner",
 		"description": "Store and respect user consent.",
-		"image": "https://picsum.photos/400/250?random=40",
+		"image": "/images/gallery/naveed-pervaiz-IlnF2g_3tpY-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 11,
 		"title": "Copy to Clipboard",
 		"description": "Copy text with feedback messaging.",
-		"image": "https://picsum.photos/400/250?random=41",
+		"image": "/images/gallery/shelley-pauls-I58f47LRQYM-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 12,
 		"title": "Scroll Interactions",
 		"description": "React to scroll position and direction.",
-		"image": "https://picsum.photos/400/250?random=42",
+		"image": "/images/gallery/steve-doig-FaMBWkmvPyY-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 13,
 		"title": "Scroll Progress Indicator",
 		"description": "Show scroll progress as a bar.",
-		"image": "https://picsum.photos/400/250?random=43",
+		"image": "/images/gallery/t-j-breshears-Hi86bgXS4iE-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 14,
 		"title": "Sortable Table",
 		"description": "Sort table rows by column.",
-		"image": "https://picsum.photos/400/250?random=44",
+		"image": "/images/gallery/anna-bratiychuk-IeNoBmJ011g-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 15,
 		"title": "Image Lightbox",
 		"description": "View images in a larger overlay.",
-		"image": "https://picsum.photos/400/250?random=45",
+		"image": "/images/gallery/annie-spratt-e92dhXE8PUg-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 16,
 		"title": "Dropdown Menu",
 		"description": "Toggle navigation dropdowns.",
-		"image": "https://picsum.photos/400/250?random=46",
+		"image": "/images/gallery/annie-spratt-eZk9w9RBHRo-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 17,
 		"title": "Multi-Step Form",
 		"description": "Break forms into steps with progress.",
-		"image": "https://picsum.photos/400/250?random=47",
+		"image": "/images/gallery/boys-in-bristol-photography-uOeXhx5JV04-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 18,
 		"title": "API Fetch + Render",
 		"description": "Load data and render UI components.",
-		"image": "https://picsum.photos/400/250?random=48",
+		"image": "/images/gallery/christiann-koepke-AigxB1zfRVo-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 19,
 		"title": "Pagination",
 		"description": "Navigate through pages of data.",
-		"image": "https://picsum.photos/400/250?random=49",
+		"image": "/images/gallery/scott-eckersley-n_q3Dyzv9jQ-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 20,
 		"title": "Load More Button",
 		"description": "Append additional items on demand.",
-		"image": "https://picsum.photos/400/250?random=50",
+		"image": "/images/gallery/clifford-VobvKmG-StA-unsplash 2.jpg",
 		"url": "#"
 	},
 	{
 		"id": 21,
 		"title": "Transform API Data",
 		"description": "Restructure data for UI rendering.",
-		"image": "https://picsum.photos/400/250?random=51",
+		"image": "/images/gallery/cristina-anne-costello-4jsmBl30x_A-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 22,
 		"title": "Debounced Search",
 		"description": "Delay input processing for performance.",
-		"image": "https://picsum.photos/400/250?random=52",
+		"image": "/images/gallery/daniel-Tw2cU6VvTZo-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 23,
 		"title": "URL Query Params",
 		"description": "Store UI state in the URL.",
-		"image": "https://picsum.photos/400/250?random=53",
+		"image": "/images/gallery/deborah-rainford-lk63vqjc1nA-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 24,
 		"title": "Basic Routing",
 		"description": "Switch views without reloading.",
-		"image": "https://picsum.photos/400/250?random=54",
+		"image": "/images/gallery/merino-springtime-minis.jpg",
 		"url": "#"
 	},
 	{
 		"id": 25,
 		"title": "Drag and Drop",
 		"description": "Reorder items with drag interactions.",
-		"image": "https://picsum.photos/400/250?random=55",
+		"image": "/images/gallery/steward-masweneng-AULRIvENksc-unsplash 2.jpg",
 		"url": "#"
 	},
 	{
 		"id": 26,
 		"title": "Resizable Panels",
 		"description": "Adjust layout panels dynamically.",
-		"image": "https://picsum.photos/400/250?random=56",
+		"image": "/images/gallery/michelle-atkinson-aYgTkQRVUAk-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 27,
 		"title": "Keyboard Shortcuts",
 		"description": "Trigger actions with key combos.",
-		"image": "https://picsum.photos/400/250?random=57",
+		"image": "/images/gallery/mike-kenneally-TD4DBagg2wE-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 28,
 		"title": "Intersection Observer",
 		"description": "Trigger animations on scroll.",
-		"image": "https://picsum.photos/400/250?random=58",
+		"image": "/images/gallery/nathan-dumlao-nBJHO6wmRWw-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 29,
 		"title": "Settings Panel",
 		"description": "Store user preferences locally.",
-		"image": "https://picsum.photos/400/250?random=59",
+		"image": "/images/gallery/nature-uninterrupted-photography-v-3NQ3pmWkY-unsplash.jpg",
 		"url": "#"
 	},
 	{
 		"id": 30,
 		"title": "YouTube Embed Loader",
 		"description": "Load video iframe on click.",
-		"image": "https://picsum.photos/400/250?random=60",
+		"image": "/images/gallery/scott-eckersley-n_q3Dyzv9jQ-unsplash.jpg",
 		"url": "#"
 	}
 ]
