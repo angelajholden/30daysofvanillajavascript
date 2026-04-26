@@ -4,27 +4,27 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 26: Drag + Drop (Reorder List) | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Build a simple list where users can drag items up or down to reorder them.">
+	<meta property="og:title" content="Day 26: Drag + Drop (reorder list)" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-26/" />
+	<meta property="og:description" content="Build a simple list where users can drag items up or down to reorder them." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-26/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script defer src="../script.js"></script>
-	<script type="module" src="../components/image-lightbox.js"></script>
+	<script type="module" src="../components/drag-drop.js"></script>
 </head>
 
-<body class="teal">
+<body class="pink">
 	<header class="header">
 		<div class="primary-logo">
 			<a href="../">
@@ -103,7 +103,7 @@
 					<li><a href="../day-23/">Day 23: Debounced Search Input</a></li>
 					<li><a href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
 					<li><a href="../day-25/">Day 25: Dynamic Breadcrumbs from URL</a></li>
-					<li><a href="../day-26/">Day 26: Drag + Drop (reorder list)</a></li>
+					<li><a class="active" href="../day-26/">Day 26: Drag + Drop (reorder list)</a></li>
 					<li><a href="../day-27/">Day 27: Resizable Panels or Split View</a></li>
 					<li><a href="../day-28/">Day 28: Keyboard Shortcuts</a></li>
 					<li><a href="../day-29/">Day 29: Intersection Observer (scroll triggers)</a></li>
@@ -133,32 +133,46 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 26: Drag + Drop (reorder list)</h1>
+						<p class="page_intro">Build a simple list where users can drag items up or down to reorder them.</p>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>Drag and Drop API</li>
+							<li>dragstart</li>
+							<li>dragover</li>
+							<li>dragend</li>
+							<li>e.preventDefault()</li>
+							<li>closest()</li>
+							<li>insertBefore()</li>
+							<li>DOM reordering</li>
+							<li>class toggling</li>
 						</ul>
 						<h2 class="secondary_heading">Nice extras</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>Add a drag handle</li>
+							<li>Show the current order as text</li>
+							<li>Save reordered list to localStorage</li>
+							<li>Add keyboard reorder buttons</li>
+							<li>Add a “Reset order” button</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">HTML Drag and Drop API</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragstart_event" target="_blank">HTMLElement: dragstart event</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragover_event" target="_blank">HTMLElement: dragover event</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragend_event" target="_blank">HTMLElement: dragend event</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer" target="_blank">DataTransfer</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest" target="_blank">Element.closest()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore" target="_blank">Node.insertBefore()</a></li>
 						</ul>
 					</header>
-					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+					<section class="section">
+						<h2 class="secondary_heading">Drag + Drop (reorder list)</h2>
+						<ul class="drag_list">
+							<li draggable="true">Item One</li>
+							<li draggable="true">Item Two</li>
+							<li draggable="true">Item Three</li>
+						</ul>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
