@@ -1151,6 +1151,11 @@ dialog[open]::backdrop {
 	margin: 0 auto;
 }
 
+.consent_button-wrap {
+	display: flex;
+	gap: 1rem;
+}
+
 /* Scroll to Top */
 .scroll_top {
 	position: fixed;

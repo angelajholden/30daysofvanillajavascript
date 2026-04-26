@@ -13,13 +13,22 @@ function initCreateCookie(name, value, hours) {
 function initReadCookie(name) {
 	const cookies = document.cookie.split(";");
 	for (let cookie of cookies) {
-		const [key, value] = cookie.trim().split("=");
+		const [key, ...rest] = cookie.trim().split("=");
+		const value = rest.join("=");
 		if (key === name) return value;
 	}
 	return false;
 }
 
 function initCookieConsent() {
+	// check to see if cookie is present + allows tracking
+	const consent = initReadCookie("cookieConsent");
+	if (consent === "Accept") {
+		// load your tracking script here
+		return;
+	}
+	if (consent === "Reject") return;
+
 	const header = document.querySelector(".header");
 	if (!header) return;
 
@@ -28,13 +37,6 @@ function initCookieConsent() {
 	banner.setAttribute("role", "region");
 	banner.setAttribute("aria-label", "Cookie consent");
 	banner.classList.add("consent_banner");
-
-	// check to see if cookie is present + allows tracking
-	const consent = initReadCookie("cookieConsent");
-	if (consent === "accept") {
-		banner.setAttribute("hidden", "");
-		// load your tracking script here
-	}
 
 	// create all the things
 	const wrap = document.createElement("div");
@@ -50,7 +52,7 @@ function initCookieConsent() {
 	const p = document.createElement("p");
 	p.append("We use cookies to improve your experience, analyze site usage, and support essential functionality. You can choose to accept or reject non-essential cookies. For more details, please review our ", link, ".");
 
-	const btns = ["accept", "reject"];
+	const btns = ["Accept", "Reject"];
 	btns.forEach((btn) => {
 		const button = document.createElement("button");
 		button.setAttribute("type", "button");
@@ -61,8 +63,8 @@ function initCookieConsent() {
 		button.addEventListener("click", () => {
 			// set cookie for 30 days = 720 hours
 			initCreateCookie("cookieConsent", btn, 720);
-			banner.setAttribute("hidden", "");
-			if (btn === "accept") {
+			banner.remove();
+			if (btn === "Accept") {
 				// load tracking script here
 			}
 		});
