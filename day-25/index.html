@@ -21,7 +21,6 @@
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script type="module" src="../script.js"></script>
-	<!-- <script type="module" src="../components/dynamic-breadcrumbs.js"></script> -->
 </head>
 
 <body class="navy">
@@ -164,13 +163,73 @@
 						</ul>
 					</header>
 					<section class="section">
-						<h2 class="secondary_heading">Dynamic Breadcrumbs from URL</h2>
-					</section>
-					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;!-- use createElement to render UI -->
+								&lt;nav class="breadcrumbs">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="bread_list">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li>&lt;a href="https://30daysofvanillajavascript.com">Home&lt;/a>&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li>&lt;a href="/day-25/" aria-current="page">day 25&lt;/a>&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul>
+								&lt;/nav>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initDynamicBreadcrumbs() {
+								&nbsp;&nbsp;&nbsp;&nbsp;// stops this from rendering on the homepage
+								&nbsp;&nbsp;&nbsp;&nbsp;const pathIndex = "/index.html";
+								&nbsp;&nbsp;&nbsp;&nbsp;const pathSlash = "/";
+								&nbsp;&nbsp;&nbsp;&nbsp;const pathname = window.location.pathname;
+								&nbsp;&nbsp;&nbsp;&nbsp;if (pathIndex === pathname || pathSlash === pathname) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".page_header");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const pathSplit = pathname.split("/");
+								&nbsp;&nbsp;&nbsp;&nbsp;const filteredPath = pathSplit.filter((path) =&gt; path !== "" && path !== "index.html");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const nav = document.createElement("nav");
+								&nbsp;&nbsp;&nbsp;&nbsp;nav.classList.add("breadcrumbs");
+								&nbsp;&nbsp;&nbsp;&nbsp;const ul = document.createElement("ul");
+								&nbsp;&nbsp;&nbsp;&nbsp;ul.classList.add("bread_list");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// static home breadcrumb
+								&nbsp;&nbsp;&nbsp;&nbsp;const homeItem = document.createElement("li");
+								&nbsp;&nbsp;&nbsp;&nbsp;const homeLink = document.createElement("a");
+								&nbsp;&nbsp;&nbsp;&nbsp;homeLink.href = window.location.origin;
+								&nbsp;&nbsp;&nbsp;&nbsp;homeLink.textContent = "Home";
+								&nbsp;&nbsp;&nbsp;&nbsp;homeItem.append(homeLink);
+
+								&nbsp;&nbsp;&nbsp;&nbsp;filteredPath.forEach((crumb, index) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const crumbText = crumb.replaceAll("-", " ");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const li = document.createElement("li");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const link = document.createElement("a");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// works for shallow paths
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.href = `/${crumb}/`;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.textContent = crumbText;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// get last item in array
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (index === filteredPath.length - 1) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.setAttribute("aria-current", "page");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;li.append(link);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ul.append(homeItem, li);
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;nav.append(ul);
+								&nbsp;&nbsp;&nbsp;&nbsp;root.insertAdjacentElement("afterbegin", nav);
+								}
+								initDynamicBreadcrumbs();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">

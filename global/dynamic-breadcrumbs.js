@@ -1,5 +1,5 @@
 function initDynamicBreadcrumbs() {
-	// stops this from working on the homepage
+	// stops this from rendering on the homepage
 	const pathIndex = "/index.html";
 	const pathSlash = "/";
 	const pathname = window.location.pathname;
