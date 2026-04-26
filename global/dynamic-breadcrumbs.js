@@ -9,37 +9,34 @@ function initDynamicBreadcrumbs() {
 	if (!root) return;
 
 	const pathSplit = pathname.split("/");
-
-	let filteredPath = pathSplit.filter((path) => path !== "" && path !== "index.html");
-
-	// ​​this is a visualization from nanoaquila :)
-
-	// (path) => path !== "something"
-
-	// function
-	// functionName(path) {
-	// 		return path !== "something";
-	// }
+	const filteredPath = pathSplit.filter((path) => path !== "" && path !== "index.html");
 
 	const nav = document.createElement("nav");
 	nav.classList.add("breadcrumbs");
 	const ul = document.createElement("ul");
 	ul.classList.add("bread_list");
 
-	filteredPath.forEach((crumb) => {
-		const crumbText = crumb.replaceAll("-", " ");
-		const homeItem = document.createElement("li");
-		const homeLink = document.createElement("a");
+	// static home breadcrumb
+	const homeItem = document.createElement("li");
+	const homeLink = document.createElement("a");
+	homeLink.href = window.location.origin;
+	homeLink.textContent = "Home";
+	homeItem.append(homeLink);
 
-		homeLink.href = origin;
-		homeLink.textContent = "Home";
-		homeItem.append(homeLink);
+	filteredPath.forEach((crumb, index) => {
+		const crumbText = crumb.replaceAll("-", " ");
 
 		const li = document.createElement("li");
 		const link = document.createElement("a");
 
+		// works for shallow paths
 		link.href = `/${crumb}/`;
 		link.textContent = crumbText;
+
+		// get last item in array
+		if (index === filteredPath.length - 1) {
+			link.setAttribute("aria-current", "page");
+		}
 
 		li.append(link);
 		ul.append(homeItem, li);
