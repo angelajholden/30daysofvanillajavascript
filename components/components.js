@@ -20,7 +20,7 @@ import "./pagination-load-more.js";
 import "./multistep-form.js";
 import "./debounced-search.js";
 import "./url-query-params.js";
-import "./basic-routing.js";
+// import "./dynamic-breadcrumbs.js";
 import "./drag-drop.js";
 import "./split-view.js";
 import "./keyboard-shortcuts.js";

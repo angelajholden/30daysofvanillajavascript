@@ -27,8 +27,8 @@ function renderUI(data) {
 	const pagination = document.querySelector(".pagination");
 	if (!loadMore || !pagination) return;
 
-	const loadMoreItems = loadMore.querySelector(".load_more-items");
-	const paginationItems = pagination.querySelector(".pagination_items");
+	const loadMoreItems = loadMore.querySelector(".items");
+	const paginationItems = pagination.querySelector(".items");
 	paginationItems.textContent = "";
 
 	const visible = countAndSliceData(data, page);
@@ -67,54 +67,56 @@ async function init() {
 	const data = await fetchLoadPaginationData();
 	if (!data) return;
 
-	const prev = document.querySelector(".prev_button");
-	prev.disabled = true;
-
-	const next = document.querySelector(".next_button");
-	next.disabled = false;
-
-	const load = document.querySelector(".load_more-button");
-	load.disabled = false;
-
 	const totalPages = Math.ceil(data.length / itemsPerPage);
 
 	console.log({ totalPages });
 	console.log({ page });
 
-	prev.addEventListener("click", () => {
-		if (page > 0) {
-			page--;
-			console.log({ page });
-			renderUI(data);
-			next.disabled = false;
-		}
-		if (page === 0) {
-			prev.disabled = true;
-		}
-	});
+	const prev = document.querySelector(".prev_button");
+	const next = document.querySelector(".next_button");
+	if (prev || next) {
+		prev.disabled = true;
+		next.disabled = false;
 
-	next.addEventListener("click", () => {
-		if (page < totalPages - 1) {
-			page++;
-			console.log({ page });
-			renderUI(data);
-			prev.disabled = false;
-		}
-		if (page === totalPages - 1) {
-			next.disabled = true;
-		}
-	});
+		prev.addEventListener("click", () => {
+			if (page > 0) {
+				page--;
+				console.log({ page });
+				renderUI(data);
+				next.disabled = false;
+			}
+			if (page === 0) {
+				prev.disabled = true;
+			}
+		});
 
-	load.addEventListener("click", () => {
-		if (page < totalPages - 1) {
-			page++;
-			console.log({ page });
-			renderUI(data);
-		}
-		if (page === totalPages - 1) {
-			load.disabled = true;
-		}
-	});
+		next.addEventListener("click", () => {
+			if (page < totalPages - 1) {
+				page++;
+				console.log({ page });
+				renderUI(data);
+				prev.disabled = false;
+			}
+			if (page === totalPages - 1) {
+				next.disabled = true;
+			}
+		});
+	}
+
+	const load = document.querySelector(".load_more-button");
+	if (load) {
+		load.disabled = false;
+		load.addEventListener("click", () => {
+			if (page < totalPages - 1) {
+				page++;
+				console.log({ page });
+				renderUI(data);
+			}
+			if (page === totalPages - 1) {
+				load.disabled = true;
+			}
+		});
+	}
 
 	renderUI(data);
 }

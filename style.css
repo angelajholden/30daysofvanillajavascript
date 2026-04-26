@@ -1410,16 +1410,14 @@ dialog[open]::backdrop {
 	stroke: var(--white);
 }
 
-/* Pagination */
-.load_more,
-.pagination {
+/* Pagination & Load More */
+.items {
 	margin: 1rem 0 0;
 	padding: 1rem 0 0;
 	border-top: 1px solid var(--lt-pink);
 }
 
-.pagination_load-more .load_more-items,
-.pagination_load-more .pagination_items {
+.pagination_load-more .items {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
