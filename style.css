@@ -1465,6 +1465,59 @@ dialog[open]::backdrop {
 	}
 }
 
+/* Breadcrumbs */
+.bread_list {
+	padding: 0 0 1rem;
+	margin: 0 0 1rem;
+	border-bottom: 3px dotted var(--dk-teal);
+	list-style-type: none;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 0.75rem;
+}
+
+.navy .bread_list {
+	border-color: var(--dk-navy);
+}
+
+.pink .bread_list {
+	border-color: var(--dk-pink);
+}
+
+.bread_list li::after {
+	content: "/";
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+.bread_list li:first-of-type a {
+	padding-right: 0.75rem;
+}
+
+.bread_list li:last-of-type::after {
+	content: "";
+}
+
+.bread_list li:last-of-type a {
+	pointer-events: none;
+}
+
+.bread_list a,
+.navy .bread_list a,
+.pink .bread_list a {
+	text-transform: capitalize;
+	text-decoration-color: transparent;
+	transition: text-decoration-color 300ms ease-in-out;
+}
+
+.navy .bread_list a:focus,
+.navy .bread_list a:hover,
+.navy .bread_list a:active {
+	text-decoration-color: var(--white);
+}
+
 /* About Me */
 .about_me {
 	display: grid;
