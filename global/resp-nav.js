@@ -1,9 +1,9 @@
-const body = document.body;
-const open = document.querySelector(".menu_open");
-
-function initMenuToggle() {
-	const buttons = document.querySelectorAll(".menu_button");
+function initRespMenuToggle() {
+	const body = document.body;
+	const open = document.querySelector(".menu_open");
 	if (!open) return;
+
+	const buttons = document.querySelectorAll(".menu_button");
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
 			const isActive = body.classList.toggle("menu_active");
@@ -14,10 +14,7 @@ function initMenuToggle() {
 			}
 		});
 	});
-}
 
-function initEscapeToggle() {
-	if (!open) return;
 	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape" && body.classList.contains("menu_active")) {
 			body.classList.remove("menu_active");
@@ -25,6 +22,4 @@ function initEscapeToggle() {
 		}
 	});
 }
-
-initMenuToggle();
-initEscapeToggle();
+initRespMenuToggle();
