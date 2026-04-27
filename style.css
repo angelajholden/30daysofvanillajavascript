@@ -1521,6 +1521,26 @@ dialog[open]::backdrop {
 	text-decoration-color: var(--white);
 }
 
+/* Drag & Drop */
+.drag_list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	border: 1px solid var(--dk-pink);
+}
+
+.drag_list li {
+	padding: 1rem;
+}
+
+.drag_list li:nth-of-type(even) {
+	background-color: var(--dk-pink);
+}
+
+.drag_list li:nth-of-type(odd) {
+	background-color: var(--lt-pink);
+}
+
 /* About Me */
 .about_me {
 	display: grid;
