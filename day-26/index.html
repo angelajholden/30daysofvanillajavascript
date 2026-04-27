@@ -183,9 +183,82 @@
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;ul class="drag_list">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Apple&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Banana&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Orange&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Grapes&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Strawberry&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Blueberry&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Mango&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Pineapple&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Watermelon&lt;/li>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;li draggable="true">Peach&lt;/li>
+								&lt;/ul>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initDragAndDrop() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".drag_list");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const savedList = localStorage.getItem("ordered_list");
+								&nbsp;&nbsp;&nbsp;&nbsp;const savedOrder = savedList ? JSON.parse(savedList) : [];
+								&nbsp;&nbsp;&nbsp;&nbsp;let dragged;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;function saveOrder() {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const items = root.querySelectorAll("li");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const order = Array.from(items).map((item) =&gt; item.textContent.trim());
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localStorage.setItem("ordered_list", JSON.stringify(order));
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;function restoreOrder() {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!savedOrder.length) return;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const items = Array.from(root.querySelectorAll("li"));
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;savedOrder.forEach((savedText) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const matchingItem = items.find((item) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return item.textContent.trim() === savedText;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (matchingItem) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root.append(matchingItem);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;function addDragEvents() {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const items = root.querySelectorAll('li[draggable="true"]');
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items.forEach((item) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.addEventListener("dragstart", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dragged = e.target;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.addEventListener("dragend", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dragged = null;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;restoreOrder();
+								&nbsp;&nbsp;&nbsp;&nbsp;addDragEvents();
+
+								&nbsp;&nbsp;&nbsp;&nbsp;root.addEventListener("dragover", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const target = e.target.closest("li");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!target || target === dragged) return;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root.insertBefore(dragged, target);
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;root.addEventListener("drop", saveOrder);
+								}
+								initDragAndDrop();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
