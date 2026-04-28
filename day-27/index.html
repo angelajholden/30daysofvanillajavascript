@@ -227,6 +227,43 @@
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								function initSplitViewPanels() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".split_view");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const left = root.querySelector(".split_panel-left");
+								&nbsp;&nbsp;&nbsp;&nbsp;const seperator = root.querySelector(".split_handle");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;console.log(root.getBoundingClientRect());
+								&nbsp;&nbsp;&nbsp;&nbsp;let isResizing = false;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;seperator.addEventListener("mousedown", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isResizing = true;
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+
+								&nbsp;&nbsp;&nbsp;&nbsp;document.addEventListener("mousemove", (e) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!isResizing) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const rootRect = root.getBoundingClientRect();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const newLeftWidth = e.clientX - rootRect.left;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const minWidth = 240;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const maxWidth = rootRect.width - minWidth;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (newLeftWidth &lt; minWidth || newLeftWidth &gt; maxWidth) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left.style.width = `${newLeftWidth}px`;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.addEventListener("mouseup", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!isResizing) return;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isResizing = false;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+								initSplitViewPanels();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">
