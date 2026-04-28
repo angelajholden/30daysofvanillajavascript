@@ -34,8 +34,8 @@ function initCookieConsent() {
 
 	// create the banner div
 	const banner = document.createElement("div");
-	banner.setAttribute("role", "region");
-	banner.setAttribute("aria-label", "Cookie consent");
+	banner.role = "Region";
+	banner.setAttribute("aria-label", "Cookie Consent");
 	banner.classList.add("consent_banner");
 
 	// create all the things
@@ -55,7 +55,7 @@ function initCookieConsent() {
 	const btns = ["Accept", "Reject"];
 	btns.forEach((btn) => {
 		const button = document.createElement("button");
-		button.setAttribute("type", "button");
+		button.type = "button";
 		button.classList.add("button");
 		button.textContent = `${btn} All`;
 		buttons.append(button);

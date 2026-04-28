@@ -4,24 +4,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 27: Resizable Panels / Split View | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Build a two-column layout where the user can drag a divider to resize the left and right panels.">
+	<meta property="og:title" content="Day 27: Resizable Panels / Split View" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-27/" />
+	<meta property="og:description" content="Build a two-column layout where the user can drag a divider to resize the left and right panels." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-27/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script type="module" src="../script.js"></script>
-	<script type="module" src="../components/image-lightbox.js"></script>
+	<script type="module" src="../components/split-view.js"></script>
 </head>
 
 <body class="teal">
@@ -104,7 +104,7 @@
 					<li><a href="../day-24/">Day 24: URL Query Params (state in URL)</a></li>
 					<li><a href="../day-25/">Day 25: Dynamic Breadcrumbs from URL</a></li>
 					<li><a href="../day-26/">Day 26: Drag + Drop (reorder list)</a></li>
-					<li><a href="../day-27/">Day 27: Resizable Panels or Split View</a></li>
+					<li><a class="active" href="../day-27/">Day 27: Resizable Panels or Split View</a></li>
 					<li><a href="../day-28/">Day 28: Keyboard Shortcuts</a></li>
 					<li><a href="../day-29/">Day 29: Intersection Observer (scroll triggers)</a></li>
 					<li><a href="../day-30/">Day 30: Settings / Preferences Panel</a></li>
@@ -133,35 +133,97 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
-						<h2 class="secondary_heading">JavaScript focus</h2>
+						<h1 class="page_title">Day 27: Resizable Panels / Split View</h1>
+						<p class="page_intro">Build a two-column layout where the user can drag a divider to resize the left and right panels. Keep this one desktop only and mouse only for the first version.</p>
+						<h2 class="secondary_heading">Core Requirements</h2>
+						<h3 class="secondary_heading">HTML / UI</h3>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>Create a wrapper for the split view</li>
+							<li>Add a left panel</li>
+							<li>Add a draggable divider/handle between panels</li>
+							<li>Add a right panel</li>
+							<li>Add sample content in each panel</li>
+							<li>Set a minimum width for each panel</li>
 						</ul>
-						<h2 class="secondary_heading">Nice extras</h2>
+						<h3 class="secondary_heading">JavaScript</h3>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>Listen for mousedown on the divider</li>
+							<li>Track when resizing is active</li>
+							<li>Listen for mousemove on document</li>
+							<li>Calculate the new left panel width based on mouse position</li>
+							<li>Update the panel width while dragging</li>
+							<li>Listen for mouseup on document</li>
+							<li>Stop resizing on mouseup</li>
 						</ul>
-						<h2 class="secondary_heading">MDN prep</h2>
+						<h3 class="secondary_heading">JavaScript focus</h3>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li>mousedown</li>
+							<li>mousemove</li>
+							<li>mouseup</li>
+							<li>clientX</li>
+							<li>getBoundingClientRect()</li>
+							<li>inline style updates</li>
+							<li>boolean state like isResizing</li>
+							<li>min/max constraints</li>
+							<li>event cleanup</li>
+						</ul>
+						<h3 class="secondary_heading">Nice extras</h3>
+						<p>Pick <strong>one max:</strong></p>
+						<ul>
+							<li>Save panel size to localStorage</li>
+							<li>Add a reset layout button</li>
+							<li>Add keyboard support for the divider</li>
+							<li>Add ARIA attributes to the handle</li>
+							<li>Add a visual “dragging” class while resizing</li>
+						</ul>
+						<h3 class="secondary_heading">MDN prep</h3>
+						<ul>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event" target="_blank">mousedown event</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event" target="_blank">mousemove event</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup_event" target="_blank">mouseup event</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientX" target="_blank">MouseEvent.clientX</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" target="_blank">Element.getBoundingClientRect()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style" target="_blank">HTMLElement.style</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage if saving panel width</a></li>
 						</ul>
 					</header>
-					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+					<section class="section">
+						<h2 class="secondary_heading">Resizable Panels / Split View</h2>
+						<div class="split_view">
+							<div class="split_panel split_panel-left">
+								<h2>Preview</h2>
+								<p><strong>This panel can be resized.</strong></p>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque tempore quibusdam eos quae rerum ipsam? Tempora voluptatum odio architecto. Autem, animi! Placeat voluptas saepe cum aliquid doloremque modi dignissimos in.</p>
+							</div>
+							<div class="split_handle" role="separator" aria-orientation="vertical"></div>
+							<div class="split_panel split_panel-right">
+								<h2>Settings</h2>
+								<p><strong>This panel adjusts as the left panel changes.</strong></p>
+								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. A ducimus, recusandae minima vel velit tempore reiciendis numquam repudiandae optio sunt non assumenda hic fugit explicabo ex obcaecati animi, consequatur iusto.</p>
+							</div>
+						</div>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;div class="split_view">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="split_panel split_panel-left">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2>Preview&lt;/h2>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;strong>This panel can be resized.&lt;/strong>&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque tempore quibusdam eos quae rerum ipsam? Tempora voluptatum odio architecto. Autem, animi! Placeat voluptas saepe cum aliquid doloremque modi dignissimos in.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="split_handle" role="separator" aria-orientation="vertical">&lt;/div>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="split_panel split_panel-right">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2>Settings&lt;/h2>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;strong>This panel adjusts as the left panel changes.&lt;/strong>&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. A ducimus, recusandae minima vel velit tempore reiciendis numquam repudiandae optio sunt non assumenda hic fugit explicabo ex obcaecati animi, consequatur iusto.&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&lt;/div>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>

@@ -542,13 +542,13 @@ button {
 	margin: 0 0 1rem;
 }
 
-.main_nav li:nth-of-type(n + 27):nth-of-type(-n + 30) a {
+.main_nav li:nth-of-type(n + 28):nth-of-type(-n + 30) a {
 	pointer-events: none;
 	opacity: 0.5;
 	cursor: not-allowed;
 }
 
-.main_nav li:nth-of-type(n + 27):nth-of-type(-n + 30) a:focus {
+.main_nav li:nth-of-type(n + 28):nth-of-type(-n + 30) a:focus {
 	outline: 2px dashed currentColor;
 	opacity: 0.45;
 }
@@ -1539,6 +1539,27 @@ dialog[open]::backdrop {
 
 .drag_list li:nth-of-type(odd) {
 	background-color: var(--lt-pink);
+}
+
+/* Resizable Panels */
+.split_view {
+	display: flex;
+	min-height: 400px;
+}
+
+.split_panel-left {
+	width: 50%;
+	min-width: 240px;
+}
+
+.split_panel-right {
+	flex: 1;
+	min-width: 240px;
+}
+
+.split_handle {
+	width: 8px;
+	cursor: col-resize;
 }
 
 /* About Me */
