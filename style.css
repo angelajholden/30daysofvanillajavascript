@@ -1547,6 +1547,16 @@ dialog[open]::backdrop {
 	min-height: 400px;
 }
 
+.split_panel {
+	padding: 1rem;
+	border: 1px solid var(--dk-teal);
+}
+
+.split_view::selection,
+.split_panel::selection {
+	background-color: transparent;
+}
+
 .split_panel-left {
 	width: 50%;
 	min-width: 240px;
@@ -1558,8 +1568,9 @@ dialog[open]::backdrop {
 }
 
 .split_handle {
-	width: 8px;
+	width: 5px;
 	cursor: col-resize;
+	background-color: var(--white);
 }
 
 /* About Me */
