@@ -35,26 +35,20 @@ function initTransformedData(data) {
 
 function initRenderMapUI(data) {
 	console.log("Mapped: ", data);
-	/**
- * <article class="article">
-		<h3 class="tertiary_heading">1. Modal Dialog</h3>
-		<p>Category: </p>
-		<p>Difficulty: </p>
-		<p>Duration: </p>
-		<p>Featured</p>
-	</article>
-	*/
 	const root = document.querySelector(".transformed_cards");
 	if (!root) return;
 
 	data.forEach((item) => {
 		const article = document.createElement("article");
 		article.classList.add("article");
+
 		const h3 = document.createElement("h3");
 		h3.classList.add("tertiary_heading");
+
 		const category = document.createElement("p");
 		const difficulty = document.createElement("p");
 		const duration = document.createElement("p");
+
 		const featured = document.createElement("p");
 		featured.classList.add("featured");
 

@@ -34,7 +34,7 @@ function initTransformedData(data) {
 	return mapped;
 }
 
-function initRenderMapUI(data) {
+function initRenderUI(data) {
 	console.log("Mapped: ", data);
 	const root = document.querySelector(".transform_sort");
 	if (!root) return;
@@ -43,17 +43,21 @@ function initRenderMapUI(data) {
 	const buttons = root.querySelectorAll(".button");
 
 	function renderSortedResults(data) {
-		// clear the articles before re-render
+		// clear the articles before render
 		cards.innerHTML = "";
+
 		// render the articles
 		data.forEach((item) => {
 			const article = document.createElement("article");
 			article.classList.add("article");
+
 			const h3 = document.createElement("h3");
 			h3.classList.add("tertiary_heading");
+
 			const category = document.createElement("p");
 			const difficulty = document.createElement("p");
 			const duration = document.createElement("p");
+
 			const featured = document.createElement("p");
 			featured.classList.add("featured");
 
@@ -72,20 +76,23 @@ function initRenderMapUI(data) {
 		});
 	}
 
+	// render on page load
 	renderSortedResults(data);
 
 	buttons.forEach((btn) => {
 		btn.addEventListener("click", () => {
 			// re-render the sorted articles
 			let sorted;
-			if (btn.textContent === "A-Z") {
+			if (btn.dataset.id === "a-z") {
 				sorted = [...data].sort((a, b) => a.title.localeCompare(b.title));
-			} else if (btn.textContent === "Z-A") {
+			} else if (btn.dataset.id === "z-a") {
 				sorted = [...data].sort((a, b) => b.title.localeCompare(a.title));
-			} else if (btn.textContent === "Low to High") {
+			} else if (btn.dataset.id === "lo-hi") {
 				sorted = [...data].sort((a, b) => Number(a.duration) - Number(b.duration));
-			} else if (btn.textContent === "High to Low") {
+			} else if (btn.dataset.id === "hi-lo") {
 				sorted = [...data].sort((a, b) => Number(b.duration) - Number(a.duration));
+			} else {
+				sorted = data;
 			}
 			renderSortedResults(sorted);
 		});
@@ -97,6 +104,6 @@ async function init() {
 	if (!data) return;
 
 	const transformed = initTransformedData(data);
-	initRenderMapUI(transformed);
+	initRenderUI(transformed);
 }
 init();

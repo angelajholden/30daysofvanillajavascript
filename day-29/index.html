@@ -171,18 +171,165 @@
 						</ul>
 					</header>
 					<section class="section transform_sort">
-						<h2 class="secondary_heading">Transform API Data with Sort</h2>
-						<div class="transformed_cards"></div>
-						<button type="button" class="button">A-Z</button>
-						<button type="button" class="button">Z-A</button>
-						<button type="button" class="button">Low to High</button>
-						<button type="button" class="button">High to Low</button>
+						<h2 class="secondary_heading">Sort Transformed API Data</h2>
+						<div class="sort_button-container">
+							<button type="button" data-id="a-z" class="button">A &ndash; Z</button>
+							<button type="button" data-id="z-a" class="button">Z &ndash; A</button>
+							<button type="button" data-id="lo-hi" class="button">Low &lt; High</button>
+							<button type="button" data-id="hi-lo" class="button">High &gt; Low</button>
+							<button type="button" data-id="reset" class="button">Reset</button>
+						</div>
+						<div class="transformed_cards">
+							<!-- Render the articles/cards here
+							<article class="article">
+								<h3 class="tertiary_heading">1) modal dialog</h3>
+								<p>Category: JavaScript</p>
+								<p>Difficulty: beginner</p>
+								<p>Duration: 45 min</p>
+								<p class="featured">Featured</p>
+							</article> -->
+						</div>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
+						<pre>
+							<code class="language-markup">
+								&lt;section class="section transform_sort">
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="a-z" class="button">A &ndash; Z&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="z-a" class="button">Z &ndash; A&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="lo-hi" class="button">Low &lt; High&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="hi-lo" class="button">High &gt; Low&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="reset" class="button">Reset&lt;/button>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="transformed_cards">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Render the articles/cards here
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;article class="article">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 class="tertiary_heading">1) modal dialog&lt;/h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Category: JavaScript&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Difficulty: beginner&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Duration: 45 min&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="featured">Featured&lt;/p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/article> -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
+								&lt;/section>
+							</code>
+						</pre>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The JavaScript</h2>
+						<pre>
+							<code class="language-javascript">
+								async function fetchSharedData() {
+								&nbsp;&nbsp;&nbsp;&nbsp;try {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const response = await fetch("../data/shared-map-sort.json");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!response.ok) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new Error(`HTTP error! status: ${response.status}`);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const data = await response.json();
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return data;
+								&nbsp;&nbsp;&nbsp;&nbsp;} catch (error) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error("There was a problem: ", error);
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+								}
+
+								function initTransformedData(data) {
+								&nbsp;&nbsp;&nbsp;&nbsp;console.log("Original: ", data);
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const labels = {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;javascript: "JavaScript",
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;css: "CSS",
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html: "HTML",
+								&nbsp;&nbsp;&nbsp;&nbsp;};
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const mapped = data.map((item) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: item.id,
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: item.title.replaceAll("-", " "),
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;category: labels[item.category] || item.category,
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;difficulty: item.difficulty,
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duration: item.duration,
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time: `${item.duration} min`,
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;featured: item.is_featured,
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;return mapped;
+								}
+
+								function initRenderUI(data) {
+								&nbsp;&nbsp;&nbsp;&nbsp;console.log("Mapped: ", data);
+								&nbsp;&nbsp;&nbsp;&nbsp;const root = document.querySelector(".transform_sort");
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!root) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const cards = root.querySelector(".transformed_cards");
+								&nbsp;&nbsp;&nbsp;&nbsp;const buttons = root.querySelectorAll(".button");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;function renderSortedResults(data) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// clear the articles before render
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cards.innerHTML = "";
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// render the articles
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.forEach((item) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const article = document.createElement("article");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;article.classList.add("article");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const h3 = document.createElement("h3");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h3.classList.add("tertiary_heading");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const category = document.createElement("p");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const difficulty = document.createElement("p");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const duration = document.createElement("p");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const featured = document.createElement("p");
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;featured.classList.add("featured");
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h3.textContent = `${item.id}) ${item.title}`;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;category.textContent = `Category: ${item.category}`;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;difficulty.textContent = `Difficulty: ${item.difficulty}`;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duration.textContent = `Duration: ${item.time}`;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;featured.textContent = "Featured";
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (item.featured) {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;article.append(h3, category, difficulty, duration, featured);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;article.append(h3, category, difficulty, duration);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cards.append(article);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;}
+
+								&nbsp;&nbsp;&nbsp;&nbsp;// render on page load
+								&nbsp;&nbsp;&nbsp;&nbsp;renderSortedResults(data);
+
+								&nbsp;&nbsp;&nbsp;&nbsp;buttons.forEach((btn) =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btn.addEventListener("click", () =&gt; {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// re-render the sorted articles
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let sorted;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (btn.dataset.id === "a-z") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sorted = [...data].sort((a, b) =&gt; a.title.localeCompare(b.title));
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (btn.dataset.id === "z-a") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sorted = [...data].sort((a, b) =&gt; b.title.localeCompare(a.title));
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (btn.dataset.id === "lo-hi") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sorted = [...data].sort((a, b) =&gt; Number(a.duration) - Number(b.duration));
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (btn.dataset.id === "hi-lo") {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sorted = [...data].sort((a, b) =&gt; Number(b.duration) - Number(a.duration));
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sorted = data;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;renderSortedResults(sorted);
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+								&nbsp;&nbsp;&nbsp;&nbsp;});
+								}
+
+								async function init() {
+								&nbsp;&nbsp;&nbsp;&nbsp;const data = await fetchSharedData();
+								&nbsp;&nbsp;&nbsp;&nbsp;if (!data) return;
+
+								&nbsp;&nbsp;&nbsp;&nbsp;const transformed = initTransformedData(data);
+								&nbsp;&nbsp;&nbsp;&nbsp;initRenderUI(transformed);
+								}
+								init();
+							</code>
+						</pre>
 					</section>
 					<aside class="about_me section">
 						<figure class="figure">

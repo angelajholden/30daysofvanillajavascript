@@ -1574,16 +1574,21 @@ dialog[open]::backdrop {
 }
 
 /* Transform with Map + Sort */
+.sort_button-container .button {
+	white-space: nowrap;
+}
+
 .transformed_cards {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
+	margin: 2rem 0 0;
 }
 
 .transformed_cards .article {
 	position: relative;
 	padding: 1rem 1rem 3.25rem;
-	border: 2px solid var(--dk-navy);
+	border: 2px solid var(--white);
 }
 
 .transformed_cards .tertiary_heading {
@@ -1591,8 +1596,16 @@ dialog[open]::backdrop {
 	font-weight: 400;
 	padding: 0 0 0.5rem;
 	margin: 0 0 0.5rem;
-	border-bottom: 2px dotted var(--lt-navy);
+	border-bottom: 2px dotted var(--lt-teal);
 	text-transform: uppercase;
+}
+
+.navy .transformed_cards .tertiary_heading {
+	border-color: var(--lt-navy);
+}
+
+.pink .transformed_cards .tertiary_heading {
+	border-color: var(--lt-pink);
 }
 
 .transformed_cards p {
@@ -1605,13 +1618,22 @@ dialog[open]::backdrop {
 	bottom: 0;
 	left: 0;
 	width: 100%;
+	max-width: 100%;
 	margin: 0;
 	padding: 0.5rem 1rem;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	text-align: center;
 	background-color: var(--white);
+	color: var(--dk-teal);
+}
+
+.navy .transformed_cards .featured {
 	color: var(--dk-navy);
+}
+
+.pink .transformed_cards .featured {
+	color: var(--dk-pink);
 }
 
 @media (max-width: 1200px) {
@@ -1621,6 +1643,18 @@ dialog[open]::backdrop {
 }
 
 @media (max-width: 960px) {
+	.sort_button-container {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.sort_button-container .button {
+		flex: 1;
+	}
+
 	.transformed_cards {
 		grid-template-columns: 1fr;
 	}
