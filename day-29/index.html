@@ -4,9 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 29: Transform API Data with Sort | 30 Days of Vanilla JavaScript</title>
+	<title>Day 29: Sort Transformed API Data | 30 Days of Vanilla JavaScript</title>
 	<meta name="description" content="Fetch local JSON, render cards, then sort them with buttons or a select menu.">
-	<meta property="og:title" content="Day 29: Transform API Data with Sort" />
+	<meta property="og:title" content="Day 29: Sort Transformed API Data" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
 	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-29/" />
@@ -106,7 +106,7 @@
 					<li><a href="../day-26/">Day 26: Drag + Drop (reorder list)</a></li>
 					<li><a href="../day-27/">Day 27: Resizable Panels or Split View</a></li>
 					<li><a href="../day-28/">Day 28: Transform API Data with .map()</a></li>
-					<li><a class="active" href="../day-29/">Day 29: Transform API Data with .sort()</a></li>
+					<li><a class="active" href="../day-29/">Day 29: .sort() Transformed API Data</a></li>
 					<li><a href="../day-30/">Day 30: Debounced Search with .filter()</a></li>
 					<li><a href="../ui-components/">UI Components</a></li>
 				</ul>
@@ -133,7 +133,7 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 29: Transform API Data with Sort</h1>
+						<h1 class="page_title">Day 29: Sort Transformed API Data</h1>
 						<p class="page_intro">Fetch <a href="../data/shared-map-sort.json" target="_blank">local JSON</a>, render cards, then sort them with buttons or a select menu.</p>
 						<h2 class="secondary_heading">Requirements</h2>
 						<ul>
@@ -195,11 +195,13 @@
 						<pre>
 							<code class="language-markup">
 								&lt;section class="section transform_sort">
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="a-z" class="button">A &ndash; Z&lt;/button>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="z-a" class="button">Z &ndash; A&lt;/button>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="lo-hi" class="button">Low &lt; High&lt;/button>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="hi-lo" class="button">High &gt; Low&lt;/button>
-								&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="reset" class="button">Reset&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="sort_button-container">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="a-z" class="button">A &ndash; Z&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="z-a" class="button">Z &ndash; A&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="lo-hi" class="button">Low &lt; High&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="hi-lo" class="button">High &gt; Low&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" data-id="reset" class="button">Reset&lt;/button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div>
 
 								&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="transformed_cards">
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Render the articles/cards here
