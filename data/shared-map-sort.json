@@ -1,0 +1,66 @@
+[
+	{
+		"id": 1,
+		"title": "modal-dialog",
+		"category": "javascript",
+		"difficulty": "beginner",
+		"duration": 45,
+		"is_featured": true
+	},
+	{
+		"id": 2,
+		"title": "faq-accordion",
+		"category": "javascript",
+		"difficulty": "beginner",
+		"duration": 30,
+		"is_featured": false
+	},
+	{
+		"id": 3,
+		"title": "responsive-navbar",
+		"category": "css",
+		"difficulty": "intermediate",
+		"duration": 60,
+		"is_featured": true
+	},
+	{
+		"id": 4,
+		"title": "image-lightbox",
+		"category": "javascript",
+		"difficulty": "intermediate",
+		"duration": 50,
+		"is_featured": false
+	},
+	{
+		"id": 5,
+		"title": "css-grid-layout",
+		"category": "css",
+		"difficulty": "beginner",
+		"duration": 40,
+		"is_featured": false
+	},
+	{
+		"id": 6,
+		"title": "multi-step-form",
+		"category": "javascript",
+		"difficulty": "advanced",
+		"duration": 75,
+		"is_featured": true
+	},
+	{
+		"id": 7,
+		"title": "drag-and-drop-list",
+		"category": "javascript",
+		"difficulty": "intermediate",
+		"duration": 55,
+		"is_featured": false
+	},
+	{
+		"id": 8,
+		"title": "accessible-tabs",
+		"category": "html",
+		"difficulty": "intermediate",
+		"duration": 35,
+		"is_featured": false
+	}
+]
