@@ -4,17 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 28: Transform API Data with Map | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Fetch local JSON, use Map to create a cleaner display array, then render cards.">
+	<meta property="og:title" content="Day 28: Transform API Data with Map" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-28/" />
+	<meta property="og:description" content="Fetch local JSON, use Map to create a cleaner display array, then render cards." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-28/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -105,9 +105,9 @@
 					<li><a href="../day-25/">Day 25: Dynamic Breadcrumbs from URL</a></li>
 					<li><a href="../day-26/">Day 26: Drag + Drop (reorder list)</a></li>
 					<li><a href="../day-27/">Day 27: Resizable Panels or Split View</a></li>
-					<li><a href="../day-28/">Day 28: Keyboard Shortcuts</a></li>
-					<li><a href="../day-29/">Day 29: Intersection Observer (scroll triggers)</a></li>
-					<li><a href="../day-30/">Day 30: Settings / Preferences Panel</a></li>
+					<li><a class="active" href="../day-28/">Day 28: Transform API Data with .map()</a></li>
+					<li><a href="../day-29/">Day 29: Transform API Data with .sort()</a></li>
+					<li><a href="../day-30/">Day 30: Debounced Search with .filter()</a></li>
 					<li><a href="../ui-components/">UI Components</a></li>
 				</ul>
 				<ul class="social_nav social_mobile">
@@ -133,32 +133,39 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 28: Transform API Data with Map</h1>
+						<p class="page_intro">Use one local JSON file with slightly “raw” data. Fetch local JSON, use .map() to create a cleaner display array, then render cards.</p>
+						<h2 class="secondary_heading">Requirements</h2>
+						<ul>
+							<li>Fetch local JSON</li>
+							<li>Store the original data</li>
+							<li>Use .map() to create a new array with display-friendly values
+								<ul>
+									<li>"modal-dialog" → "Modal Dialog"</li>
+									<li>"javascript" → "JavaScript"</li>
+									<li>45 → "45 min"</li>
+								</ul>
+							</li>
+							<li>Render the mapped array</li>
+							<li>Console log both original data and mapped data</li>
+						</ul>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ul>
-						<h2 class="secondary_heading">Nice extras</h2>
-						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>fetch</li>
+							<li>.json()</li>
+							<li>.map()</li>
+							<li>returning objects</li>
+							<li>rendering transformed data</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch" target="_blank">Window: fetch() method</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/json" target="_blank">Response: json() method</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">Array.prototype.map()</a></li>
 						</ul>
 					</header>
 					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+						<h2 class="secondary_heading">Transform API Data with Map</h2>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>
