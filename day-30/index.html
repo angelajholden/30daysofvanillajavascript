@@ -4,24 +4,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Day 17: Image Lightbox / Gallery Viewer | 30 Days of Vanilla JavaScript</title>
-	<meta name="description" content="Create a task list where users can add and remove tasks.">
-	<meta property="og:title" content="Day 17: Image Lightbox / Gallery Viewer" />
+	<title>Day 30: Debounced Search with Filter | 30 Days of Vanilla JavaScript</title>
+	<meta name="description" content="Fetch data once, then use a debounced input and filter to search results.">
+	<meta property="og:title" content="Day 30: Debounced Search with Filter" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://30daysofvanillajavascript.com/30-days-of-vanilla-javascript.png" />
-	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-17/" />
-	<meta property="og:description" content="Create a task list where users can add and remove tasks." />
+	<meta property="og:url" content="https://30daysofvanillajavascript.com/day-30/" />
+	<meta property="og:description" content="Fetch data once, then use a debounced input and filter to search results." />
 	<meta property="og:site_name" content="30 Days of Vanilla JavaScript" />
 	<meta property="og:locale" content="en_US" />
 	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-17/" />
+	<link rel="canonical" href="https://30daysofvanillajavascript.com/day-30/" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../normalize.css">
 	<link rel="stylesheet" href="../style.css">
 	<script type="module" src="../script.js"></script>
-	<script type="module" src="../components/image-lightbox.js"></script>
+	<script type="module" src="../components/filter.js"></script>
 </head>
 
 <body class="teal">
@@ -133,32 +133,49 @@
 			<div class="section_container">
 				<div class="wrap">
 					<header class="page_header section">
-						<h1 class="page_title">Day 17: Image Lightbox / Gallery Viewer</h1>
-						<p class="page_intro">Create a task list where users can add and remove tasks.</p>
+						<h1 class="page_title">Day 30: Debounced Search with Filter</h1>
+						<p class="page_intro">Fetch data once, then use a debounced input and .filter() to search results.</p>
+						<h2 class="secondary_heading">Requirements</h2>
+						<ul>
+							<li>Fetch local JSON</li>
+							<li>Render all items</li>
+							<li>Add search input</li>
+							<li>Debounce input by 300-500ms</li>
+							<li>Use .filter() to create matching results</li>
+							<li>Search across one or two fields</li>
+							<li>Re-render filtered results</li>
+							<li>Show empty state</li>
+							<li>Add clear button if time allows</li>
+						</ul>
 						<h2 class="secondary_heading">JavaScript focus</h2>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ul>
-						<h2 class="secondary_heading">Nice extras</h2>
-						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>fetch</li>
+							<li>.filter()</li>
+							<li>.includes()</li>
+							<li>.toLowerCase()</li>
+							<li>debounce with setTimeout / clearTimeout</li>
+							<li>render function</li>
 						</ul>
 						<h2 class="secondary_heading">MDN prep</h2>
 						<ul>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
-							<li><a href="" target="_blank"></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">Array.prototype.filter()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank">Array.prototype.includes()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase" target="_blank">String.prototype.toLowerCase()</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout" target="_blank">Window: setTimeout() method</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/clearTimeout" target="_blank">Window: clearTimeout() method</a></li>
 						</ul>
 					</header>
-					<section class="section persistent_task-list">
-						<h2 class="secondary_heading">Image Lightbox / Gallery Viewer</h2>
+					<section class="section search_section">
+						<h2 class="secondary_heading">Debounced Search with Filter</h2>
+						<div class="search_wrap">
+							<label for="search" class="visually-hidden">Search</label>
+							<input type="text" id="search" class="search_input" placeholder="Search by name, role, or topic..." />
+							<button type="button" class="button search_clear">Clear</button>
+						</div>
+
+						<p class="search_empty" hidden>No results found.</p>
+
+						<div class="search_results"></div>
 					</section>
 					<section class="section">
 						<h2 class="secondary_heading">The HTML</h2>

@@ -1,0 +1,66 @@
+[
+	{
+		"id": 1,
+		"name": "Ada Lovelace",
+		"role": "Mathematician",
+		"topic": "Computing",
+		"location": "London",
+		"featured": true
+	},
+	{
+		"id": 2,
+		"name": "Grace Hopper",
+		"role": "Computer Scientist",
+		"topic": "Programming Languages",
+		"location": "New York",
+		"featured": true
+	},
+	{
+		"id": 3,
+		"name": "Alan Turing",
+		"role": "Mathematician",
+		"topic": "Cryptography",
+		"location": "Manchester",
+		"featured": false
+	},
+	{
+		"id": 4,
+		"name": "Katherine Johnson",
+		"role": "Mathematician",
+		"topic": "Space Flight",
+		"location": "Virginia",
+		"featured": true
+	},
+	{
+		"id": 5,
+		"name": "Tim Berners-Lee",
+		"role": "Engineer",
+		"topic": "World Wide Web",
+		"location": "London",
+		"featured": false
+	},
+	{
+		"id": 6,
+		"name": "Margaret Hamilton",
+		"role": "Software Engineer",
+		"topic": "Apollo Missions",
+		"location": "Massachusetts",
+		"featured": true
+	},
+	{
+		"id": 7,
+		"name": "Linus Torvalds",
+		"role": "Software Engineer",
+		"topic": "Linux Kernel",
+		"location": "Helsinki",
+		"featured": false
+	},
+	{
+		"id": 8,
+		"name": "Guido van Rossum",
+		"role": "Programmer",
+		"topic": "Python",
+		"location": "Netherlands",
+		"featured": false
+	}
+]
