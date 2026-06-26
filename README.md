@@ -11,11 +11,11 @@ This project includes individual challenge pages from `day-02` through `day-30`,
 
 ## YouTube
 
-Video or playlist link: _coming soon._
+YouTube Playlist: https://www.youtube.com/playlist?list=PLiEcEGGtRVulE0CX091xD1ZcyV2T_HfKn
 
 ## Live Demo
 
-Live demo link: _coming soon._
+Live demo: https://30daysofvanillajavascript.com/
 
 ## Features
 
